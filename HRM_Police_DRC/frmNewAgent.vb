@@ -121,39 +121,39 @@
            ,[telephone2]
            ,[telephone3])
         VALUES
-           ({matricule}
-           ,{nom}
-           ,{postnom}
-           ,{prenom}
-           ,{sexe}
+           ('{matricule}'
+           ,'{nom}'
+           ,'{postnom}'
+           ,'{prenom}'
+           ,'{sexe}'
            ,{grade}
            ,{lieu_naissance}
            ,{territoire_origine}
            ,{secteur_origine}
            ,{province_origine}
-           ,{adresse}
-           ,{groupe_sanguin}
+           ,'{adresse}'
+           ,'{groupe_sanguin}'
            ,{fonction}
            ,{unite_agent}
            ,{regroupement}
-           ,{date_naissance}
+           ,'{date_naissance}'
            ,null
            ,null
            ,null
-           ,{etat_civil}
-           ,{date_mariage_civil}
-           ,{sexe_conjoint}
-           ,{nom_conjoint}
-           ,{date_recructement}
-           ,{date_expiration}
-           ,{entre_grade}
+           ,'{etat_civil}'
+           ,'{date_mariage_civil}'
+           ,'{sexe_conjoint}'
+           ,'{nom_conjoint}'
+           ,'{date_recructement}'
+           ,'{date_expiration}'
+           ,'{entre_grade}'
            ,{province_recrutement}
            ,{userId}
            ,{commissariat_recrutement}
            ,SYSDATETIME()
-           ,{telephone1}
-           ,{telephone2}
-           ,{telephone3}
+           ,'{telephone1}'
+           ,'{telephone2}'
+           ,'{telephone3}'
             )
         "
     End Sub
@@ -166,5 +166,19 @@
         If cmbSexe.Text = "Femme" Then
             cmbSexeConjoint.Text = "Homme"
         End If
+    End Sub
+
+    Private Sub cmbUnite_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnite.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub cmbUnite_Validated(sender As Object, e As EventArgs) Handles cmbUnite.Validated
+        'Check if value existe in the db unless add it
+
+    End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+        Dim frm As New frmUnite
+        frm.ShowDialog()
     End Sub
 End Class

@@ -63,6 +63,26 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Annuler() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Annuler", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Annuler2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Annuler2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property export1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("export1", resourceCulture)
@@ -96,6 +116,26 @@ Namespace My.Resources
         Friend ReadOnly Property Screenshot_2() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Screenshot_2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property validate() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("validate", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property validate2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("validate2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

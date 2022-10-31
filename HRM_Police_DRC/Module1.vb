@@ -5,13 +5,23 @@ Module Module1
     Public userId As String = 1
     Public conn As New SqlConnection("Server=localhost;Database=hrm_police;User Id=jcnimi;Password=finca4321;")
 
+    Public Sub insertDate(ByVal queryString As String)
+        Using cmd As New SqlCommand(queryString, conn)
+            Try
+                cmd.ExecuteNonQuery()
+            Catch ex As SqlException
+                MessageBox.Show("Error:" + ex.Message)
+            End Try
+        End Using
+    End Sub
+
     Public Sub loadComboBox(ByRef combo As ComboBox, ByVal queryString As String)
         Dim adapter As New SqlDataAdapter()
         Dim ds As New DataSet()
         Dim i As Integer = 0
         Try
             combo.Items.Clear()
-            Using cmd As SqlCommand = New SqlCommand(queryString, conn)
+            Using cmd As New SqlCommand(queryString, conn)
                 adapter.SelectCommand = cmd
                 adapter.Fill(ds)
                 adapter.Dispose()
@@ -28,7 +38,7 @@ Module Module1
 
     Sub Main()
         conn.Open()
-        Dim frm As New frmMain
+        Dim frm As New frmLogin
         frm.ShowDialog()
         conn.Close()
     End Sub

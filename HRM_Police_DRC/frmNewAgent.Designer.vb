@@ -22,6 +22,7 @@ Partial Class frmNewAgent
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewAgent))
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cmbProvinceRecrutement = New System.Windows.Forms.ComboBox()
@@ -61,6 +62,7 @@ Partial Class frmNewAgent
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.maskTel3 = New System.Windows.Forms.MaskedTextBox()
         Me.maskTel2 = New System.Windows.Forms.MaskedTextBox()
         Me.maskTel1 = New System.Windows.Forms.MaskedTextBox()
@@ -102,6 +104,7 @@ Partial Class frmNewAgent
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.cmdValider = New System.Windows.Forms.Button()
         Me.cmdAnnuler = New System.Windows.Forms.Button()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -115,7 +118,9 @@ Partial Class frmNewAgent
         CType(Me.gridEnfant, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPage4
@@ -505,6 +510,8 @@ Partial Class frmNewAgent
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox1.Controls.Add(Me.PictureBox5)
+        Me.GroupBox1.Controls.Add(Me.PictureBox4)
         Me.GroupBox1.Controls.Add(Me.maskTel3)
         Me.GroupBox1.Controls.Add(Me.maskTel2)
         Me.GroupBox1.Controls.Add(Me.maskTel1)
@@ -543,12 +550,23 @@ Partial Class frmNewAgent
         Me.GroupBox1.Controls.Add(Me.txtNom)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(1120, 576)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(426, 264)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 53
+        Me.PictureBox4.TabStop = False
         '
         'maskTel3
         '
@@ -921,6 +939,16 @@ Partial Class frmNewAgent
         Me.cmdAnnuler.Text = "&Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
         '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
+        Me.PictureBox5.Location = New System.Drawing.Point(426, 308)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 54
+        Me.PictureBox5.TabStop = False
+        '
         'frmNewAgent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -930,6 +958,7 @@ Partial Class frmNewAgent
         Me.Controls.Add(Me.cmdValider)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "frmNewAgent"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gestion des Agents"
         Me.TabPage4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -948,7 +977,9 @@ Partial Class frmNewAgent
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1033,4 +1064,6 @@ Partial Class frmNewAgent
     Friend WithEvents maskTel3 As MaskedTextBox
     Friend WithEvents maskTel2 As MaskedTextBox
     Friend WithEvents maskTel1 As MaskedTextBox
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents PictureBox5 As PictureBox
 End Class
