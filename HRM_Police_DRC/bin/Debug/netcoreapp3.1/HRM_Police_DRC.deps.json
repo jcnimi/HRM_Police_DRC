@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "HRM_Police_DRC/1.0.0": {
+        "runtime": {
+          "HRM_Police_DRC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HRM_Police_DRC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

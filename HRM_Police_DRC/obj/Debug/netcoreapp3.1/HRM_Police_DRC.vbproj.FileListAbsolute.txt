@@ -1,0 +1,15 @@
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.Form1.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.vbproj.GenerateResource.cache
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.AssemblyInfoInputs.cache
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.AssemblyInfo.vb
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.vbproj.CoreCompileInputs.cache
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.exe
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.deps.json
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.runtimeconfig.json
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.runtimeconfig.dev.json
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\netcoreapp3.1\HRM_Police_DRC.pdb
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.pdb
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\netcoreapp3.1\HRM_Police_DRC.genruntimeconfig.cache
