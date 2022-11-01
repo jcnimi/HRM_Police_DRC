@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="frmCommissariat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmFonction.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmGrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmLieu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmLogin.vb">
@@ -19,7 +25,13 @@
     <Compile Update="frmNewAgent.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmSecteur.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmUniteAgent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmVillageorigine.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

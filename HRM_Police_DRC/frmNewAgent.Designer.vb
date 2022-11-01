@@ -23,6 +23,7 @@ Partial Class frmNewAgent
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewAgent))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.PictureBox10 = New System.Windows.Forms.PictureBox()
@@ -48,10 +49,11 @@ Partial Class frmNewAgent
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.dtDateNaisEnfant = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.gridEnfant = New System.Windows.Forms.DataGridView()
         Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Sexe = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sexe = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Date_naissance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtNomConjoint = New System.Windows.Forms.TextBox()
         Me.cmbSexeConjoint = New System.Windows.Forms.ComboBox()
@@ -77,7 +79,7 @@ Partial Class frmNewAgent
         Me.Label16 = New System.Windows.Forms.Label()
         Me.cmbFonction = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.cmbRegroupement = New System.Windows.Forms.ComboBox()
+        Me.cmbVillage = New System.Windows.Forms.ComboBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.cmbGrade = New System.Windows.Forms.ComboBox()
         Me.cmbUnite = New System.Windows.Forms.ComboBox()
@@ -384,6 +386,7 @@ Partial Class frmNewAgent
         'GroupBox7
         '
         Me.GroupBox7.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox7.Controls.Add(Me.dtDateNaisEnfant)
         Me.GroupBox7.Controls.Add(Me.GroupBox2)
         Me.GroupBox7.Controls.Add(Me.txtNomConjoint)
         Me.GroupBox7.Controls.Add(Me.cmbSexeConjoint)
@@ -400,6 +403,13 @@ Partial Class frmNewAgent
         Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
         '
+        'dtDateNaisEnfant
+        '
+        Me.dtDateNaisEnfant.Location = New System.Drawing.Point(512, 203)
+        Me.dtDateNaisEnfant.Name = "dtDateNaisEnfant"
+        Me.dtDateNaisEnfant.Size = New System.Drawing.Size(249, 31)
+        Me.dtDateNaisEnfant.TabIndex = 42
+        '
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke
@@ -414,11 +424,22 @@ Partial Class frmNewAgent
         '
         'gridEnfant
         '
+        Me.gridEnfant.AllowDrop = True
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gridEnfant.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gridEnfant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridEnfant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nom, Me.Sexe, Me.Date_naissance})
         Me.gridEnfant.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gridEnfant.GridColor = System.Drawing.SystemColors.ControlDarkDark
         Me.gridEnfant.Location = New System.Drawing.Point(3, 27)
         Me.gridEnfant.Name = "gridEnfant"
+        Me.gridEnfant.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.gridEnfant.RowHeadersWidth = 62
         Me.gridEnfant.RowTemplate.Height = 33
         Me.gridEnfant.Size = New System.Drawing.Size(1055, 270)
@@ -427,15 +448,19 @@ Partial Class frmNewAgent
         'Nom
         '
         Me.Nom.HeaderText = "Nom"
+        Me.Nom.MaxInputLength = 50
         Me.Nom.MinimumWidth = 8
         Me.Nom.Name = "Nom"
-        Me.Nom.Width = 350
+        Me.Nom.Width = 280
         '
         'Sexe
         '
         Me.Sexe.HeaderText = "Sexe"
+        Me.Sexe.Items.AddRange(New Object() {"Masculin", "Feminin"})
         Me.Sexe.MinimumWidth = 8
         Me.Sexe.Name = "Sexe"
+        Me.Sexe.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Sexe.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Sexe.Width = 150
         '
         'Date_naissance
@@ -443,7 +468,7 @@ Partial Class frmNewAgent
         Me.Date_naissance.HeaderText = "Date de naissance"
         Me.Date_naissance.MinimumWidth = 8
         Me.Date_naissance.Name = "Date_naissance"
-        Me.Date_naissance.Width = 200
+        Me.Date_naissance.Width = 250
         '
         'txtNomConjoint
         '
@@ -547,7 +572,7 @@ Partial Class frmNewAgent
         Me.GroupBox1.Controls.Add(Me.Label16)
         Me.GroupBox1.Controls.Add(Me.cmbFonction)
         Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.cmbRegroupement)
+        Me.GroupBox1.Controls.Add(Me.cmbVillage)
         Me.GroupBox1.Controls.Add(Me.Label27)
         Me.GroupBox1.Controls.Add(Me.cmbGrade)
         Me.GroupBox1.Controls.Add(Me.cmbUnite)
@@ -717,13 +742,13 @@ Partial Class frmNewAgent
         Me.Label7.TabIndex = 42
         Me.Label7.Text = "Fonction:"
         '
-        'cmbRegroupement
+        'cmbVillage
         '
-        Me.cmbRegroupement.FormattingEnabled = True
-        Me.cmbRegroupement.Location = New System.Drawing.Point(686, 124)
-        Me.cmbRegroupement.Name = "cmbRegroupement"
-        Me.cmbRegroupement.Size = New System.Drawing.Size(272, 33)
-        Me.cmbRegroupement.TabIndex = 41
+        Me.cmbVillage.FormattingEnabled = True
+        Me.cmbVillage.Location = New System.Drawing.Point(686, 124)
+        Me.cmbVillage.Name = "cmbVillage"
+        Me.cmbVillage.Size = New System.Drawing.Size(272, 33)
+        Me.cmbVillage.TabIndex = 41
         '
         'Label27
         '
@@ -1095,7 +1120,7 @@ Partial Class frmNewAgent
     Friend WithEvents Label16 As Label
     Friend WithEvents cmbFonction As ComboBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents cmbRegroupement As ComboBox
+    Friend WithEvents cmbVillage As ComboBox
     Friend WithEvents Label27 As Label
     Friend WithEvents cmbGrade As ComboBox
     Friend WithEvents cmbUnite As ComboBox
@@ -1136,9 +1161,6 @@ Partial Class frmNewAgent
     Friend WithEvents Label30 As Label
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents gridEnfant As DataGridView
-    Friend WithEvents Nom As DataGridViewTextBoxColumn
-    Friend WithEvents Sexe As DataGridViewTextBoxColumn
-    Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
     Friend WithEvents maskTel3 As MaskedTextBox
     Friend WithEvents maskTel2 As MaskedTextBox
     Friend WithEvents maskTel1 As MaskedTextBox
@@ -1149,4 +1171,8 @@ Partial Class frmNewAgent
     Friend WithEvents PictureBox7 As PictureBox
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents PictureBox10 As PictureBox
+    Friend WithEvents dtDateNaisEnfant As DateTimePicker
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents Sexe As DataGridViewComboBoxColumn
+    Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
 End Class

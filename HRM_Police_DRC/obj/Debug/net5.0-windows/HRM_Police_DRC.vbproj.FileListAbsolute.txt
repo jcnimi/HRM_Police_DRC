@@ -30,3 +30,7 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmUniteAgent.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmGrade.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmFonction.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmLieu.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmSecteur.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmVillageorigine.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmCommissariat.resources
