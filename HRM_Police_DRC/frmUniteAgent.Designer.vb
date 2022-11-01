@@ -23,9 +23,9 @@ Partial Class frmUniteAgent
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.cmdValider = New System.Windows.Forms.Button()
+        Me.txtDesc = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,22 +40,6 @@ Partial Class frmUniteAgent
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(38, 27)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(106, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Description:"
-        '
-        'txtDesc
-        '
-        Me.txtDesc.Location = New System.Drawing.Point(38, 59)
-        Me.txtDesc.Name = "txtDesc"
-        Me.txtDesc.Size = New System.Drawing.Size(258, 31)
-        Me.txtDesc.TabIndex = 1
-        '
         'cmdValider
         '
         Me.cmdValider.Location = New System.Drawing.Point(337, 56)
@@ -64,6 +48,22 @@ Partial Class frmUniteAgent
         Me.cmdValider.TabIndex = 2
         Me.cmdValider.Text = "&Valider"
         Me.cmdValider.UseVisualStyleBackColor = True
+        '
+        'txtDesc
+        '
+        Me.txtDesc.Location = New System.Drawing.Point(38, 59)
+        Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.Size = New System.Drawing.Size(258, 31)
+        Me.txtDesc.TabIndex = 1
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(35, 27)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(106, 25)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Description:"
         '
         'frmUniteAgent
         '
@@ -75,8 +75,9 @@ Partial Class frmUniteAgent
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUniteAgent"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Unité Agent"
+        Me.Text = "Ajout Unité Agent"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)

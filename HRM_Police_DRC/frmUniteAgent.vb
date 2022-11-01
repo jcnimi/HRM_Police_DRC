@@ -13,7 +13,8 @@
             )
         "
         Try
-            Dim result = insertDate(query)
+            insertData(query)
+            txtDesc.Text = ""
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message)
         End Try

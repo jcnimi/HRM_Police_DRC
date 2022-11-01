@@ -14,47 +14,21 @@
         'Province de recrutement
         query = "Select 0 value, 'Select' display union  SELECT id_province as value, nom as display FROM [dbo].province"
         loadComboBox(cmbProvinceRecrutement, query)
-    End Sub
 
-    Private Sub Label14_Click(sender As Object, e As EventArgs)
+        'Unité
+        query = "Select 0 value, 'Select' display union  SELECT id_unite as value, description as display FROM [dbo].unite"
+        loadComboBox(cmbUnite, query)
 
-    End Sub
+        'Grade
+        query = "Select 0 value, 'Select' display union  SELECT id_grade as value, description as display FROM [dbo].grade"
+        loadComboBox(cmbGrade, query)
 
-    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub GroupBox3_Enter_1(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label17_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label9_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label27_Click(sender As Object, e As EventArgs) Handles Label27.Click
-
-    End Sub
-
-    Private Sub ComboBox13_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRegroupement.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs)
-
+        'Fonction
+        query = "Select 0 value, 'Select' display union  SELECT id_fonction as value, description as display FROM [dbo].fonction"
+        loadComboBox(cmbFonction, query)
     End Sub
 
     Private Sub cmdValider_Click(sender As Object, e As EventArgs) Handles cmdValider.Click
-
-
-        MessageBox.Show(cmbTerritoireOrigine.Text + " " + cmbTerritoireOrigine.SelectedValue.ToString())
-
-
-
         'Get the data from input controls
         Dim nom As String = txtNom.Text
         Dim postnom As String = txtPostnom.Text
@@ -168,17 +142,52 @@
         End If
     End Sub
 
-    Private Sub cmbUnite_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnite.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub cmbUnite_Validated(sender As Object, e As EventArgs) Handles cmbUnite.Validated
-        'Check if value existe in the db unless add it
-
-    End Sub
-
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
-        Dim frm As New frmUnite
+        'ajouter unité
+        Dim frm As New frmUniteAgent
         frm.ShowDialog()
+        'update unite list
+        Dim query As String = "Select 0 value, 'Select' display union  SELECT id_unite as value, description as display FROM [dbo].unite"
+        loadComboBox(cmbUnite, query)
+    End Sub
+
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+        'ajouter grade
+        Dim frm As New frmGrade
+        frm.ShowDialog()
+        'update grade list
+        Dim query As String = "Select 0 value, 'Select' display union  SELECT id_grade as value, description as display FROM [dbo].grade"
+        loadComboBox(cmbGrade, query)
+    End Sub
+
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+        'ajouter fonction
+        Dim frm As New frmFonction
+        frm.ShowDialog()
+        'update fonction list
+        Dim query As String = "Select 0 value, 'Select' display union  SELECT id_fonction as value, description as display FROM [dbo].fonction"
+        loadComboBox(cmbFonction, query)
+    End Sub
+
+    Private Sub cmbTerritoireOrigine_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTerritoireOrigine.SelectedIndexChanged
+        MsgBox(cmbTerritoireOrigine.SelectedValue.ToString())
+
+        Dim reader As SqlDataReader
+        Dim id As String
+        Dim province As String
+        Dim datarow As DataRowView = cmbTerritoireOrigine.SelectedValue
+        Dim territoire = datarow.Row
+        'get from the db the province name
+        Dim query As String = $"
+            select id_province, province
+            from territoire 
+            where nom = '{territoire}'
+        "
+        reader = getData(query)
+        reader.Read()
+        id = reader("id_province")
+        province = reader("province")
+
+        cmbProvOrigine.SelectedValue = id
     End Sub
 End Class

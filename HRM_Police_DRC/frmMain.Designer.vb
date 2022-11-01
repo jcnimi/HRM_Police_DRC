@@ -222,6 +222,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmMain"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Identification de l'agent"
         Me.GroupBox1.ResumeLayout(False)

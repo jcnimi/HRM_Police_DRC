@@ -21,9 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="frmUnite - Copy.Designer.vb">
-      <DependentUpon>frmUnite.Designer.vb</DependentUpon>
-    </Compile>
     <Compile Update="My Project\Resources.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -32,9 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="frmUnite - Copy.resx">
-      <DependentUpon>frmUnite.resx</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="My Project\Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

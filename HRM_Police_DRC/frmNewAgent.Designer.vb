@@ -25,6 +25,7 @@ Partial Class frmNewAgent
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewAgent))
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
         Me.cmbProvinceRecrutement = New System.Windows.Forms.ComboBox()
         Me.cmbCommissariatRecrutement = New System.Windows.Forms.ComboBox()
         Me.dtDateEntreGrade = New System.Windows.Forms.DateTimePicker()
@@ -62,6 +63,11 @@ Partial Class frmNewAgent
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.maskTel3 = New System.Windows.Forms.MaskedTextBox()
         Me.maskTel2 = New System.Windows.Forms.MaskedTextBox()
@@ -104,9 +110,9 @@ Partial Class frmNewAgent
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.cmdValider = New System.Windows.Forms.Button()
         Me.cmdAnnuler = New System.Windows.Forms.Button()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,9 +124,13 @@ Partial Class frmNewAgent
         CType(Me.gridEnfant, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPage4
@@ -137,6 +147,7 @@ Partial Class frmNewAgent
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox3.Controls.Add(Me.PictureBox10)
         Me.GroupBox3.Controls.Add(Me.cmbProvinceRecrutement)
         Me.GroupBox3.Controls.Add(Me.cmbCommissariatRecrutement)
         Me.GroupBox3.Controls.Add(Me.dtDateEntreGrade)
@@ -155,6 +166,16 @@ Partial Class frmNewAgent
         Me.GroupBox3.Size = New System.Drawing.Size(1120, 576)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
+        '
+        'PictureBox10
+        '
+        Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
+        Me.PictureBox10.Location = New System.Drawing.Point(1052, 425)
+        Me.PictureBox10.Name = "PictureBox10"
+        Me.PictureBox10.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox10.TabIndex = 58
+        Me.PictureBox10.TabStop = False
         '
         'cmbProvinceRecrutement
         '
@@ -427,6 +448,7 @@ Partial Class frmNewAgent
         'txtNomConjoint
         '
         Me.txtNomConjoint.Location = New System.Drawing.Point(202, 71)
+        Me.txtNomConjoint.MaxLength = 50
         Me.txtNomConjoint.Name = "txtNomConjoint"
         Me.txtNomConjoint.Size = New System.Drawing.Size(396, 31)
         Me.txtNomConjoint.TabIndex = 40
@@ -464,6 +486,7 @@ Partial Class frmNewAgent
         'cmbEtatCivil
         '
         Me.cmbEtatCivil.FormattingEnabled = True
+        Me.cmbEtatCivil.Items.AddRange(New Object() {"Celibataire", "Marié(e)", ""})
         Me.cmbEtatCivil.Location = New System.Drawing.Point(202, 26)
         Me.cmbEtatCivil.Name = "cmbEtatCivil"
         Me.cmbEtatCivil.Size = New System.Drawing.Size(236, 33)
@@ -510,6 +533,10 @@ Partial Class frmNewAgent
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox1.Controls.Add(Me.PictureBox9)
+        Me.GroupBox1.Controls.Add(Me.PictureBox8)
+        Me.GroupBox1.Controls.Add(Me.PictureBox7)
+        Me.GroupBox1.Controls.Add(Me.PictureBox6)
         Me.GroupBox1.Controls.Add(Me.PictureBox5)
         Me.GroupBox1.Controls.Add(Me.PictureBox4)
         Me.GroupBox1.Controls.Add(Me.maskTel3)
@@ -558,6 +585,56 @@ Partial Class frmNewAgent
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
+        'PictureBox9
+        '
+        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
+        Me.PictureBox9.Location = New System.Drawing.Point(964, 122)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox9.TabIndex = 58
+        Me.PictureBox9.TabStop = False
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
+        Me.PictureBox8.Location = New System.Drawing.Point(964, 169)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox8.TabIndex = 57
+        Me.PictureBox8.TabStop = False
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
+        Me.PictureBox7.Location = New System.Drawing.Point(964, 80)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox7.TabIndex = 56
+        Me.PictureBox7.TabStop = False
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
+        Me.PictureBox6.Location = New System.Drawing.Point(426, 407)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 55
+        Me.PictureBox6.TabStop = False
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
+        Me.PictureBox5.Location = New System.Drawing.Point(426, 308)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(37, 31)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 54
+        Me.PictureBox5.TabStop = False
+        '
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
@@ -570,7 +647,7 @@ Partial Class frmNewAgent
         '
         'maskTel3
         '
-        Me.maskTel3.Location = New System.Drawing.Point(686, 403)
+        Me.maskTel3.Location = New System.Drawing.Point(686, 396)
         Me.maskTel3.Mask = "(999) 000000000"
         Me.maskTel3.Name = "maskTel3"
         Me.maskTel3.Size = New System.Drawing.Size(272, 31)
@@ -578,7 +655,7 @@ Partial Class frmNewAgent
         '
         'maskTel2
         '
-        Me.maskTel2.Location = New System.Drawing.Point(686, 353)
+        Me.maskTel2.Location = New System.Drawing.Point(686, 352)
         Me.maskTel2.Mask = "(999) 000000000"
         Me.maskTel2.Name = "maskTel2"
         Me.maskTel2.Size = New System.Drawing.Size(272, 31)
@@ -586,7 +663,7 @@ Partial Class frmNewAgent
         '
         'maskTel1
         '
-        Me.maskTel1.Location = New System.Drawing.Point(686, 310)
+        Me.maskTel1.Location = New System.Drawing.Point(686, 308)
         Me.maskTel1.Mask = "(999) 000000000"
         Me.maskTel1.Name = "maskTel1"
         Me.maskTel1.Size = New System.Drawing.Size(272, 31)
@@ -606,7 +683,7 @@ Partial Class frmNewAgent
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.Location = New System.Drawing.Point(499, 355)
+        Me.Label23.Location = New System.Drawing.Point(499, 357)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(120, 25)
         Me.Label23.TabIndex = 45
@@ -616,7 +693,7 @@ Partial Class frmNewAgent
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label16.Location = New System.Drawing.Point(499, 305)
+        Me.Label16.Location = New System.Drawing.Point(499, 311)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(120, 25)
         Me.Label16.TabIndex = 44
@@ -625,7 +702,7 @@ Partial Class frmNewAgent
         'cmbFonction
         '
         Me.cmbFonction.FormattingEnabled = True
-        Me.cmbFonction.Location = New System.Drawing.Point(182, 405)
+        Me.cmbFonction.Location = New System.Drawing.Point(182, 402)
         Me.cmbFonction.Name = "cmbFonction"
         Me.cmbFonction.Size = New System.Drawing.Size(238, 33)
         Me.cmbFonction.TabIndex = 43
@@ -634,7 +711,7 @@ Partial Class frmNewAgent
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(18, 407)
+        Me.Label7.Location = New System.Drawing.Point(18, 402)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(91, 25)
         Me.Label7.TabIndex = 42
@@ -643,7 +720,7 @@ Partial Class frmNewAgent
         'cmbRegroupement
         '
         Me.cmbRegroupement.FormattingEnabled = True
-        Me.cmbRegroupement.Location = New System.Drawing.Point(686, 262)
+        Me.cmbRegroupement.Location = New System.Drawing.Point(686, 124)
         Me.cmbRegroupement.Name = "cmbRegroupement"
         Me.cmbRegroupement.Size = New System.Drawing.Size(272, 33)
         Me.cmbRegroupement.TabIndex = 41
@@ -652,7 +729,7 @@ Partial Class frmNewAgent
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label27.Location = New System.Drawing.Point(499, 260)
+        Me.Label27.Location = New System.Drawing.Point(499, 127)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(156, 25)
         Me.Label27.TabIndex = 40
@@ -696,7 +773,8 @@ Partial Class frmNewAgent
         '
         'txtAdresse
         '
-        Me.txtAdresse.Location = New System.Drawing.Point(182, 467)
+        Me.txtAdresse.Location = New System.Drawing.Point(182, 458)
+        Me.txtAdresse.MaxLength = 500
         Me.txtAdresse.Multiline = True
         Me.txtAdresse.Name = "txtAdresse"
         Me.txtAdresse.Size = New System.Drawing.Size(776, 84)
@@ -720,8 +798,9 @@ Partial Class frmNewAgent
         '
         'cmbProvOrigine
         '
+        Me.cmbProvOrigine.Enabled = False
         Me.cmbProvOrigine.FormattingEnabled = True
-        Me.cmbProvOrigine.Location = New System.Drawing.Point(686, 216)
+        Me.cmbProvOrigine.Location = New System.Drawing.Point(686, 262)
         Me.cmbProvOrigine.Name = "cmbProvOrigine"
         Me.cmbProvOrigine.Size = New System.Drawing.Size(272, 33)
         Me.cmbProvOrigine.TabIndex = 30
@@ -737,7 +816,7 @@ Partial Class frmNewAgent
         'cmbTerritoireOrigine
         '
         Me.cmbTerritoireOrigine.FormattingEnabled = True
-        Me.cmbTerritoireOrigine.Location = New System.Drawing.Point(686, 124)
+        Me.cmbTerritoireOrigine.Location = New System.Drawing.Point(686, 216)
         Me.cmbTerritoireOrigine.Name = "cmbTerritoireOrigine"
         Me.cmbTerritoireOrigine.Size = New System.Drawing.Size(272, 33)
         Me.cmbTerritoireOrigine.TabIndex = 28
@@ -762,6 +841,7 @@ Partial Class frmNewAgent
         'txtPrenom
         '
         Me.txtPrenom.Location = New System.Drawing.Point(181, 169)
+        Me.txtPrenom.MaxLength = 30
         Me.txtPrenom.Name = "txtPrenom"
         Me.txtPrenom.Size = New System.Drawing.Size(239, 31)
         Me.txtPrenom.TabIndex = 23
@@ -769,6 +849,7 @@ Partial Class frmNewAgent
         'txtPostnom
         '
         Me.txtPostnom.Location = New System.Drawing.Point(182, 124)
+        Me.txtPostnom.MaxLength = 50
         Me.txtPostnom.Name = "txtPostnom"
         Me.txtPostnom.Size = New System.Drawing.Size(238, 31)
         Me.txtPostnom.TabIndex = 22
@@ -804,7 +885,7 @@ Partial Class frmNewAgent
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label12.Location = New System.Drawing.Point(17, 472)
+        Me.Label12.Location = New System.Drawing.Point(17, 460)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(156, 25)
         Me.Label12.TabIndex = 13
@@ -814,7 +895,7 @@ Partial Class frmNewAgent
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label11.Location = New System.Drawing.Point(499, 215)
+        Me.Label11.Location = New System.Drawing.Point(499, 265)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(172, 25)
         Me.Label11.TabIndex = 12
@@ -824,7 +905,7 @@ Partial Class frmNewAgent
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label10.Location = New System.Drawing.Point(499, 170)
+        Me.Label10.Location = New System.Drawing.Point(499, 173)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(162, 25)
         Me.Label10.TabIndex = 11
@@ -834,7 +915,7 @@ Partial Class frmNewAgent
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label9.Location = New System.Drawing.Point(499, 125)
+        Me.Label9.Location = New System.Drawing.Point(499, 219)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(176, 25)
         Me.Label9.TabIndex = 10
@@ -844,7 +925,7 @@ Partial Class frmNewAgent
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.Location = New System.Drawing.Point(499, 80)
+        Me.Label8.Location = New System.Drawing.Point(499, 81)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(165, 25)
         Me.Label8.TabIndex = 9
@@ -883,6 +964,7 @@ Partial Class frmNewAgent
         'txtNom
         '
         Me.txtNom.Location = New System.Drawing.Point(182, 79)
+        Me.txtNom.MaxLength = 50
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(238, 31)
         Me.txtNom.TabIndex = 3
@@ -939,16 +1021,6 @@ Partial Class frmNewAgent
         Me.cmdAnnuler.Text = "&Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
         '
-        'PictureBox5
-        '
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(426, 308)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 54
-        Me.PictureBox5.TabStop = False
-        '
         'frmNewAgent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -958,11 +1030,13 @@ Partial Class frmNewAgent
         Me.Controls.Add(Me.cmdValider)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "frmNewAgent"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gestion des Agents"
         Me.TabPage4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -977,9 +1051,13 @@ Partial Class frmNewAgent
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1066,4 +1144,9 @@ Partial Class frmNewAgent
     Friend WithEvents maskTel1 As MaskedTextBox
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents PictureBox9 As PictureBox
+    Friend WithEvents PictureBox8 As PictureBox
+    Friend WithEvents PictureBox7 As PictureBox
+    Friend WithEvents PictureBox6 As PictureBox
+    Friend WithEvents PictureBox10 As PictureBox
 End Class

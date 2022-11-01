@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="frmFonction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmGrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -13,7 +19,7 @@
     <Compile Update="frmNewAgent.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmUnite.vb">
+    <Compile Update="frmUniteAgent.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
