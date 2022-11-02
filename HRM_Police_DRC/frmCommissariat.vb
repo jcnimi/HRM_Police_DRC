@@ -15,7 +15,7 @@
            ,{province}
            ,'{adress}'
            ,SYSDATETIME()
-           ,1
+           ,{userId}
         )
         "
         Try

@@ -6,9 +6,17 @@
     <RootNamespace>HRM_Police_DRC</RootNamespace>
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
+    <OptionCompare>Text</OptionCompare>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>
+    <Import Include="Emgu.CV" />
+    <Import Include="Emgu.CV.CvEnum" />
+    <Import Include="Emgu.CV.Structure" />
     <Import Include="System.Data" />
     <Import Include="System.Data.Common" />
     <Import Include="System.Data.SqlClient" />
@@ -17,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Emgu.CV" Version="4.6.0.5131" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.6.0.5131" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.6.0.5131" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
   </ItemGroup>
 

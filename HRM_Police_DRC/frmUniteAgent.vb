@@ -9,7 +9,7 @@
             VALUES
             ('{desc}'
             ,SYSDATETIME()
-            ,1
+            ,{userId}
             )
         "
         Try

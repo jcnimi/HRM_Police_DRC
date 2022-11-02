@@ -45,6 +45,7 @@ Partial Class frmNewAgent
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btnWebCam = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -232,9 +233,9 @@ Partial Class frmNewAgent
         Me.lblProvinceRecrutement.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblProvinceRecrutement.Location = New System.Drawing.Point(515, 462)
         Me.lblProvinceRecrutement.Name = "lblProvinceRecrutement"
-        Me.lblProvinceRecrutement.Size = New System.Drawing.Size(227, 25)
+        Me.lblProvinceRecrutement.Size = New System.Drawing.Size(235, 25)
         Me.lblProvinceRecrutement.TabIndex = 23
-        Me.lblProvinceRecrutement.Text = "Province de recrutement:"
+        Me.lblProvinceRecrutement.Text = "Province de recrutement*:"
         '
         'Label21
         '
@@ -262,9 +263,9 @@ Partial Class frmNewAgent
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label19.Location = New System.Drawing.Point(32, 418)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(167, 25)
+        Me.Label19.Size = New System.Drawing.Size(175, 25)
         Me.Label19.TabIndex = 20
-        Me.Label19.Text = "Date recrutement:"
+        Me.Label19.Text = "Date recrutement*:"
         '
         'GroupBox6
         '
@@ -343,6 +344,7 @@ Partial Class frmNewAgent
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox5.Controls.Add(Me.btnWebCam)
         Me.GroupBox5.Controls.Add(Me.Button1)
         Me.GroupBox5.Controls.Add(Me.PictureBox1)
         Me.GroupBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
@@ -353,10 +355,19 @@ Partial Class frmNewAgent
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Photo"
         '
+        'btnWebCam
+        '
+        Me.btnWebCam.Location = New System.Drawing.Point(197, 303)
+        Me.btnWebCam.Name = "btnWebCam"
+        Me.btnWebCam.Size = New System.Drawing.Size(112, 34)
+        Me.btnWebCam.TabIndex = 2
+        Me.btnWebCam.Text = "&Webcam"
+        Me.btnWebCam.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(131, 303)
+        Me.Button1.Location = New System.Drawing.Point(79, 303)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(112, 34)
         Me.Button1.TabIndex = 1
@@ -472,6 +483,7 @@ Partial Class frmNewAgent
         '
         'txtNomConjoint
         '
+        Me.txtNomConjoint.Enabled = False
         Me.txtNomConjoint.Location = New System.Drawing.Point(202, 71)
         Me.txtNomConjoint.MaxLength = 50
         Me.txtNomConjoint.Name = "txtNomConjoint"
@@ -482,7 +494,7 @@ Partial Class frmNewAgent
         '
         Me.cmbSexeConjoint.Enabled = False
         Me.cmbSexeConjoint.FormattingEnabled = True
-        Me.cmbSexeConjoint.Items.AddRange(New Object() {"Homme", "Femme"})
+        Me.cmbSexeConjoint.Items.AddRange(New Object() {"Select", "Homme", "Femme"})
         Me.cmbSexeConjoint.Location = New System.Drawing.Point(202, 116)
         Me.cmbSexeConjoint.Name = "cmbSexeConjoint"
         Me.cmbSexeConjoint.Size = New System.Drawing.Size(236, 33)
@@ -511,7 +523,7 @@ Partial Class frmNewAgent
         'cmbEtatCivil
         '
         Me.cmbEtatCivil.FormattingEnabled = True
-        Me.cmbEtatCivil.Items.AddRange(New Object() {"Celibataire", "Marié(e)", ""})
+        Me.cmbEtatCivil.Items.AddRange(New Object() {"Select", "Celibataire", "Marié(e)"})
         Me.cmbEtatCivil.Location = New System.Drawing.Point(202, 26)
         Me.cmbEtatCivil.Name = "cmbEtatCivil"
         Me.cmbEtatCivil.Size = New System.Drawing.Size(236, 33)
@@ -523,12 +535,13 @@ Partial Class frmNewAgent
         Me.Label30.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label30.Location = New System.Drawing.Point(15, 29)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(90, 25)
+        Me.Label30.Size = New System.Drawing.Size(98, 25)
         Me.Label30.TabIndex = 35
-        Me.Label30.Text = "Etat civil:"
+        Me.Label30.Text = "Etat civil*:"
         '
         'dtDateMariageCivil
         '
+        Me.dtDateMariageCivil.Enabled = False
         Me.dtDateMariageCivil.Location = New System.Drawing.Point(202, 166)
         Me.dtDateMariageCivil.Name = "dtDateMariageCivil"
         Me.dtDateMariageCivil.Size = New System.Drawing.Size(312, 31)
@@ -673,7 +686,7 @@ Partial Class frmNewAgent
         'maskTel3
         '
         Me.maskTel3.Location = New System.Drawing.Point(686, 396)
-        Me.maskTel3.Mask = "(999) 000000000"
+        Me.maskTel3.Mask = "(243) 000000000"
         Me.maskTel3.Name = "maskTel3"
         Me.maskTel3.Size = New System.Drawing.Size(272, 31)
         Me.maskTel3.TabIndex = 52
@@ -681,7 +694,7 @@ Partial Class frmNewAgent
         'maskTel2
         '
         Me.maskTel2.Location = New System.Drawing.Point(686, 352)
-        Me.maskTel2.Mask = "(999) 000000000"
+        Me.maskTel2.Mask = "(243) 000000000"
         Me.maskTel2.Name = "maskTel2"
         Me.maskTel2.Size = New System.Drawing.Size(272, 31)
         Me.maskTel2.TabIndex = 51
@@ -689,7 +702,7 @@ Partial Class frmNewAgent
         'maskTel1
         '
         Me.maskTel1.Location = New System.Drawing.Point(686, 308)
-        Me.maskTel1.Mask = "(999) 000000000"
+        Me.maskTel1.Mask = "(243) 000000000"
         Me.maskTel1.Name = "maskTel1"
         Me.maskTel1.Size = New System.Drawing.Size(272, 31)
         Me.maskTel1.TabIndex = 50
@@ -720,9 +733,9 @@ Partial Class frmNewAgent
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label16.Location = New System.Drawing.Point(499, 311)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(120, 25)
+        Me.Label16.Size = New System.Drawing.Size(128, 25)
         Me.Label16.TabIndex = 44
-        Me.Label16.Text = "Téléphone 1:"
+        Me.Label16.Text = "Téléphone 1*:"
         '
         'cmbFonction
         '
@@ -756,9 +769,9 @@ Partial Class frmNewAgent
         Me.Label27.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label27.Location = New System.Drawing.Point(499, 127)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(156, 25)
+        Me.Label27.Size = New System.Drawing.Size(164, 25)
         Me.Label27.TabIndex = 40
-        Me.Label27.Text = "Village d'origine:"
+        Me.Label27.Text = "Village d'origine*:"
         '
         'cmbGrade
         '
@@ -782,9 +795,9 @@ Partial Class frmNewAgent
         Me.Label29.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label29.Location = New System.Drawing.Point(17, 264)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(63, 25)
+        Me.Label29.Size = New System.Drawing.Size(71, 25)
         Me.Label29.TabIndex = 37
-        Me.Label29.Text = "Unité:"
+        Me.Label29.Text = "Unité*:"
         '
         'Label6
         '
@@ -792,9 +805,9 @@ Partial Class frmNewAgent
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label6.Location = New System.Drawing.Point(17, 310)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(68, 25)
+        Me.Label6.Size = New System.Drawing.Size(76, 25)
         Me.Label6.TabIndex = 36
-        Me.Label6.Text = "Grade:"
+        Me.Label6.Text = "Grade*:"
         '
         'txtAdresse
         '
@@ -815,7 +828,7 @@ Partial Class frmNewAgent
         'cmbGroupeSanguin
         '
         Me.cmbGroupeSanguin.FormattingEnabled = True
-        Me.cmbGroupeSanguin.Items.AddRange(New Object() {"Groupe A+", "Groupe A-", "Groupe B+", "Groupe B-", "Groupe AB+", "Groupe AB-", "Groupe O+", "Groupe O-"})
+        Me.cmbGroupeSanguin.Items.AddRange(New Object() {"Select", "Groupe A+", "Groupe A-", "Groupe B+", "Groupe B-", "Groupe AB+", "Groupe AB-", "Groupe O+", "Groupe O-"})
         Me.cmbGroupeSanguin.Location = New System.Drawing.Point(182, 355)
         Me.cmbGroupeSanguin.Name = "cmbGroupeSanguin"
         Me.cmbGroupeSanguin.Size = New System.Drawing.Size(238, 33)
@@ -857,11 +870,11 @@ Partial Class frmNewAgent
         'cmbSexe
         '
         Me.cmbSexe.FormattingEnabled = True
-        Me.cmbSexe.Items.AddRange(New Object() {"Homme", "Femme"})
+        Me.cmbSexe.Items.AddRange(New Object() {"Select", "Homme", "Femme"})
         Me.cmbSexe.Location = New System.Drawing.Point(182, 214)
         Me.cmbSexe.Name = "cmbSexe"
         Me.cmbSexe.Size = New System.Drawing.Size(238, 33)
-        Me.cmbSexe.TabIndex = 24
+        Me.cmbSexe.TabIndex = 25
         '
         'txtPrenom
         '
@@ -869,7 +882,7 @@ Partial Class frmNewAgent
         Me.txtPrenom.MaxLength = 30
         Me.txtPrenom.Name = "txtPrenom"
         Me.txtPrenom.Size = New System.Drawing.Size(239, 31)
-        Me.txtPrenom.TabIndex = 23
+        Me.txtPrenom.TabIndex = 24
         '
         'txtPostnom
         '
@@ -877,7 +890,7 @@ Partial Class frmNewAgent
         Me.txtPostnom.MaxLength = 50
         Me.txtPostnom.Name = "txtPostnom"
         Me.txtPostnom.Size = New System.Drawing.Size(238, 31)
-        Me.txtPostnom.TabIndex = 22
+        Me.txtPostnom.TabIndex = 23
         '
         'maskMatric
         '
@@ -892,9 +905,9 @@ Partial Class frmNewAgent
         Me.Label28.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label28.Location = New System.Drawing.Point(499, 35)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(170, 25)
+        Me.Label28.Size = New System.Drawing.Size(178, 25)
         Me.Label28.TabIndex = 20
-        Me.Label28.Text = "Date de naissance:"
+        Me.Label28.Text = "Date de naissance*:"
         '
         'Label15
         '
@@ -912,9 +925,9 @@ Partial Class frmNewAgent
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label12.Location = New System.Drawing.Point(17, 460)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(156, 25)
+        Me.Label12.Size = New System.Drawing.Size(164, 25)
         Me.Label12.TabIndex = 13
-        Me.Label12.Text = "Adresse actuelle:"
+        Me.Label12.Text = "Adresse actuelle*:"
         '
         'Label11
         '
@@ -922,9 +935,9 @@ Partial Class frmNewAgent
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label11.Location = New System.Drawing.Point(499, 265)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(172, 25)
+        Me.Label11.Size = New System.Drawing.Size(180, 25)
         Me.Label11.TabIndex = 12
-        Me.Label11.Text = "Province d'origine:"
+        Me.Label11.Text = "Province d'origine*:"
         '
         'Label10
         '
@@ -932,9 +945,9 @@ Partial Class frmNewAgent
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label10.Location = New System.Drawing.Point(499, 173)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(162, 25)
+        Me.Label10.Size = New System.Drawing.Size(170, 25)
         Me.Label10.TabIndex = 11
-        Me.Label10.Text = "Secteur d'origine:"
+        Me.Label10.Text = "Secteur d'origine*:"
         '
         'Label9
         '
@@ -942,9 +955,9 @@ Partial Class frmNewAgent
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label9.Location = New System.Drawing.Point(499, 219)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(176, 25)
+        Me.Label9.Size = New System.Drawing.Size(184, 25)
         Me.Label9.TabIndex = 10
-        Me.Label9.Text = "Territoire d'origine:"
+        Me.Label9.Text = "Territoire d'origine*:"
         '
         'Label8
         '
@@ -952,9 +965,9 @@ Partial Class frmNewAgent
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label8.Location = New System.Drawing.Point(499, 81)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(165, 25)
+        Me.Label8.Size = New System.Drawing.Size(173, 25)
         Me.Label8.TabIndex = 9
-        Me.Label8.Text = "Lieu de naissance:"
+        Me.Label8.Text = "Lieu de naissance*:"
         '
         'Label5
         '
@@ -962,9 +975,9 @@ Partial Class frmNewAgent
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label5.Location = New System.Drawing.Point(17, 218)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(57, 25)
+        Me.Label5.Size = New System.Drawing.Size(65, 25)
         Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Sexe:"
+        Me.Label5.Text = "Sexe*:"
         '
         'Label4
         '
@@ -972,9 +985,9 @@ Partial Class frmNewAgent
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label4.Location = New System.Drawing.Point(17, 172)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(83, 25)
+        Me.Label4.Size = New System.Drawing.Size(91, 25)
         Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Prenom:"
+        Me.Label4.Text = "Prenom*:"
         '
         'Label3
         '
@@ -982,9 +995,9 @@ Partial Class frmNewAgent
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label3.Location = New System.Drawing.Point(17, 126)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 25)
+        Me.Label3.Size = New System.Drawing.Size(99, 25)
         Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Postnom:"
+        Me.Label3.Text = "Postnom*:"
         '
         'txtNom
         '
@@ -992,7 +1005,7 @@ Partial Class frmNewAgent
         Me.txtNom.MaxLength = 50
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(238, 31)
-        Me.txtNom.TabIndex = 3
+        Me.txtNom.TabIndex = 22
         '
         'Label2
         '
@@ -1000,9 +1013,9 @@ Partial Class frmNewAgent
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label2.Location = New System.Drawing.Point(17, 80)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 25)
+        Me.Label2.Size = New System.Drawing.Size(66, 25)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Nom:"
+        Me.Label2.Text = "Nom*:"
         '
         'Label1
         '
@@ -1010,9 +1023,9 @@ Partial Class frmNewAgent
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label1.Location = New System.Drawing.Point(17, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 25)
+        Me.Label1.Size = New System.Drawing.Size(106, 25)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Matricule:"
+        Me.Label1.Text = "Matricule*:"
         '
         'TabControl1
         '
@@ -1175,4 +1188,5 @@ Partial Class frmNewAgent
     Friend WithEvents Nom As DataGridViewTextBoxColumn
     Friend WithEvents Sexe As DataGridViewComboBoxColumn
     Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
+    Friend WithEvents btnWebCam As Button
 End Class

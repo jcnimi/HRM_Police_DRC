@@ -18,7 +18,7 @@
            ('{desc}'
            ,{prov}
            ,SYSDATETIME()
-           ,1
+           ,{userId}
            )
         "
         Try

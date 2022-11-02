@@ -12,7 +12,7 @@
            ('{desc}'
            ,{secteur}
            ,SYSDATETIME()
-           ,1
+           ,{userId}
            )
         "
         Try

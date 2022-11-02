@@ -18,7 +18,7 @@
            ({territoire}
            ,'{desc}'
            ,SYSDATETIME()
-           ,1
+           ,{userId}
             )
         "
         Try
