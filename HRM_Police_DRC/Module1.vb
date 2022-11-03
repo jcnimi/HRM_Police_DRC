@@ -5,14 +5,17 @@ Module Module1
     Public userId As String = 1
     Public connString As String = "Server=localhost;Database=hrm_police;User Id=jcnimi;Password=finca4321;"
     Public conn As New SqlConnection(connString)
+    Public capturedImage As String
 
-    Public Sub insertData(ByVal queryString As String)
+    Public Sub insertData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
-            Try
-                cmd.ExecuteNonQuery()
-            Catch ex As SqlException
-                MessageBox.Show("Error:" + ex.Message)
-            End Try
+            'if param not null, add
+            If dbParam IsNot Nothing AndAlso dbParam.Count > 0 Then
+                For Each e As SqlParameter In dbParam
+                    cmd.Parameters.Add(e)
+                Next
+            End If
+            cmd.ExecuteNonQuery()
         End Using
     End Sub
 

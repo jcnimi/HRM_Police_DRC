@@ -23,10 +23,9 @@ Partial Class frmNewAgent
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewAgent))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.PictureBox10 = New System.Windows.Forms.PictureBox()
+        Me.picAddCommissariat = New System.Windows.Forms.PictureBox()
         Me.cmbProvinceRecrutement = New System.Windows.Forms.ComboBox()
         Me.cmbCommissariatRecrutement = New System.Windows.Forms.ComboBox()
         Me.dtDateEntreGrade = New System.Windows.Forms.DateTimePicker()
@@ -47,7 +46,8 @@ Partial Class frmNewAgent
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.btnWebCam = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.picPhoto = New System.Windows.Forms.PictureBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.dtDateNaisEnfant = New System.Windows.Forms.DateTimePicker()
@@ -64,14 +64,15 @@ Partial Class frmNewAgent
         Me.Label30 = New System.Windows.Forms.Label()
         Me.dtDateMariageCivil = New System.Windows.Forms.DateTimePicker()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.picAddVillage = New System.Windows.Forms.PictureBox()
+        Me.picAddSecteur = New System.Windows.Forms.PictureBox()
+        Me.picAddLieu = New System.Windows.Forms.PictureBox()
+        Me.picAddFonction = New System.Windows.Forms.PictureBox()
+        Me.picAddGrade = New System.Windows.Forms.PictureBox()
+        Me.picAddUnite = New System.Windows.Forms.PictureBox()
         Me.maskTel3 = New System.Windows.Forms.MaskedTextBox()
         Me.maskTel2 = New System.Windows.Forms.MaskedTextBox()
         Me.maskTel1 = New System.Windows.Forms.MaskedTextBox()
@@ -113,26 +114,28 @@ Partial Class frmNewAgent
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.cmdValider = New System.Windows.Forms.Button()
         Me.cmdAnnuler = New System.Windows.Forms.Button()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.btnSuivant = New System.Windows.Forms.Button()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddCommissariat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gridEnfant, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddVillage, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddSecteur, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddLieu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddFonction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddGrade, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picAddUnite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -150,7 +153,7 @@ Partial Class frmNewAgent
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.GroupBox3.Controls.Add(Me.PictureBox10)
+        Me.GroupBox3.Controls.Add(Me.picAddCommissariat)
         Me.GroupBox3.Controls.Add(Me.cmbProvinceRecrutement)
         Me.GroupBox3.Controls.Add(Me.cmbCommissariatRecrutement)
         Me.GroupBox3.Controls.Add(Me.dtDateEntreGrade)
@@ -163,6 +166,7 @@ Partial Class frmNewAgent
         Me.GroupBox3.Controls.Add(Me.Label19)
         Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.GroupBox5)
+        Me.GroupBox3.Controls.Add(Me.GroupBox4)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox3.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox3.Name = "GroupBox3"
@@ -170,20 +174,21 @@ Partial Class frmNewAgent
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         '
-        'PictureBox10
+        'picAddCommissariat
         '
-        Me.PictureBox10.Image = CType(resources.GetObject("PictureBox10.Image"), System.Drawing.Image)
-        Me.PictureBox10.Location = New System.Drawing.Point(1052, 425)
-        Me.PictureBox10.Name = "PictureBox10"
-        Me.PictureBox10.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox10.TabIndex = 58
-        Me.PictureBox10.TabStop = False
+        Me.picAddCommissariat.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.picAddCommissariat.Image = CType(resources.GetObject("picAddCommissariat.Image"), System.Drawing.Image)
+        Me.picAddCommissariat.Location = New System.Drawing.Point(1052, 425)
+        Me.picAddCommissariat.Name = "picAddCommissariat"
+        Me.picAddCommissariat.Size = New System.Drawing.Size(37, 31)
+        Me.picAddCommissariat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddCommissariat.TabIndex = 58
+        Me.picAddCommissariat.TabStop = False
         '
         'cmbProvinceRecrutement
         '
         Me.cmbProvinceRecrutement.FormattingEnabled = True
-        Me.cmbProvinceRecrutement.Location = New System.Drawing.Point(783, 462)
+        Me.cmbProvinceRecrutement.Location = New System.Drawing.Point(783, 466)
         Me.cmbProvinceRecrutement.Name = "cmbProvinceRecrutement"
         Me.cmbProvinceRecrutement.Size = New System.Drawing.Size(263, 33)
         Me.cmbProvinceRecrutement.TabIndex = 29
@@ -198,14 +203,14 @@ Partial Class frmNewAgent
         '
         'dtDateEntreGrade
         '
-        Me.dtDateEntreGrade.Location = New System.Drawing.Point(198, 494)
+        Me.dtDateEntreGrade.Location = New System.Drawing.Point(198, 502)
         Me.dtDateEntreGrade.Name = "dtDateEntreGrade"
         Me.dtDateEntreGrade.Size = New System.Drawing.Size(292, 31)
         Me.dtDateEntreGrade.TabIndex = 27
         '
         'dtDateExpiration
         '
-        Me.dtDateExpiration.Location = New System.Drawing.Point(198, 456)
+        Me.dtDateExpiration.Location = New System.Drawing.Point(198, 460)
         Me.dtDateExpiration.Name = "dtDateExpiration"
         Me.dtDateExpiration.Size = New System.Drawing.Size(292, 31)
         Me.dtDateExpiration.TabIndex = 26
@@ -231,7 +236,7 @@ Partial Class frmNewAgent
         '
         Me.lblProvinceRecrutement.AutoSize = True
         Me.lblProvinceRecrutement.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lblProvinceRecrutement.Location = New System.Drawing.Point(515, 462)
+        Me.lblProvinceRecrutement.Location = New System.Drawing.Point(514, 466)
         Me.lblProvinceRecrutement.Name = "lblProvinceRecrutement"
         Me.lblProvinceRecrutement.Size = New System.Drawing.Size(235, 25)
         Me.lblProvinceRecrutement.TabIndex = 23
@@ -241,7 +246,7 @@ Partial Class frmNewAgent
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label21.Location = New System.Drawing.Point(32, 500)
+        Me.Label21.Location = New System.Drawing.Point(19, 508)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(142, 25)
         Me.Label21.TabIndex = 22
@@ -251,7 +256,7 @@ Partial Class frmNewAgent
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label20.Location = New System.Drawing.Point(32, 461)
+        Me.Label20.Location = New System.Drawing.Point(19, 463)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(149, 25)
         Me.Label20.TabIndex = 21
@@ -261,7 +266,7 @@ Partial Class frmNewAgent
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label19.Location = New System.Drawing.Point(32, 418)
+        Me.Label19.Location = New System.Drawing.Point(19, 418)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(175, 25)
         Me.Label19.TabIndex = 20
@@ -276,9 +281,9 @@ Partial Class frmNewAgent
         Me.GroupBox6.Controls.Add(Me.PictureBox3)
         Me.GroupBox6.Controls.Add(Me.PictureBox2)
         Me.GroupBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox6.Location = New System.Drawing.Point(439, 30)
+        Me.GroupBox6.Location = New System.Drawing.Point(418, 20)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(599, 356)
+        Me.GroupBox6.Size = New System.Drawing.Size(679, 356)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
@@ -286,11 +291,11 @@ Partial Class frmNewAgent
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button3.Location = New System.Drawing.Point(392, 303)
+        Me.Button3.Location = New System.Drawing.Point(421, 303)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(112, 34)
         Me.Button3.TabIndex = 5
-        Me.Button3.Text = "Importer"
+        Me.Button3.Text = "Scanner"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
@@ -300,14 +305,14 @@ Partial Class frmNewAgent
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(112, 34)
         Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Importer"
+        Me.Button2.Text = "Scanner"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Label24
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label24.Location = New System.Drawing.Point(397, 29)
+        Me.Label24.Location = New System.Drawing.Point(426, 29)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(65, 25)
         Me.Label24.TabIndex = 3
@@ -317,7 +322,7 @@ Partial Class frmNewAgent
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label14.Location = New System.Drawing.Point(77, 31)
+        Me.Label14.Location = New System.Drawing.Point(77, 29)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(76, 25)
         Me.Label14.TabIndex = 2
@@ -326,7 +331,7 @@ Partial Class frmNewAgent
         'PictureBox3
         '
         Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox3.Location = New System.Drawing.Point(329, 65)
+        Me.PictureBox3.Location = New System.Drawing.Point(358, 65)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(225, 223)
         Me.PictureBox3.TabIndex = 1
@@ -346,9 +351,9 @@ Partial Class frmNewAgent
         Me.GroupBox5.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox5.Controls.Add(Me.btnWebCam)
         Me.GroupBox5.Controls.Add(Me.Button1)
-        Me.GroupBox5.Controls.Add(Me.PictureBox1)
+        Me.GroupBox5.Controls.Add(Me.picPhoto)
         Me.GroupBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox5.Location = New System.Drawing.Point(38, 30)
+        Me.GroupBox5.Location = New System.Drawing.Point(14, 20)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(374, 356)
         Me.GroupBox5.TabIndex = 0
@@ -374,14 +379,23 @@ Partial Class frmNewAgent
         Me.Button1.Text = "Importer"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'picPhoto
         '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Location = New System.Drawing.Point(37, 33)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(297, 251)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picPhoto.Location = New System.Drawing.Point(37, 33)
+        Me.picPhoto.Name = "picPhoto"
+        Me.picPhoto.Size = New System.Drawing.Size(297, 251)
+        Me.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picPhoto.TabIndex = 0
+        Me.picPhoto.TabStop = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Location = New System.Drawing.Point(14, 368)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(1083, 188)
+        Me.GroupBox4.TabIndex = 59
+        Me.GroupBox4.TabStop = False
         '
         'TabPage3
         '
@@ -407,6 +421,7 @@ Partial Class frmNewAgent
         Me.GroupBox7.Controls.Add(Me.Label30)
         Me.GroupBox7.Controls.Add(Me.dtDateMariageCivil)
         Me.GroupBox7.Controls.Add(Me.Label13)
+        Me.GroupBox7.Controls.Add(Me.GroupBox8)
         Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox7.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox7.Name = "GroupBox7"
@@ -416,7 +431,7 @@ Partial Class frmNewAgent
         '
         'dtDateNaisEnfant
         '
-        Me.dtDateNaisEnfant.Location = New System.Drawing.Point(512, 203)
+        Me.dtDateNaisEnfant.Location = New System.Drawing.Point(533, 203)
         Me.dtDateNaisEnfant.Name = "dtDateNaisEnfant"
         Me.dtDateNaisEnfant.Size = New System.Drawing.Size(249, 31)
         Me.dtDateNaisEnfant.TabIndex = 42
@@ -426,9 +441,9 @@ Partial Class frmNewAgent
         Me.GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox2.Controls.Add(Me.gridEnfant)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 231)
+        Me.GroupBox2.Location = New System.Drawing.Point(14, 247)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1061, 300)
+        Me.GroupBox2.Size = New System.Drawing.Size(1076, 300)
         Me.GroupBox2.TabIndex = 41
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Enfants"
@@ -436,14 +451,6 @@ Partial Class frmNewAgent
         'gridEnfant
         '
         Me.gridEnfant.AllowDrop = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gridEnfant.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gridEnfant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridEnfant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nom, Me.Sexe, Me.Date_naissance})
         Me.gridEnfant.Dock = System.Windows.Forms.DockStyle.Fill
@@ -453,7 +460,7 @@ Partial Class frmNewAgent
         Me.gridEnfant.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.gridEnfant.RowHeadersWidth = 62
         Me.gridEnfant.RowTemplate.Height = 33
-        Me.gridEnfant.Size = New System.Drawing.Size(1055, 270)
+        Me.gridEnfant.Size = New System.Drawing.Size(1070, 270)
         Me.gridEnfant.TabIndex = 0
         '
         'Nom
@@ -484,7 +491,7 @@ Partial Class frmNewAgent
         'txtNomConjoint
         '
         Me.txtNomConjoint.Enabled = False
-        Me.txtNomConjoint.Location = New System.Drawing.Point(202, 71)
+        Me.txtNomConjoint.Location = New System.Drawing.Point(223, 86)
         Me.txtNomConjoint.MaxLength = 50
         Me.txtNomConjoint.Name = "txtNomConjoint"
         Me.txtNomConjoint.Size = New System.Drawing.Size(396, 31)
@@ -495,7 +502,7 @@ Partial Class frmNewAgent
         Me.cmbSexeConjoint.Enabled = False
         Me.cmbSexeConjoint.FormattingEnabled = True
         Me.cmbSexeConjoint.Items.AddRange(New Object() {"Select", "Homme", "Femme"})
-        Me.cmbSexeConjoint.Location = New System.Drawing.Point(202, 116)
+        Me.cmbSexeConjoint.Location = New System.Drawing.Point(223, 134)
         Me.cmbSexeConjoint.Name = "cmbSexeConjoint"
         Me.cmbSexeConjoint.Size = New System.Drawing.Size(236, 33)
         Me.cmbSexeConjoint.TabIndex = 39
@@ -504,7 +511,7 @@ Partial Class frmNewAgent
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label18.Location = New System.Drawing.Point(15, 117)
+        Me.Label18.Location = New System.Drawing.Point(36, 139)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(132, 25)
         Me.Label18.TabIndex = 38
@@ -514,7 +521,7 @@ Partial Class frmNewAgent
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label17.Location = New System.Drawing.Point(15, 71)
+        Me.Label17.Location = New System.Drawing.Point(36, 89)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(133, 25)
         Me.Label17.TabIndex = 37
@@ -524,7 +531,7 @@ Partial Class frmNewAgent
         '
         Me.cmbEtatCivil.FormattingEnabled = True
         Me.cmbEtatCivil.Items.AddRange(New Object() {"Select", "Celibataire", "Marié(e)"})
-        Me.cmbEtatCivil.Location = New System.Drawing.Point(202, 26)
+        Me.cmbEtatCivil.Location = New System.Drawing.Point(223, 36)
         Me.cmbEtatCivil.Name = "cmbEtatCivil"
         Me.cmbEtatCivil.Size = New System.Drawing.Size(236, 33)
         Me.cmbEtatCivil.TabIndex = 36
@@ -533,7 +540,7 @@ Partial Class frmNewAgent
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label30.Location = New System.Drawing.Point(15, 29)
+        Me.Label30.Location = New System.Drawing.Point(36, 39)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(98, 25)
         Me.Label30.TabIndex = 35
@@ -542,7 +549,7 @@ Partial Class frmNewAgent
         'dtDateMariageCivil
         '
         Me.dtDateMariageCivil.Enabled = False
-        Me.dtDateMariageCivil.Location = New System.Drawing.Point(202, 166)
+        Me.dtDateMariageCivil.Location = New System.Drawing.Point(223, 184)
         Me.dtDateMariageCivil.Name = "dtDateMariageCivil"
         Me.dtDateMariageCivil.Size = New System.Drawing.Size(312, 31)
         Me.dtDateMariageCivil.TabIndex = 34
@@ -551,15 +558,23 @@ Partial Class frmNewAgent
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label13.Location = New System.Drawing.Point(12, 171)
+        Me.Label13.Location = New System.Drawing.Point(36, 189)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(170, 25)
         Me.Label13.TabIndex = 33
         Me.Label13.Text = "Date mariage civil:"
         '
+        'GroupBox8
+        '
+        Me.GroupBox8.Location = New System.Drawing.Point(18, 15)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(1072, 224)
+        Me.GroupBox8.TabIndex = 43
+        Me.GroupBox8.TabStop = False
+        '
         'TabPage1
         '
-        Me.TabPage1.BackColor = System.Drawing.Color.PaleTurquoise
+        Me.TabPage1.BackColor = System.Drawing.Color.Transparent
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 34)
         Me.TabPage1.Name = "TabPage1"
@@ -571,12 +586,12 @@ Partial Class frmNewAgent
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.GroupBox1.Controls.Add(Me.PictureBox9)
-        Me.GroupBox1.Controls.Add(Me.PictureBox8)
-        Me.GroupBox1.Controls.Add(Me.PictureBox7)
-        Me.GroupBox1.Controls.Add(Me.PictureBox6)
-        Me.GroupBox1.Controls.Add(Me.PictureBox5)
-        Me.GroupBox1.Controls.Add(Me.PictureBox4)
+        Me.GroupBox1.Controls.Add(Me.picAddVillage)
+        Me.GroupBox1.Controls.Add(Me.picAddSecteur)
+        Me.GroupBox1.Controls.Add(Me.picAddLieu)
+        Me.GroupBox1.Controls.Add(Me.picAddFonction)
+        Me.GroupBox1.Controls.Add(Me.picAddGrade)
+        Me.GroupBox1.Controls.Add(Me.picAddUnite)
         Me.GroupBox1.Controls.Add(Me.maskTel3)
         Me.GroupBox1.Controls.Add(Me.maskTel2)
         Me.GroupBox1.Controls.Add(Me.maskTel1)
@@ -615,7 +630,7 @@ Partial Class frmNewAgent
         Me.GroupBox1.Controls.Add(Me.txtNom)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
@@ -623,69 +638,69 @@ Partial Class frmNewAgent
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
-        'PictureBox9
+        'picAddVillage
         '
-        Me.PictureBox9.Image = CType(resources.GetObject("PictureBox9.Image"), System.Drawing.Image)
-        Me.PictureBox9.Location = New System.Drawing.Point(964, 122)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox9.TabIndex = 58
-        Me.PictureBox9.TabStop = False
+        Me.picAddVillage.Image = CType(resources.GetObject("picAddVillage.Image"), System.Drawing.Image)
+        Me.picAddVillage.Location = New System.Drawing.Point(964, 132)
+        Me.picAddVillage.Name = "picAddVillage"
+        Me.picAddVillage.Size = New System.Drawing.Size(37, 31)
+        Me.picAddVillage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddVillage.TabIndex = 58
+        Me.picAddVillage.TabStop = False
         '
-        'PictureBox8
+        'picAddSecteur
         '
-        Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
-        Me.PictureBox8.Location = New System.Drawing.Point(964, 169)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox8.TabIndex = 57
-        Me.PictureBox8.TabStop = False
+        Me.picAddSecteur.Image = CType(resources.GetObject("picAddSecteur.Image"), System.Drawing.Image)
+        Me.picAddSecteur.Location = New System.Drawing.Point(964, 184)
+        Me.picAddSecteur.Name = "picAddSecteur"
+        Me.picAddSecteur.Size = New System.Drawing.Size(37, 31)
+        Me.picAddSecteur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddSecteur.TabIndex = 57
+        Me.picAddSecteur.TabStop = False
         '
-        'PictureBox7
+        'picAddLieu
         '
-        Me.PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), System.Drawing.Image)
-        Me.PictureBox7.Location = New System.Drawing.Point(964, 80)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox7.TabIndex = 56
-        Me.PictureBox7.TabStop = False
+        Me.picAddLieu.Image = CType(resources.GetObject("picAddLieu.Image"), System.Drawing.Image)
+        Me.picAddLieu.Location = New System.Drawing.Point(964, 84)
+        Me.picAddLieu.Name = "picAddLieu"
+        Me.picAddLieu.Size = New System.Drawing.Size(37, 31)
+        Me.picAddLieu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddLieu.TabIndex = 56
+        Me.picAddLieu.TabStop = False
         '
-        'PictureBox6
+        'picAddFonction
         '
-        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(426, 407)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 55
-        Me.PictureBox6.TabStop = False
+        Me.picAddFonction.Image = CType(resources.GetObject("picAddFonction.Image"), System.Drawing.Image)
+        Me.picAddFonction.Location = New System.Drawing.Point(426, 428)
+        Me.picAddFonction.Name = "picAddFonction"
+        Me.picAddFonction.Size = New System.Drawing.Size(37, 31)
+        Me.picAddFonction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddFonction.TabIndex = 55
+        Me.picAddFonction.TabStop = False
         '
-        'PictureBox5
+        'picAddGrade
         '
-        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(426, 308)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 54
-        Me.PictureBox5.TabStop = False
+        Me.picAddGrade.Image = CType(resources.GetObject("picAddGrade.Image"), System.Drawing.Image)
+        Me.picAddGrade.Location = New System.Drawing.Point(426, 326)
+        Me.picAddGrade.Name = "picAddGrade"
+        Me.picAddGrade.Size = New System.Drawing.Size(37, 31)
+        Me.picAddGrade.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddGrade.TabIndex = 54
+        Me.picAddGrade.TabStop = False
         '
-        'PictureBox4
+        'picAddUnite
         '
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(426, 264)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(37, 31)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 53
-        Me.PictureBox4.TabStop = False
+        Me.picAddUnite.Image = CType(resources.GetObject("picAddUnite.Image"), System.Drawing.Image)
+        Me.picAddUnite.Location = New System.Drawing.Point(426, 278)
+        Me.picAddUnite.Name = "picAddUnite"
+        Me.picAddUnite.Size = New System.Drawing.Size(37, 31)
+        Me.picAddUnite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAddUnite.TabIndex = 53
+        Me.picAddUnite.TabStop = False
         '
         'maskTel3
         '
-        Me.maskTel3.Location = New System.Drawing.Point(686, 396)
+        Me.maskTel3.Location = New System.Drawing.Point(686, 428)
         Me.maskTel3.Mask = "(243) 000000000"
         Me.maskTel3.Name = "maskTel3"
         Me.maskTel3.Size = New System.Drawing.Size(272, 31)
@@ -693,7 +708,7 @@ Partial Class frmNewAgent
         '
         'maskTel2
         '
-        Me.maskTel2.Location = New System.Drawing.Point(686, 352)
+        Me.maskTel2.Location = New System.Drawing.Point(686, 380)
         Me.maskTel2.Mask = "(243) 000000000"
         Me.maskTel2.Name = "maskTel2"
         Me.maskTel2.Size = New System.Drawing.Size(272, 31)
@@ -701,7 +716,7 @@ Partial Class frmNewAgent
         '
         'maskTel1
         '
-        Me.maskTel1.Location = New System.Drawing.Point(686, 308)
+        Me.maskTel1.Location = New System.Drawing.Point(686, 332)
         Me.maskTel1.Mask = "(243) 000000000"
         Me.maskTel1.Name = "maskTel1"
         Me.maskTel1.Size = New System.Drawing.Size(272, 31)
@@ -711,7 +726,7 @@ Partial Class frmNewAgent
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label25.Location = New System.Drawing.Point(499, 403)
+        Me.Label25.Location = New System.Drawing.Point(499, 428)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(120, 25)
         Me.Label25.TabIndex = 49
@@ -721,7 +736,7 @@ Partial Class frmNewAgent
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.Location = New System.Drawing.Point(499, 357)
+        Me.Label23.Location = New System.Drawing.Point(499, 380)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(120, 25)
         Me.Label23.TabIndex = 45
@@ -731,7 +746,7 @@ Partial Class frmNewAgent
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label16.Location = New System.Drawing.Point(499, 311)
+        Me.Label16.Location = New System.Drawing.Point(499, 332)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(128, 25)
         Me.Label16.TabIndex = 44
@@ -740,7 +755,7 @@ Partial Class frmNewAgent
         'cmbFonction
         '
         Me.cmbFonction.FormattingEnabled = True
-        Me.cmbFonction.Location = New System.Drawing.Point(182, 402)
+        Me.cmbFonction.Location = New System.Drawing.Point(182, 426)
         Me.cmbFonction.Name = "cmbFonction"
         Me.cmbFonction.Size = New System.Drawing.Size(238, 33)
         Me.cmbFonction.TabIndex = 43
@@ -749,7 +764,7 @@ Partial Class frmNewAgent
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(18, 402)
+        Me.Label7.Location = New System.Drawing.Point(18, 426)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(91, 25)
         Me.Label7.TabIndex = 42
@@ -758,7 +773,7 @@ Partial Class frmNewAgent
         'cmbVillage
         '
         Me.cmbVillage.FormattingEnabled = True
-        Me.cmbVillage.Location = New System.Drawing.Point(686, 124)
+        Me.cmbVillage.Location = New System.Drawing.Point(686, 132)
         Me.cmbVillage.Name = "cmbVillage"
         Me.cmbVillage.Size = New System.Drawing.Size(272, 33)
         Me.cmbVillage.TabIndex = 41
@@ -767,7 +782,7 @@ Partial Class frmNewAgent
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label27.Location = New System.Drawing.Point(499, 127)
+        Me.Label27.Location = New System.Drawing.Point(499, 140)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(164, 25)
         Me.Label27.TabIndex = 40
@@ -776,7 +791,7 @@ Partial Class frmNewAgent
         'cmbGrade
         '
         Me.cmbGrade.FormattingEnabled = True
-        Me.cmbGrade.Location = New System.Drawing.Point(181, 308)
+        Me.cmbGrade.Location = New System.Drawing.Point(181, 326)
         Me.cmbGrade.Name = "cmbGrade"
         Me.cmbGrade.Size = New System.Drawing.Size(239, 33)
         Me.cmbGrade.TabIndex = 39
@@ -784,7 +799,7 @@ Partial Class frmNewAgent
         'cmbUnite
         '
         Me.cmbUnite.FormattingEnabled = True
-        Me.cmbUnite.Location = New System.Drawing.Point(181, 261)
+        Me.cmbUnite.Location = New System.Drawing.Point(181, 276)
         Me.cmbUnite.Name = "cmbUnite"
         Me.cmbUnite.Size = New System.Drawing.Size(239, 33)
         Me.cmbUnite.TabIndex = 38
@@ -793,7 +808,7 @@ Partial Class frmNewAgent
         '
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label29.Location = New System.Drawing.Point(17, 264)
+        Me.Label29.Location = New System.Drawing.Point(17, 279)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(71, 25)
         Me.Label29.TabIndex = 37
@@ -803,7 +818,7 @@ Partial Class frmNewAgent
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(17, 310)
+        Me.Label6.Location = New System.Drawing.Point(17, 328)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(76, 25)
         Me.Label6.TabIndex = 36
@@ -811,7 +826,7 @@ Partial Class frmNewAgent
         '
         'txtAdresse
         '
-        Me.txtAdresse.Location = New System.Drawing.Point(182, 458)
+        Me.txtAdresse.Location = New System.Drawing.Point(182, 476)
         Me.txtAdresse.MaxLength = 500
         Me.txtAdresse.Multiline = True
         Me.txtAdresse.Name = "txtAdresse"
@@ -829,7 +844,7 @@ Partial Class frmNewAgent
         '
         Me.cmbGroupeSanguin.FormattingEnabled = True
         Me.cmbGroupeSanguin.Items.AddRange(New Object() {"Select", "Groupe A+", "Groupe A-", "Groupe B+", "Groupe B-", "Groupe AB+", "Groupe AB-", "Groupe O+", "Groupe O-"})
-        Me.cmbGroupeSanguin.Location = New System.Drawing.Point(182, 355)
+        Me.cmbGroupeSanguin.Location = New System.Drawing.Point(182, 376)
         Me.cmbGroupeSanguin.Name = "cmbGroupeSanguin"
         Me.cmbGroupeSanguin.Size = New System.Drawing.Size(238, 33)
         Me.cmbGroupeSanguin.TabIndex = 31
@@ -838,7 +853,7 @@ Partial Class frmNewAgent
         '
         Me.cmbProvOrigine.Enabled = False
         Me.cmbProvOrigine.FormattingEnabled = True
-        Me.cmbProvOrigine.Location = New System.Drawing.Point(686, 262)
+        Me.cmbProvOrigine.Location = New System.Drawing.Point(686, 282)
         Me.cmbProvOrigine.Name = "cmbProvOrigine"
         Me.cmbProvOrigine.Size = New System.Drawing.Size(272, 33)
         Me.cmbProvOrigine.TabIndex = 30
@@ -846,7 +861,7 @@ Partial Class frmNewAgent
         'cmbSecteurOrigine
         '
         Me.cmbSecteurOrigine.FormattingEnabled = True
-        Me.cmbSecteurOrigine.Location = New System.Drawing.Point(686, 170)
+        Me.cmbSecteurOrigine.Location = New System.Drawing.Point(686, 182)
         Me.cmbSecteurOrigine.Name = "cmbSecteurOrigine"
         Me.cmbSecteurOrigine.Size = New System.Drawing.Size(272, 33)
         Me.cmbSecteurOrigine.TabIndex = 29
@@ -854,7 +869,7 @@ Partial Class frmNewAgent
         'cmbTerritoireOrigine
         '
         Me.cmbTerritoireOrigine.FormattingEnabled = True
-        Me.cmbTerritoireOrigine.Location = New System.Drawing.Point(686, 216)
+        Me.cmbTerritoireOrigine.Location = New System.Drawing.Point(686, 232)
         Me.cmbTerritoireOrigine.Name = "cmbTerritoireOrigine"
         Me.cmbTerritoireOrigine.Size = New System.Drawing.Size(272, 33)
         Me.cmbTerritoireOrigine.TabIndex = 28
@@ -862,7 +877,7 @@ Partial Class frmNewAgent
         'cmbLieuNaissance
         '
         Me.cmbLieuNaissance.FormattingEnabled = True
-        Me.cmbLieuNaissance.Location = New System.Drawing.Point(686, 78)
+        Me.cmbLieuNaissance.Location = New System.Drawing.Point(686, 82)
         Me.cmbLieuNaissance.Name = "cmbLieuNaissance"
         Me.cmbLieuNaissance.Size = New System.Drawing.Size(272, 33)
         Me.cmbLieuNaissance.TabIndex = 26
@@ -871,14 +886,14 @@ Partial Class frmNewAgent
         '
         Me.cmbSexe.FormattingEnabled = True
         Me.cmbSexe.Items.AddRange(New Object() {"Select", "Homme", "Femme"})
-        Me.cmbSexe.Location = New System.Drawing.Point(182, 214)
+        Me.cmbSexe.Location = New System.Drawing.Point(182, 226)
         Me.cmbSexe.Name = "cmbSexe"
         Me.cmbSexe.Size = New System.Drawing.Size(238, 33)
         Me.cmbSexe.TabIndex = 25
         '
         'txtPrenom
         '
-        Me.txtPrenom.Location = New System.Drawing.Point(181, 169)
+        Me.txtPrenom.Location = New System.Drawing.Point(181, 178)
         Me.txtPrenom.MaxLength = 30
         Me.txtPrenom.Name = "txtPrenom"
         Me.txtPrenom.Size = New System.Drawing.Size(239, 31)
@@ -886,7 +901,7 @@ Partial Class frmNewAgent
         '
         'txtPostnom
         '
-        Me.txtPostnom.Location = New System.Drawing.Point(182, 124)
+        Me.txtPostnom.Location = New System.Drawing.Point(182, 130)
         Me.txtPostnom.MaxLength = 50
         Me.txtPostnom.Name = "txtPostnom"
         Me.txtPostnom.Size = New System.Drawing.Size(238, 31)
@@ -903,7 +918,7 @@ Partial Class frmNewAgent
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label28.Location = New System.Drawing.Point(499, 35)
+        Me.Label28.Location = New System.Drawing.Point(499, 44)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(178, 25)
         Me.Label28.TabIndex = 20
@@ -913,7 +928,7 @@ Partial Class frmNewAgent
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label15.Location = New System.Drawing.Point(17, 356)
+        Me.Label15.Location = New System.Drawing.Point(17, 377)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(152, 25)
         Me.Label15.TabIndex = 16
@@ -923,7 +938,7 @@ Partial Class frmNewAgent
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label12.Location = New System.Drawing.Point(17, 460)
+        Me.Label12.Location = New System.Drawing.Point(17, 475)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(164, 25)
         Me.Label12.TabIndex = 13
@@ -933,7 +948,7 @@ Partial Class frmNewAgent
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label11.Location = New System.Drawing.Point(499, 265)
+        Me.Label11.Location = New System.Drawing.Point(499, 284)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(180, 25)
         Me.Label11.TabIndex = 12
@@ -943,7 +958,7 @@ Partial Class frmNewAgent
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label10.Location = New System.Drawing.Point(499, 173)
+        Me.Label10.Location = New System.Drawing.Point(499, 188)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(170, 25)
         Me.Label10.TabIndex = 11
@@ -953,7 +968,7 @@ Partial Class frmNewAgent
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label9.Location = New System.Drawing.Point(499, 219)
+        Me.Label9.Location = New System.Drawing.Point(499, 236)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(184, 25)
         Me.Label9.TabIndex = 10
@@ -963,7 +978,7 @@ Partial Class frmNewAgent
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.Location = New System.Drawing.Point(499, 81)
+        Me.Label8.Location = New System.Drawing.Point(499, 92)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(173, 25)
         Me.Label8.TabIndex = 9
@@ -973,7 +988,7 @@ Partial Class frmNewAgent
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(17, 218)
+        Me.Label5.Location = New System.Drawing.Point(17, 230)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 25)
         Me.Label5.TabIndex = 6
@@ -983,7 +998,7 @@ Partial Class frmNewAgent
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(17, 172)
+        Me.Label4.Location = New System.Drawing.Point(17, 181)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(91, 25)
         Me.Label4.TabIndex = 5
@@ -993,7 +1008,7 @@ Partial Class frmNewAgent
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(17, 126)
+        Me.Label3.Location = New System.Drawing.Point(17, 132)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(99, 25)
         Me.Label3.TabIndex = 4
@@ -1001,7 +1016,7 @@ Partial Class frmNewAgent
         '
         'txtNom
         '
-        Me.txtNom.Location = New System.Drawing.Point(182, 79)
+        Me.txtNom.Location = New System.Drawing.Point(182, 82)
         Me.txtNom.MaxLength = 50
         Me.txtNom.Name = "txtNom"
         Me.txtNom.Size = New System.Drawing.Size(238, 31)
@@ -1011,7 +1026,7 @@ Partial Class frmNewAgent
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(17, 80)
+        Me.Label2.Location = New System.Drawing.Point(17, 83)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(66, 25)
         Me.Label2.TabIndex = 2
@@ -1042,7 +1057,7 @@ Partial Class frmNewAgent
         'cmdValider
         '
         Me.cmdValider.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.cmdValider.Location = New System.Drawing.Point(348, 628)
+        Me.cmdValider.Location = New System.Drawing.Point(348, 638)
         Me.cmdValider.Name = "cmdValider"
         Me.cmdValider.Size = New System.Drawing.Size(112, 34)
         Me.cmdValider.TabIndex = 1
@@ -1052,35 +1067,54 @@ Partial Class frmNewAgent
         'cmdAnnuler
         '
         Me.cmdAnnuler.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.cmdAnnuler.Location = New System.Drawing.Point(611, 628)
+        Me.cmdAnnuler.Location = New System.Drawing.Point(677, 638)
         Me.cmdAnnuler.Name = "cmdAnnuler"
         Me.cmdAnnuler.Size = New System.Drawing.Size(112, 34)
         Me.cmdAnnuler.TabIndex = 2
         Me.cmdAnnuler.Text = "&Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'btnSuivant
+        '
+        Me.btnSuivant.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnSuivant.Location = New System.Drawing.Point(504, 638)
+        Me.btnSuivant.Name = "btnSuivant"
+        Me.btnSuivant.Size = New System.Drawing.Size(112, 34)
+        Me.btnSuivant.TabIndex = 3
+        Me.btnSuivant.Text = "&Suivant"
+        Me.btnSuivant.UseVisualStyleBackColor = True
+        '
         'frmNewAgent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1134, 672)
+        Me.ClientSize = New System.Drawing.Size(1134, 684)
+        Me.Controls.Add(Me.btnSuivant)
         Me.Controls.Add(Me.cmdAnnuler)
         Me.Controls.Add(Me.cmdValider)
         Me.Controls.Add(Me.TabControl1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmNewAgent"
         Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gestion des Agents"
         Me.TabPage4.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddCommissariat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picPhoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
@@ -1089,12 +1123,12 @@ Partial Class frmNewAgent
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddVillage, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddSecteur, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddLieu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddFonction, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddGrade, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picAddUnite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -1121,7 +1155,7 @@ Partial Class frmNewAgent
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents picPhoto As PictureBox
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents dtDateMariageCivil As DateTimePicker
@@ -1177,16 +1211,20 @@ Partial Class frmNewAgent
     Friend WithEvents maskTel3 As MaskedTextBox
     Friend WithEvents maskTel2 As MaskedTextBox
     Friend WithEvents maskTel1 As MaskedTextBox
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents PictureBox5 As PictureBox
-    Friend WithEvents PictureBox9 As PictureBox
-    Friend WithEvents PictureBox8 As PictureBox
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents PictureBox6 As PictureBox
-    Friend WithEvents PictureBox10 As PictureBox
+    Friend WithEvents picAddUnite As PictureBox
+    Friend WithEvents picAddGrade As PictureBox
+    Friend WithEvents picAddVillage As PictureBox
+    Friend WithEvents picAddSecteur As PictureBox
+    Friend WithEvents picAddLieu As PictureBox
+    Friend WithEvents picAddFonction As PictureBox
+    Friend WithEvents picAddCommissariat As PictureBox
     Friend WithEvents dtDateNaisEnfant As DateTimePicker
     Friend WithEvents Nom As DataGridViewTextBoxColumn
     Friend WithEvents Sexe As DataGridViewComboBoxColumn
     Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
     Friend WithEvents btnWebCam As Button
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents btnSuivant As Button
 End Class

@@ -24,11 +24,12 @@ Partial Class frmWebcam
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnStart = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnStop = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.btnValidate = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -37,62 +38,77 @@ Partial Class frmWebcam
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(569, 426)
+        Me.PictureBox1.Size = New System.Drawing.Size(518, 426)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'Button1
+        'btnStart
         '
-        Me.Button1.Location = New System.Drawing.Point(650, 67)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(112, 34)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Demarrer"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnStart.Location = New System.Drawing.Point(557, 24)
+        Me.btnStart.Name = "btnStart"
+        Me.btnStart.Size = New System.Drawing.Size(112, 34)
+        Me.btnStart.TabIndex = 1
+        Me.btnStart.Text = "Demarrer"
+        Me.btnStart.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnSave
         '
-        Me.Button2.Location = New System.Drawing.Point(650, 199)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(112, 34)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Enregistrer"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnSave.Location = New System.Drawing.Point(557, 156)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(112, 34)
+        Me.btnSave.TabIndex = 2
+        Me.btnSave.Text = "Enregistrer"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnStop
         '
-        Me.Button3.Location = New System.Drawing.Point(650, 131)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(112, 34)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Arreter"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnStop.Location = New System.Drawing.Point(557, 88)
+        Me.btnStop.Name = "btnStop"
+        Me.btnStop.Size = New System.Drawing.Size(112, 34)
+        Me.btnStop.TabIndex = 3
+        Me.btnStop.Text = "Arreter"
+        Me.btnStop.UseVisualStyleBackColor = True
         '
         'Timer1
         '
+        '
+        'btnValidate
+        '
+        Me.btnValidate.Location = New System.Drawing.Point(557, 214)
+        Me.btnValidate.Name = "btnValidate"
+        Me.btnValidate.Size = New System.Drawing.Size(112, 34)
+        Me.btnValidate.TabIndex = 4
+        Me.btnValidate.Text = "Valider"
+        Me.btnValidate.UseVisualStyleBackColor = True
         '
         'frmWebcam
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(685, 450)
+        Me.Controls.Add(Me.btnValidate)
+        Me.Controls.Add(Me.btnStop)
+        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.PictureBox1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmWebcam"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmWebcam"
+        Me.Text = "Capture de la phoro"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnStart As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents btnStop As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents btnValidate As Button
 End Class

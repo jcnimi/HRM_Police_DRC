@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TDXxF8xFGNWdtIr1auwzbEihtxsZtXLUe9O8x88HvPKfXqENVmEg4wcBM/VHWuBmDHznmuPDuLmrfcEo80HxzA==",
+  "dgSpecHash": "2dtUJz1lZxQR1fyy+rieBTdgAocmpFANQmvQr5CrEsbiKdcDnvkktfEEDkDTcDMYXjK5BzOTgJdX4n8PrJZOoQ==",
   "success": true,
   "projectFilePath": "C:\\Nimi\\Perso\\Development\\HRM_Police_DRC\\HRM_Police_DRC\\HRM_Police_DRC.vbproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.cv\\4.6.0.5131\\emgu.cv.4.6.0.5131.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.cv.bitmap\\4.6.0.5131\\emgu.cv.bitmap.4.6.0.5131.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.cv.runtime.windows\\4.6.0.5131\\emgu.cv.runtime.windows.4.6.0.5131.nupkg.sha512",

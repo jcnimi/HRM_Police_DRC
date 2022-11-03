@@ -33,7 +33,6 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmSecteur.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmVillageorigine.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmCommissariat.resources
-C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmImageWebCam.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\Emgu.CV.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\runtimes\win-arm64\native\cvextern.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\runtimes\win-x64\native\cvextern.dll
@@ -70,3 +69,8 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmParametres.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmExport.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\BCrypt.Net-Next.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmAddUser.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmUserList.resources

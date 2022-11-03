@@ -1,4 +1,6 @@
-﻿Public Class frmNewAgent
+﻿Imports System.Drawing
+
+Public Class frmNewAgent
     Private formLoading = False
     Private dateNaissanceAgent As String = ""
     Private dateMariageCivilAgent As String = ""
@@ -62,6 +64,16 @@
         cmbEtatCivil.Text = "Select"
         cmbSexeConjoint.Text = "Select"
 
+        'tooltip
+        Dim tt As New ToolTip()
+        tt.SetToolTip(picAddFonction, "Ajouter une nouvelle fonction")
+        tt.SetToolTip(picAddGrade, "Ajouter un nouveau grade")
+        tt.SetToolTip(picAddLieu, "Ajouter un nouveau lieu de naissance")
+        tt.SetToolTip(picAddSecteur, "Ajouter un nouveau secteur")
+        tt.SetToolTip(picAddUnite, "Ajouter une nouvelle unité")
+        tt.SetToolTip(picAddVillage, "Ajouter un nouveau village")
+        tt.SetToolTip(picAddCommissariat, "Ajouter un nouveau commissariat")
+
         formLoading = False
     End Sub
 
@@ -90,6 +102,13 @@
             Dim nom_conjoint As String = txtNomConjoint.Text
             Dim province_recrutement As String = cmbProvinceRecrutement.SelectedValue
             Dim commissariat_recrutement As String = cmbCommissariatRecrutement.SelectedValue
+
+
+
+
+
+
+
 
             'Make sure that all the mandatory fields are filled
             If nom = "" Then
@@ -179,6 +198,17 @@
 
             If province_recrutement = 0 Then
                 MessageBox.Show("La choix de la province de recutement est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbProvinceRecrutement.Select()
+                Exit Sub
+            End If
+
+            'Checking data quality
+            'birth date at least 18 years old
+            Dim now = Date.Now()
+            Dim span = now - Date.Parse(dateNaissanceAgent)
+            If (span.TotalDays \ 365) < 18 Then
+                MessageBox.Show("L'agent doit avoir au moins 18 ans, Veuillez corriger la date de naissance", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                dtDateNaissance.Select()
                 Exit Sub
             End If
 
@@ -214,7 +244,8 @@
            ,[date_creation]
            ,[telephone1]
            ,[telephone2]
-           ,[telephone3])
+           ,[telephone3]
+           ,photo)
             VALUES
            ('{matricule}'
            ,'{nom}'
@@ -246,41 +277,50 @@
            ,'{telephone1}'
            ,'{If(telephone2 = "", Nothing, telephone2)}' 
            ,'{If(telephone3 = "", Nothing, telephone3)}' 
+           ,@photo
             )
             "
+
+            'add the photo
+            Dim im1 As Image = picPhoto.Image
+            Dim ms As New System.IO.MemoryStream
+            im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
+            Dim md As Byte() = ms.GetBuffer
+            Dim param As New SqlClient.SqlParameter("@photo", SqlDbType.Image)
+            param.Value = md
+
+            Dim listParams As New Generic.List(Of SqlParameter)
+            listParams.Add(param)
+
             'add agent
-            insertData(query)
+            insertData(query, listParams)
 
             'Get childs from datagridview and save in the db
             Dim nomEnfant As String
             Dim sexeEnfant As String
             Dim dateNaissanceEnfant As String
-            For Each Row As DataGridViewRow In gridEnfant.Rows
-                nomEnfant = CStr(Row.Cells("Nom").Value)
-                sexeEnfant = CStr(Row.Cells("Sexe").Value)
-                dateNaissanceEnfant = CStr(Row.Cells("Date_naissance").Value)
+            Dim id As String = ""
 
-                'Get the agent id from the db
-                Dim id As String = ""
-                Try
-                    'get from the db the province name
-                    Dim queryID As String = $"
+            'get from the db the id of the agent
+            Dim queryID As String = $"
                     select id_agent
                     from agent 
                     where matricule = '{matricule}'
                     "
-                    Using reader As SqlDataReader = getData(query)
-                        If reader.HasRows Then
-                            reader.Read()
-                            id = reader("id_agent")
-                        Else
-                            MessageBox.Show("Erreur en tentant d'inserer les enfants ")
-                            Exit Sub
-                        End If
-                    End Using
-                Catch ex As Exception
-                    MessageBox.Show("Erreur: " + ex.Message())
-                End Try
+            Using reader As SqlDataReader = getData(queryID)
+                If reader.HasRows Then
+                    reader.Read()
+                    id = reader("id_agent")
+                Else
+                    MessageBox.Show("Erreur en tentant d'inserer les enfants ")
+                    Exit Sub
+                End If
+            End Using
+
+            For Each Row As DataGridViewRow In gridEnfant.Rows
+                nomEnfant = CStr(Row.Cells("Nom").Value)
+                sexeEnfant = CStr(Row.Cells("Sexe").Value)
+                dateNaissanceEnfant = CStr(Row.Cells("Date_naissance").Value)
 
                 Dim queryEnfant = $"
                     INSERT INTO [dbo].[enfant]
@@ -301,7 +341,9 @@
                 "
 
                 insertData(queryEnfant)
+
             Next
+
             MessageBox.Show("Enregistrement effectué avec succès")
         Catch ex As Exception
             MessageBox.Show("Error: ", ex.Message())
@@ -318,7 +360,7 @@
         End If
     End Sub
 
-    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles picAddUnite.Click
         'ajouter unité
         Dim frm As New frmUniteAgent
         frm.ShowDialog()
@@ -327,7 +369,7 @@
         loadComboBox(cmbUnite, query)
     End Sub
 
-    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles picAddGrade.Click
         'ajouter grade
         Dim frm As New frmGrade
         frm.ShowDialog()
@@ -336,7 +378,7 @@
         loadComboBox(cmbGrade, query)
     End Sub
 
-    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles picAddFonction.Click
         'ajouter fonction
         Dim frm As New frmFonction
         frm.ShowDialog()
@@ -350,7 +392,7 @@
 
     End Sub
 
-    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picAddLieu.Click
         'ajouter lieu de naissance
         Dim frm As New frmLieu
         frm.ShowDialog()
@@ -389,7 +431,7 @@
         End Try
     End Sub
 
-    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
+    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles picAddSecteur.Click
         'ajouter secteur
         Dim frm As New frmSecteur
         frm.ShowDialog()
@@ -398,7 +440,7 @@
         loadComboBox(cmbSecteurOrigine, query)
     End Sub
 
-    Private Sub PictureBox9_Click(sender As Object, e As EventArgs) Handles PictureBox9.Click
+    Private Sub PictureBox9_Click(sender As Object, e As EventArgs) Handles picAddVillage.Click
         'ajouter village
         Dim frm As New frmVillageorigine
         frm.ShowDialog()
@@ -464,7 +506,7 @@
 
     End Sub
 
-    Private Sub PictureBox10_Click(sender As Object, e As EventArgs) Handles PictureBox10.Click
+    Private Sub PictureBox10_Click(sender As Object, e As EventArgs) Handles picAddCommissariat.Click
         'ajouter commissariat
         Dim frm As New frmCommissariat
         frm.ShowDialog()
@@ -548,12 +590,32 @@
     End Sub
 
     Private Sub btnWebCam_Click(sender As Object, e As EventArgs) Handles btnWebCam.Click
-        Dim frm As New frmImageWebCam()
+        Dim frm As New frmWebcam()
         frm.ShowDialog()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim frm As New frmWebcam()
-        frm.ShowDialog()
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png"
+            .Title = "Ouvrir une image"
+            .ShowDialog()
+        End With
+        If OpenFileDialog1.FileName <> "" Then
+            picPhoto.Image = New Bitmap(OpenFileDialog1.FileName)
+        End If
+    End Sub
+
+    Private Sub picAddUnite_MouseHover(sender As Object, e As EventArgs) Handles picAddUnite.MouseHover,
+        picAddFonction.MouseHover, picAddGrade.MouseHover, picAddCommissariat.MouseHover,
+        picAddLieu.MouseHover, picAddSecteur.MouseHover, picAddVillage.MouseHover
+        Dim pic As PictureBox = DirectCast(sender, PictureBox)
+        pic.Image = My.Resources.add2
+    End Sub
+
+    Private Sub picAddUnite_MouseLeave(sender As Object, e As EventArgs) Handles picAddUnite.MouseLeave,
+        picAddFonction.MouseLeave, picAddGrade.MouseLeave, picAddCommissariat.MouseLeave,
+        picAddLieu.MouseLeave, picAddSecteur.MouseLeave, picAddVillage.MouseLeave
+        Dim pic As PictureBox = DirectCast(sender, PictureBox)
+        pic.Image = My.Resources.add
     End Sub
 End Class
