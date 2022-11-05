@@ -60,6 +60,8 @@ Partial Class frmParametres
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmParametres"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmParametres"
         Me.GroupBox1.ResumeLayout(False)
