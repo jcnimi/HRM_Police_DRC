@@ -7,7 +7,7 @@ Module Module1
     Public conn As New SqlConnection(connString)
     Public capturedImage As String
 
-    Public Sub insertData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
+    Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
             'if param not null, add
             If dbParam IsNot Nothing AndAlso dbParam.Count > 0 Then

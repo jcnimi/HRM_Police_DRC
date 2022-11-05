@@ -11,7 +11,8 @@ Public Class frmNewAgent
     Private telephone2 As String = ""
     Private telephone3 As String = ""
     Private Sub frmNewAgent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        formLoading = True
+        formLoading = True  'avoid cascade update of territoire, secteur, etc to happen 
+        'when loading the form
 
         'loding list data on combo boxes
         Dim query As String
@@ -293,7 +294,7 @@ Public Class frmNewAgent
             listParams.Add(param)
 
             'add agent
-            insertData(query, listParams)
+            saveData(query, listParams)
 
             'Get childs from datagridview and save in the db
             Dim nomEnfant As String
@@ -340,7 +341,7 @@ Public Class frmNewAgent
                    )
                 "
 
-                insertData(queryEnfant)
+                saveData(queryEnfant)
 
             Next
 

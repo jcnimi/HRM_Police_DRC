@@ -22,7 +22,7 @@
            )
         "
         Try
-            insertData(query)
+            saveData(query)
             txtDesc.Text = ""
             cmbProvince.SelectedValue = 0
 

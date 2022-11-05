@@ -16,7 +16,7 @@
            )
         "
         Try
-            insertData(query)
+            saveData(query)
             txtDesc.Text = ""
             cmbSecteur.SelectedValue = 0
 

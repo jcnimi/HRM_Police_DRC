@@ -13,7 +13,7 @@
             )
         "
         Try
-            insertData(query)
+            saveData(query)
             txtDesc.Text = ""
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message)

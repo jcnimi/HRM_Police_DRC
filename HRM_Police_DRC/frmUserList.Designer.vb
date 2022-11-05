@@ -25,7 +25,6 @@ Partial Class frmUserList
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnAnnuler = New System.Windows.Forms.Button()
         Me.btnModifier = New System.Windows.Forms.Button()
-        Me.btnPassword = New System.Windows.Forms.Button()
         Me.btnAjouter = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dgvUsers = New System.Windows.Forms.DataGridView()
@@ -38,7 +37,6 @@ Partial Class frmUserList
         '
         Me.GroupBox2.Controls.Add(Me.btnAnnuler)
         Me.GroupBox2.Controls.Add(Me.btnModifier)
-        Me.GroupBox2.Controls.Add(Me.btnPassword)
         Me.GroupBox2.Controls.Add(Me.btnAjouter)
         Me.GroupBox2.Location = New System.Drawing.Point(1015, 9)
         Me.GroupBox2.Name = "GroupBox2"
@@ -49,7 +47,7 @@ Partial Class frmUserList
         '
         'btnAnnuler
         '
-        Me.btnAnnuler.Location = New System.Drawing.Point(26, 248)
+        Me.btnAnnuler.Location = New System.Drawing.Point(22, 175)
         Me.btnAnnuler.Name = "btnAnnuler"
         Me.btnAnnuler.Size = New System.Drawing.Size(141, 34)
         Me.btnAnnuler.TabIndex = 3
@@ -58,21 +56,13 @@ Partial Class frmUserList
         '
         'btnModifier
         '
-        Me.btnModifier.Location = New System.Drawing.Point(26, 186)
+        Me.btnModifier.Enabled = False
+        Me.btnModifier.Location = New System.Drawing.Point(22, 113)
         Me.btnModifier.Name = "btnModifier"
         Me.btnModifier.Size = New System.Drawing.Size(141, 34)
         Me.btnModifier.TabIndex = 2
         Me.btnModifier.Text = "Modifier"
         Me.btnModifier.UseVisualStyleBackColor = True
-        '
-        'btnPassword
-        '
-        Me.btnPassword.Location = New System.Drawing.Point(22, 122)
-        Me.btnPassword.Name = "btnPassword"
-        Me.btnPassword.Size = New System.Drawing.Size(145, 34)
-        Me.btnPassword.TabIndex = 1
-        Me.btnPassword.Text = "Mot de passe"
-        Me.btnPassword.UseVisualStyleBackColor = True
         '
         'btnAjouter
         '
@@ -95,9 +85,13 @@ Partial Class frmUserList
         '
         'dgvUsers
         '
+        Me.dgvUsers.AllowUserToAddRows = False
+        Me.dgvUsers.AllowUserToDeleteRows = False
         Me.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUsers.Location = New System.Drawing.Point(9, 27)
+        Me.dgvUsers.MultiSelect = False
         Me.dgvUsers.Name = "dgvUsers"
+        Me.dgvUsers.ReadOnly = True
         Me.dgvUsers.RowHeadersWidth = 62
         Me.dgvUsers.RowTemplate.Height = 33
         Me.dgvUsers.Size = New System.Drawing.Size(982, 433)
@@ -125,7 +119,6 @@ Partial Class frmUserList
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btnAnnuler As Button
     Friend WithEvents btnModifier As Button
-    Friend WithEvents btnPassword As Button
     Friend WithEvents btnAjouter As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents dgvUsers As DataGridView

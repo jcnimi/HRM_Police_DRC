@@ -23,34 +23,35 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.picvalidate = New System.Windows.Forms.PictureBox()
         Me.picCancel = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.chkShowPassword = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picvalidate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picCancel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txtUsername
         '
-        Me.TextBox1.Location = New System.Drawing.Point(460, 102)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(332, 31)
-        Me.TextBox1.TabIndex = 2
-        Me.TextBox1.Tag = ""
+        Me.txtUsername.Location = New System.Drawing.Point(460, 102)
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(332, 31)
+        Me.txtUsername.TabIndex = 2
+        Me.txtUsername.Tag = ""
         '
-        'TextBox2
+        'txtpassword
         '
-        Me.TextBox2.Location = New System.Drawing.Point(460, 203)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox2.Size = New System.Drawing.Size(332, 31)
-        Me.TextBox2.TabIndex = 3
-        Me.TextBox2.UseSystemPasswordChar = True
+        Me.txtpassword.Location = New System.Drawing.Point(460, 196)
+        Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtpassword.Size = New System.Drawing.Size(332, 31)
+        Me.txtpassword.TabIndex = 3
+        Me.txtpassword.UseSystemPasswordChar = True
         '
         'PictureBox1
         '
@@ -99,11 +100,21 @@ Partial Class frmLogin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(460, 166)
+        Me.Label2.Location = New System.Drawing.Point(460, 159)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(130, 25)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Mot de passe:"
+        '
+        'chkShowPassword
+        '
+        Me.chkShowPassword.AutoSize = True
+        Me.chkShowPassword.Location = New System.Drawing.Point(462, 241)
+        Me.chkShowPassword.Name = "chkShowPassword"
+        Me.chkShowPassword.Size = New System.Drawing.Size(230, 29)
+        Me.chkShowPassword.TabIndex = 9
+        Me.chkShowPassword.Text = "Afficher le mot de passe"
+        Me.chkShowPassword.UseVisualStyleBackColor = True
         '
         'frmLogin
         '
@@ -111,13 +122,14 @@ Partial Class frmLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveBorder
         Me.ClientSize = New System.Drawing.Size(884, 411)
+        Me.Controls.Add(Me.chkShowPassword)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.picCancel)
         Me.Controls.Add(Me.picvalidate)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtpassword)
+        Me.Controls.Add(Me.txtUsername)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -132,11 +144,12 @@ Partial Class frmLogin
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtUsername As TextBox
+    Friend WithEvents txtpassword As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents picvalidate As PictureBox
     Friend WithEvents picCancel As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents chkShowPassword As CheckBox
 End Class
