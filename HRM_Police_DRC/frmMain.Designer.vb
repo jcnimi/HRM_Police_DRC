@@ -32,12 +32,12 @@ Partial Class frmMain
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.cmbCriterePeronel = New System.Windows.Forms.ComboBox()
+        Me.cmbCriterionPeronel = New System.Windows.Forms.ComboBox()
         Me.cmbValuePersonal = New System.Windows.Forms.ComboBox()
         Me.grpValue = New System.Windows.Forms.GroupBox()
         Me.lbldtA = New System.Windows.Forms.Label()
-        Me.dtTo = New System.Windows.Forms.DateTimePicker()
-        Me.dtFrom = New System.Windows.Forms.DateTimePicker()
+        Me.dtpTo = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFrom = New System.Windows.Forms.DateTimePicker()
         Me.lbldtDe = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -46,6 +46,7 @@ Partial Class frmMain
         Me.cmbValueLocation = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.picSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,14 +135,14 @@ Partial Class frmMain
         '
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Controls.Add(Me.Label4)
-        Me.GroupBox4.Controls.Add(Me.cmbCriterePeronel)
+        Me.GroupBox4.Controls.Add(Me.cmbCriterionPeronel)
         Me.GroupBox4.Controls.Add(Me.cmbValuePersonal)
         Me.GroupBox4.Location = New System.Drawing.Point(723, 23)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(324, 131)
         Me.GroupBox4.TabIndex = 10
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "personel"
+        Me.GroupBox4.Text = "Personel"
         '
         'Label3
         '
@@ -161,14 +162,14 @@ Partial Class frmMain
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Critère:"
         '
-        'cmbCriterePeronel
+        'cmbCriterionPeronel
         '
-        Me.cmbCriterePeronel.FormattingEnabled = True
-        Me.cmbCriterePeronel.Items.AddRange(New Object() {"Province d'origine", "Territoire d'origine", "Secteur d'origine"})
-        Me.cmbCriterePeronel.Location = New System.Drawing.Point(90, 27)
-        Me.cmbCriterePeronel.Name = "cmbCriterePeronel"
-        Me.cmbCriterePeronel.Size = New System.Drawing.Size(218, 33)
-        Me.cmbCriterePeronel.TabIndex = 5
+        Me.cmbCriterionPeronel.FormattingEnabled = True
+        Me.cmbCriterionPeronel.Items.AddRange(New Object() {"Grade", "Unité", "Fonction", "Matricule"})
+        Me.cmbCriterionPeronel.Location = New System.Drawing.Point(90, 27)
+        Me.cmbCriterionPeronel.Name = "cmbCriterionPeronel"
+        Me.cmbCriterionPeronel.Size = New System.Drawing.Size(218, 33)
+        Me.cmbCriterionPeronel.TabIndex = 5
         '
         'cmbValuePersonal
         '
@@ -181,8 +182,8 @@ Partial Class frmMain
         'grpValue
         '
         Me.grpValue.Controls.Add(Me.lbldtA)
-        Me.grpValue.Controls.Add(Me.dtTo)
-        Me.grpValue.Controls.Add(Me.dtFrom)
+        Me.grpValue.Controls.Add(Me.dtpTo)
+        Me.grpValue.Controls.Add(Me.dtpFrom)
         Me.grpValue.Controls.Add(Me.lbldtDe)
         Me.grpValue.Location = New System.Drawing.Point(359, 23)
         Me.grpValue.Name = "grpValue"
@@ -201,19 +202,19 @@ Partial Class frmMain
         Me.lbldtA.TabIndex = 9
         Me.lbldtA.Text = "à"
         '
-        'dtTo
+        'dtpTo
         '
-        Me.dtTo.Location = New System.Drawing.Point(64, 71)
-        Me.dtTo.Name = "dtTo"
-        Me.dtTo.Size = New System.Drawing.Size(270, 31)
-        Me.dtTo.TabIndex = 8
+        Me.dtpTo.Location = New System.Drawing.Point(64, 71)
+        Me.dtpTo.Name = "dtpTo"
+        Me.dtpTo.Size = New System.Drawing.Size(270, 31)
+        Me.dtpTo.TabIndex = 8
         '
-        'dtFrom
+        'dtpFrom
         '
-        Me.dtFrom.Location = New System.Drawing.Point(63, 27)
-        Me.dtFrom.Name = "dtFrom"
-        Me.dtFrom.Size = New System.Drawing.Size(271, 31)
-        Me.dtFrom.TabIndex = 7
+        Me.dtpFrom.Location = New System.Drawing.Point(63, 27)
+        Me.dtpFrom.Name = "dtpFrom"
+        Me.dtpFrom.Size = New System.Drawing.Size(271, 31)
+        Me.dtpFrom.TabIndex = 7
         '
         'lbldtDe
         '
@@ -297,6 +298,10 @@ Partial Class frmMain
         Me.DataGridView1.Size = New System.Drawing.Size(1493, 439)
         Me.DataGridView1.TabIndex = 0
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -339,8 +344,8 @@ Partial Class frmMain
     Friend WithEvents lbldtDe As Label
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents lbldtA As Label
-    Friend WithEvents dtTo As DateTimePicker
-    Friend WithEvents dtFrom As DateTimePicker
+    Friend WithEvents dtpTo As DateTimePicker
+    Friend WithEvents dtpFrom As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox4 As GroupBox
@@ -351,6 +356,7 @@ Partial Class frmMain
     Friend WithEvents picAddAgent As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents cmbCriterePeronel As ComboBox
+    Friend WithEvents cmbCriterionPeronel As ComboBox
     Friend WithEvents cmbValuePersonal As ComboBox
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class

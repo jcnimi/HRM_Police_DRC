@@ -630,7 +630,6 @@ Partial Class frmNewAgent
         Me.GroupBox1.Controls.Add(Me.txtNom)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Cursor = System.Windows.Forms.Cursors.Arrow
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"

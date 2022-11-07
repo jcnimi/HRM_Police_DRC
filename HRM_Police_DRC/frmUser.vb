@@ -4,6 +4,10 @@
     Dim query As String
     Dim dtDateDebut As String = ""
     Dim dtDateExpiration As String = ""
+    Dim oldPassword As String = ""
+    Dim mustChangePwd As Boolean = False
+    Dim lastPwdChaneDt As String = ""
+    Dim msg As String = ""
     Private Sub cmdAnnuler_Click(sender As Object, e As EventArgs) Handles cmdAnnuler.Click
         Me.Close()
     End Sub
@@ -40,7 +44,7 @@
                     txtpassword.Text = reader("password").ToString
                     cboSexe.Text = reader("sexe").ToString
                     cboStatus.Text = reader("status").ToString
-
+                    oldPassword = reader("password").ToString
                     dtDateDebut = reader("date_debut").ToString
                     If IsDate(dtDateDebut) Then
                         dtpDateDebut.Value = dtDateDebut
@@ -64,6 +68,9 @@
     Private Sub cmdValider_Click(sender As Object, e As EventArgs) Handles cmdValider.Click
         Dim password = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text)
         If isUpdating = False Then
+            msg = "User ajouté avec succes"
+            mustChangePwd = True
+            lastPwdChaneDt = "SYSDATETIME()"
             query = $"
             INSERT INTO [dbo].[users]
                        ([nom]
@@ -77,11 +84,13 @@
                        ,[locked]
                        ,[email]
                        ,[groupe]
-                       ,[password])
+                       ,[password]
+                       ,[must_change_pwd], [last_pwd_change_dt], [failed_count]
+                        )
                  VALUES
                        ('{txtNom.Text}'
                        ,'{cboSexe.Text}'
-                       ,SYSDATETIME()
+                       ,{lastPwdChaneDt}
                        ,{userId}
                        ,'{cboStatus.Text}'
                        ,'{dtDateDebut}'
@@ -90,11 +99,34 @@
                        ,'{chkLocked.Checked}'
                        ,'{txtMail.Text}'
                        ,'{cboGroup.SelectedValue}'
-                       ,'{password}')
+                       ,'{password}'
+                       , '{mustChangePwd}'
+                       ,SYSDATETIME()
+                       ,'0'
+                       )
              "
         Else
+            msg = "User mis à jour avec succes"
+            If oldPassword <> txtpassword.Text Then 'password changed
+                mustChangePwd = True
+                lastPwdChaneDt = "SYSDATETIME()"
+            Else
+                lastPwdChaneDt = "last_pwd_change_dt"
+            End If
             query = $"
-
+                UPDATE [dbo].[users]
+                SET [nom] = '{txtNom.Text}'
+                  ,[sexe] = '{cboSexe.Text}'
+                  ,[status] = '{cboStatus.Text}'
+                  ,[date_debut] = '{dtDateDebut}'
+                  ,[date_fin] = '{dtDateExpiration}'
+                  ,[password] = '{BCrypt.Net.BCrypt.HashPassword(txtpassword.Text)}'
+                  ,[must_change_pwd] = '{mustChangePwd}'
+                  ,[last_pwd_change_dt] = {lastPwdChaneDt}
+                  ,[locked] = '{chkLocked.Checked}'
+                  ,[email] = '{txtMail.Text}'
+                  ,[groupe] = '{cboGroup.SelectedValue}'
+                WHERE username = '{userName}'
             "
         End If
         Try
