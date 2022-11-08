@@ -112,6 +112,7 @@ Partial Class frmMain
         'picExportAgent
         '
         Me.picExportAgent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picExportAgent.Enabled = False
         Me.picExportAgent.Image = Global.HRM_Police_DRC.My.Resources.Resources.export1
         Me.picExportAgent.Location = New System.Drawing.Point(218, 26)
         Me.picExportAgent.Name = "picExportAgent"

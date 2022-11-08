@@ -30,7 +30,6 @@ Public Class frmMain
 		,[etat_civil] ""Etat Civil""
         ,c.description as Grade
 	    ,b.description as Fonction
-	    ,[adresse] Adresse
         FROM [dbo].[agent] a
         join [dbo].[fonction] b on a.fonction = b.id_fonction
         join [dbo].[grade] c on a.grade = c.id_grade
@@ -82,29 +81,35 @@ Public Class frmMain
 
     Private Sub picSearch_Click(sender As Object, e As EventArgs) Handles picSearch.Click
         'Search
-        DataGridView1.DataSource = Nothing
-        Dim cmd As New SqlCommand()
-        With cmd
-            .CommandType = CommandType.StoredProcedure
-            .CommandText = "sp_FilterAgent"
-            With .Parameters
-                .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
-                .Add(New SqlParameter("location_location_value", cmbValueLocation.SelectedValue))
-                .Add(New SqlParameter("creation_date_from", dtFrom))
-                .Add(New SqlParameter("creation_date_to", dtTo))
-                .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
-                If cmbCriterionPeronel.Text = "Matricule" Then
-                    .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
-                Else
-                    .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
-                End If
+        Try
+            DataGridView1.DataSource = Nothing
+            Dim cmd As SqlCommand = conn.CreateCommand()
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "sp_FilterAgent"
+                With .Parameters
+                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
+                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
+                    .Add(New SqlParameter("creation_date_from", dtFrom))
+                    .Add(New SqlParameter("creation_date_to", dtTo))
+                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
+                    If cmbCriterionPeronel.Text = "Matricule" Then
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
+                    Else
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
+                    End If
 
+                End With
             End With
-        End With
-        Dim adapter As New SqlDataAdapter(cmd)
-        Dim table As New DataTable
-        adapter.Fill(table)
-        DataGridView1.DataSource = table
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            adapter.Fill(table)
+            DataGridView1.DataSource = table
+            picExportAgent.Enabled = True
+            'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
     End Sub
 
     Private Sub picSearch_MouseHover(sender As Object, e As EventArgs) Handles picSearch.MouseHover
@@ -118,10 +123,30 @@ Public Class frmMain
     End Sub
 
     Private Sub picExportAgent_Click(sender As Object, e As EventArgs) Handles picExportAgent.Click
-        'Dim frm As New frmExport()
-        'frm.ShowDialog()
+        Try
+            Dim cmd As SqlCommand = conn.CreateCommand()
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "sp_ExportAgent"
+                With .Parameters
+                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
+                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
+                    .Add(New SqlParameter("creation_date_from", dtFrom))
+                    .Add(New SqlParameter("creation_date_to", dtTo))
+                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
+                    If cmbCriterionPeronel.Text = "Matricule" Then
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
+                    Else
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
+                    End If
 
-        'call stored procedure for export
+                End With
+            End With
+            cmd.ExecuteNonQueryAsync()
+            MessageBox.Show("Exportation reussie")
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
     End Sub
 
     Private Sub dtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtpFrom.ValueChanged
@@ -156,9 +181,13 @@ Public Class frmMain
             query = "Select 0 value, 'Select' display union  SELECT id_unite as value, description as display FROM [dbo].unite"
         ElseIf cmbCriterionPeronel.Text = "Fonction" Then
             query = "Select 0 value, 'Select' display union  SELECT id_fonction as value, description as display FROM [dbo].fonction"
+        Else
+            query = ""
+            cmbValuePersonal.DataSource = Nothing
         End If
         If query <> "" Then
             loadComboBox(cmbValuePersonal, query)
         End If
+
     End Sub
 End Class
