@@ -49,4 +49,5 @@
             selectedRow = dgvUsers.SelectedRows.Item(0)
         End If
     End Sub
+
 End Class

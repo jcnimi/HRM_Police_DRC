@@ -37,15 +37,14 @@ Partial Class frmNewAgent
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnFingerRScan = New System.Windows.Forms.Button()
+        Me.btnFingerLScan = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.picFingerprintR = New System.Windows.Forms.PictureBox()
+        Me.picfingerprintL = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.picSignature = New System.Windows.Forms.PictureBox()
@@ -121,12 +120,14 @@ Partial Class frmNewAgent
         Me.cmdAnnuler = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnSuivant = New System.Windows.Forms.Button()
+        Me.btnFingerLImport = New System.Windows.Forms.Button()
+        Me.btnFingerRImport = New System.Windows.Forms.Button()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.picAddCommissariat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picFingerprintR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picfingerprintL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
         CType(Me.picSignature, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -280,12 +281,14 @@ Partial Class frmNewAgent
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.Button3)
-        Me.GroupBox6.Controls.Add(Me.Button2)
+        Me.GroupBox6.Controls.Add(Me.btnFingerRImport)
+        Me.GroupBox6.Controls.Add(Me.btnFingerLImport)
+        Me.GroupBox6.Controls.Add(Me.btnFingerRScan)
+        Me.GroupBox6.Controls.Add(Me.btnFingerLScan)
         Me.GroupBox6.Controls.Add(Me.Label24)
         Me.GroupBox6.Controls.Add(Me.Label14)
-        Me.GroupBox6.Controls.Add(Me.PictureBox3)
-        Me.GroupBox6.Controls.Add(Me.PictureBox2)
+        Me.GroupBox6.Controls.Add(Me.picFingerprintR)
+        Me.GroupBox6.Controls.Add(Me.picfingerprintL)
         Me.GroupBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox6.Location = New System.Drawing.Point(579, 20)
         Me.GroupBox6.Name = "GroupBox6"
@@ -294,25 +297,25 @@ Partial Class frmNewAgent
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
         '
-        'Button3
+        'btnFingerRScan
         '
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button3.Location = New System.Drawing.Point(273, 290)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(112, 34)
-        Me.Button3.TabIndex = 5
-        Me.Button3.Text = "Scanner"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnFingerRScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFingerRScan.Location = New System.Drawing.Point(273, 290)
+        Me.btnFingerRScan.Name = "btnFingerRScan"
+        Me.btnFingerRScan.Size = New System.Drawing.Size(112, 34)
+        Me.btnFingerRScan.TabIndex = 5
+        Me.btnFingerRScan.Text = "Scanner"
+        Me.btnFingerRScan.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnFingerLScan
         '
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button2.Location = New System.Drawing.Point(29, 290)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(112, 34)
-        Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Scanner"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnFingerLScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnFingerLScan.Location = New System.Drawing.Point(29, 290)
+        Me.btnFingerLScan.Name = "btnFingerLScan"
+        Me.btnFingerLScan.Size = New System.Drawing.Size(112, 34)
+        Me.btnFingerLScan.TabIndex = 4
+        Me.btnFingerLScan.Text = "Scanner"
+        Me.btnFingerLScan.UseVisualStyleBackColor = True
         '
         'Label24
         '
@@ -334,29 +337,28 @@ Partial Class frmNewAgent
         Me.Label14.TabIndex = 2
         Me.Label14.Text = "Gauche"
         '
-        'PictureBox3
+        'picFingerprintR
         '
-        Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox3.Location = New System.Drawing.Point(273, 61)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(225, 223)
-        Me.PictureBox3.TabIndex = 1
-        Me.PictureBox3.TabStop = False
+        Me.picFingerprintR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picFingerprintR.Location = New System.Drawing.Point(273, 61)
+        Me.picFingerprintR.Name = "picFingerprintR"
+        Me.picFingerprintR.Size = New System.Drawing.Size(225, 223)
+        Me.picFingerprintR.TabIndex = 1
+        Me.picFingerprintR.TabStop = False
         '
-        'PictureBox2
+        'picfingerprintL
         '
-        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox2.Location = New System.Drawing.Point(29, 61)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(216, 223)
-        Me.PictureBox2.TabIndex = 0
-        Me.PictureBox2.TabStop = False
+        Me.picfingerprintL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picfingerprintL.Location = New System.Drawing.Point(29, 61)
+        Me.picfingerprintL.Name = "picfingerprintL"
+        Me.picfingerprintL.Size = New System.Drawing.Size(216, 223)
+        Me.picfingerprintL.TabIndex = 0
+        Me.picfingerprintL.TabStop = False
         '
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox5.Controls.Add(Me.Button5)
-        Me.GroupBox5.Controls.Add(Me.Button4)
         Me.GroupBox5.Controls.Add(Me.Label31)
         Me.GroupBox5.Controls.Add(Me.Label22)
         Me.GroupBox5.Controls.Add(Me.picSignature)
@@ -373,21 +375,12 @@ Partial Class frmNewAgent
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(403, 290)
+        Me.Button5.Location = New System.Drawing.Point(331, 290)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(108, 34)
         Me.Button5.TabIndex = 9
-        Me.Button5.Text = "Button5"
+        Me.Button5.Text = "capturer"
         Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(285, 290)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(112, 34)
-        Me.Button4.TabIndex = 8
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'Label31
         '
@@ -395,9 +388,9 @@ Partial Class frmNewAgent
         Me.Label31.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label31.Location = New System.Drawing.Point(354, 27)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(99, 25)
+        Me.Label31.Size = New System.Drawing.Size(94, 25)
         Me.Label31.TabIndex = 7
-        Me.Label31.Text = "Empreinte"
+        Me.Label31.Text = "Signature"
         '
         'Label22
         '
@@ -1146,6 +1139,24 @@ Partial Class frmNewAgent
         Me.btnSuivant.Text = "&Suivant"
         Me.btnSuivant.UseVisualStyleBackColor = True
         '
+        'btnFingerLImport
+        '
+        Me.btnFingerLImport.Location = New System.Drawing.Point(147, 290)
+        Me.btnFingerLImport.Name = "btnFingerLImport"
+        Me.btnFingerLImport.Size = New System.Drawing.Size(98, 34)
+        Me.btnFingerLImport.TabIndex = 6
+        Me.btnFingerLImport.Text = "Importer"
+        Me.btnFingerLImport.UseVisualStyleBackColor = True
+        '
+        'btnFingerRImport
+        '
+        Me.btnFingerRImport.Location = New System.Drawing.Point(386, 290)
+        Me.btnFingerRImport.Name = "btnFingerRImport"
+        Me.btnFingerRImport.Size = New System.Drawing.Size(112, 34)
+        Me.btnFingerRImport.TabIndex = 7
+        Me.btnFingerRImport.Text = "Importer"
+        Me.btnFingerRImport.UseVisualStyleBackColor = True
+        '
         'frmNewAgent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -1169,8 +1180,8 @@ Partial Class frmNewAgent
         CType(Me.picAddCommissariat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picFingerprintR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picfingerprintL, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.picSignature, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1207,12 +1218,12 @@ Partial Class frmNewAgent
     Friend WithEvents Label20 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents GroupBox6 As GroupBox
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnFingerRScan As Button
+    Friend WithEvents btnFingerLScan As Button
     Friend WithEvents Label24 As Label
     Friend WithEvents Label14 As Label
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents picFingerprintR As PictureBox
+    Friend WithEvents picfingerprintL As PictureBox
     Friend WithEvents GroupBox5 As GroupBox
     Friend WithEvents Button1 As Button
     Friend WithEvents picPhoto As PictureBox
@@ -1288,8 +1299,9 @@ Partial Class frmNewAgent
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents btnSuivant As Button
     Friend WithEvents Button5 As Button
-    Friend WithEvents Button4 As Button
     Friend WithEvents Label31 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents picSignature As PictureBox
+    Friend WithEvents btnFingerRImport As Button
+    Friend WithEvents btnFingerLImport As Button
 End Class

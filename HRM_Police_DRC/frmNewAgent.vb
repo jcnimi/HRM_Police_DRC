@@ -1,5 +1,7 @@
 ﻿Imports System.Drawing
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports STPadCaptLib
+
 
 Public Class frmNewAgent
     Private formLoading = False
@@ -11,6 +13,8 @@ Public Class frmNewAgent
     Private telephone1 As String = ""
     Private telephone2 As String = ""
     Private telephone3 As String = ""
+    Public matriculeAgent As String = ""
+    Public isUpdating As Boolean = False
     Private Sub frmNewAgent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         formLoading = True  'avoid cascade update of territoire, secteur, etc to happen 
         'when loading the form
@@ -75,6 +79,48 @@ Public Class frmNewAgent
         tt.SetToolTip(picAddUnite, "Ajouter une nouvelle unité")
         tt.SetToolTip(picAddVillage, "Ajouter un nouveau village")
         tt.SetToolTip(picAddCommissariat, "Ajouter un nouveau commissariat")
+
+
+        If isUpdating = True Then
+            Dim dateNaissance As String
+            btnSuivant.Enabled = False
+            'load the agent data
+            query = $"
+              SELECT *
+              FROM [dbo].[agent]
+              WHERE matricule = '{matriculeAgent}'
+            "
+            Try
+                Using reader As SqlDataReader = getData(query)
+                    If reader.HasRows Then
+                        reader.Read()
+                        maskMatric.Text = matriculeAgent
+                        txtNom.Text = reader("nom").ToString
+                        txtPostnom.Text = reader("postnom").ToString
+                        txtPrenom.Text = reader("prenom").ToString
+                        txtAdresse.Text = reader("adresse").ToString
+                        cmbSexe.Text = reader("sexe").ToString
+                        cmbUnite.SelectedValue = reader("unite_agent")
+                        'oldPassword = reader("password").ToString
+                        dateNaissance = reader("date_naissance").ToString
+                        If IsDate(dateNaissance) Then
+                            dtDateNaissance.Value = dateNaissance
+                        End If
+
+
+                        Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
+                            Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                            picPhoto.Image = img
+                        End Using
+
+
+
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error :" + ex.Message)
+            End Try
+        End If
 
         formLoading = False
     End Sub
@@ -620,5 +666,49 @@ Public Class frmNewAgent
         picAddLieu.MouseLeave, picAddSecteur.MouseLeave, picAddVillage.MouseLeave
         Dim pic As PictureBox = DirectCast(sender, PictureBox)
         pic.Image = My.Resources.add
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
+        Dim grabpicture As System.Drawing.Image
+        grabpicture = MyComputer.Clipboard.GetImage()
+        picSignature.Image = grabpicture
+    End Sub
+
+    Private Sub btnSuivant_Click(sender As Object, e As EventArgs) Handles btnSuivant.Click
+        txtAdresse.Text = ""
+        txtNom.Text = ""
+        txtNomConjoint.Text = ""
+        txtPostnom.Text = ""
+        txtPrenom.Text = ""
+        cmbCommissariatRecrutement.SelectedValue = 0
+        cmbEtatCivil.Text = "Select"
+        cmbFonction.SelectedValue = 0
+        cmbGrade.SelectedValue = 0
+        cmbGroupeSanguin.Text = "Select"
+        cmbLieuNaissance.SelectedValue = 0
+        cmbProvinceRecrutement.SelectedValue = 0
+        cmbProvOrigine.SelectedValue = 0
+        cmbSecteurOrigine.SelectedValue = 0
+        cmbSexe.Text = "Select"
+        cmbSexeConjoint.Text = "Select"
+        cmbTerritoireOrigine.SelectedValue = 0
+        cmbUnite.SelectedValue = 0
+        cmbVillage.SelectedValue = 0
+        maskMatric.ResetText()
+        maskTel1.ResetText()
+        maskTel2.ResetText()
+        maskTel3.ResetText()
+        gridEnfant.Rows.Clear()
+        dtDateEntreGrade.ResetText()
+        dtDateExpiration.ResetText()
+        dtDateMariageCivil.ResetText()
+        'dtDateNaisEnfant.ResetText()
+        dtDateNaissance.ResetText()
+        dtDateRecrutement.ResetText()
+        picPhoto.Image = Nothing
+        picSignature.Image = Nothing
+        picfingerprintL.Image = Nothing
+        picFingerprintR.Image = Nothing
     End Sub
 End Class

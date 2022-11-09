@@ -25,6 +25,8 @@ Partial Class frmUser
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtpassword = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cboGroup = New System.Windows.Forms.ComboBox()
         Me.txtMail = New System.Windows.Forms.TextBox()
@@ -43,8 +45,6 @@ Partial Class frmUser
         Me.cmdValider = New System.Windows.Forms.Button()
         Me.cmdSuivant = New System.Windows.Forms.Button()
         Me.cmdAnnuler = New System.Windows.Forms.Button()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtpassword = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -92,6 +92,23 @@ Partial Class frmUser
         Me.GroupBox1.Size = New System.Drawing.Size(958, 311)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
+        '
+        'txtpassword
+        '
+        Me.txtpassword.Location = New System.Drawing.Point(620, 246)
+        Me.txtpassword.Name = "txtpassword"
+        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtpassword.Size = New System.Drawing.Size(300, 31)
+        Me.txtpassword.TabIndex = 20
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(468, 246)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(124, 25)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "Mot de passe:"
         '
         'Label5
         '
@@ -244,23 +261,6 @@ Partial Class frmUser
         Me.cmdAnnuler.TabIndex = 5
         Me.cmdAnnuler.Text = "Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(468, 246)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(124, 25)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Mot de passe:"
-        '
-        'txtpassword
-        '
-        Me.txtpassword.Location = New System.Drawing.Point(620, 246)
-        Me.txtpassword.Name = "txtpassword"
-        Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(300, 31)
-        Me.txtpassword.TabIndex = 20
         '
         'frmUser
         '

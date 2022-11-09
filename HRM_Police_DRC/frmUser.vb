@@ -16,8 +16,12 @@
         'load group combo box
         query = "Select 0 value, 'Select' display union  SELECT [group_id] as value, [group_name] as display FROM [dbo].[user_profile]"
         loadComboBox(cboGroup, query)
+        cmdSuivant.Enabled = True
 
         If isUpdating = True Then
+            'desable suivant
+            cmdSuivant.Enabled = False
+
             'load the data from the database
             query = $"
                 select [nom]
@@ -143,5 +147,18 @@
 
     Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles dtpDateExpiration.ValueChanged
         dtDateExpiration = dtpDateExpiration.Value.ToString("MM/dd/yyyy")
+    End Sub
+
+    Private Sub cmdSuivant_Click(sender As Object, e As EventArgs) Handles cmdSuivant.Click
+        txtNom.Text = ""
+        cboSexe.Text = ""
+        txtUser.Text = ""
+        txtMail.Text = ""
+        chkLocked.Checked = False
+        txtpassword.Text = ""
+        cboStatus.Text = ""
+        cboGroup.SelectedValue = 0
+        dtpDateDebut.ResetText()
+        dtpDateExpiration.ResetText()
     End Sub
 End Class

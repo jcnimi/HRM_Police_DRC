@@ -54,24 +54,24 @@
                     MessageBox.Show("Utilisateur verouillé")
                     Exit Sub
                 End If
-                If mustChangePwd Then
-                    '
+                If mustChangePwd Or (currentDate - lastPwdChangeDt).TotalDays >= 30 Then
                     MessageBox.Show("L'utilisateur dois changer de mot de passe")
+                    Dim frmCP As New frmChangePwd()
+                    frmCP.userName = username
+                    frmCP.oldPassword = password
+                    frmCP.ShowDialog()
+                    If frmCP.clickedButton = "cancel" Then
+                        Exit Sub
+                    Else
+                        txtpassword.Text = frmCP.newPassword
+                    End If
 
-                    'show the change pwd dialog
-                    Exit Sub
                 End If
-                If (currentDate - lastPwdChangeDt).TotalDays >= 30 Then
-                    MessageBox.Show("Mot de passe expiré, L'utilisateur dois changer de mot de passe")
 
-                    'show dialog
-
-                    Exit Sub
-                End If
                 Me.Close()
-                    Dim frm As New frmMain()
-                    frm.ShowDialog()
-                Else
+                Dim frmM As New frmMain()
+                frmM.ShowDialog()
+            Else
                     MessageBox.Show("Nom d'utilisateur ou Mot de passe incorect")
                 Exit Sub
             End If
@@ -112,4 +112,5 @@
     Private Sub picCancel_Click(sender As Object, e As EventArgs) Handles picCancel.Click
         Me.Close()
     End Sub
+
 End Class

@@ -1,11 +1,13 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports Newtonsoft.Json.Linq
 
 Module Module1
     Public userId As String = 1
-    Public connString As String = "Server=localhost;Database=hrm_police;User Id=jcnimi;Password=finca4321;"
-    Public conn As New SqlConnection(connString)
+    Public connString As String = ""
+    Public conn As New SqlConnection()
     Public capturedImage As String
+
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
@@ -56,6 +58,23 @@ Module Module1
 
 
     Sub Main()
+        'config file
+        Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
+        Dim fileReader As New System.IO.StreamReader(configFile)
+        Dim configFileContent As String = fileReader.ReadToEnd()
+        Dim parsejson As JObject = JObject.Parse(configFileContent)
+        Dim windows_authetication = parsejson.SelectToken("windows_authetication").ToString()
+        Dim Server = parsejson.SelectToken("Server").ToString()
+        Dim Database = parsejson.SelectToken("Database").ToString()
+        Dim UserId = parsejson.SelectToken("UserId").ToString()
+        Dim Password = parsejson.SelectToken("Password").ToString()
+        If windows_authetication = "yes" Then
+            connString = $"Persist Security Info=False;Trusted_Connection=True;database={Database};server={Server}"
+        Else
+            connString = $"Server={Server};Database={Database};User Id={UserId};Password={Password};"
+        End If
+
+        conn.ConnectionString = connString
         conn.Open()
         Dim frm As New frmLogin
         frm.ShowDialog()

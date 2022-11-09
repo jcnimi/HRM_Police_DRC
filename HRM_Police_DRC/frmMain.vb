@@ -8,7 +8,8 @@ Imports System.Security.Cryptography.Xml
 Public Class frmMain
     Dim dtFrom As String = ""
     Dim dtTo As String = ""
-    Dim query As String
+    Dim query As String = ""
+    Dim selectedRow As DataGridViewRow
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Width = GroupBox1.Width + 40
         Me.Height = 450
@@ -64,8 +65,6 @@ Public Class frmMain
         frm.ShowDialog()
     End Sub
 
-
-
     Private Sub picSettings_Click(sender As Object, e As EventArgs) Handles picSettings.Click
         Dim frm As New frmParametres()
         frm.ShowDialog()
@@ -106,6 +105,18 @@ Public Class frmMain
             adapter.Fill(table)
             DataGridView1.DataSource = table
             picExportAgent.Enabled = True
+            'open cardpresso
+
+            Dim pi As ProcessStartInfo = New ProcessStartInfo()
+            Dim proc As Process
+            Try
+                pi.Arguments = " /C " + """" + "notepad.exe" + """"
+                pi.FileName = "cmd.exe"
+                proc = Process.Start(pi)
+            Catch ex As Exception
+                '
+            End Try
+
             'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
@@ -189,5 +200,20 @@ Public Class frmMain
             loadComboBox(cmbValuePersonal, query)
         End If
 
+    End Sub
+
+    Private Sub DataGridView1_CellMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim frm As New frmNewAgent
+            frm.matriculeAgent = selectedRow.Cells("matricule").Value
+            frm.isUpdating = True
+            frm.ShowDialog()
+        End If
+    End Sub
+
+    Private Sub DataGridView1_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridView1.SelectionChanged
+        If DataGridView1.SelectedRows.Count > 0 Then
+            selectedRow = DataGridView1.SelectedRows.Item(0)
+        End If
     End Sub
 End Class

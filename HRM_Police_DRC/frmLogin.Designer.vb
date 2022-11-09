@@ -112,7 +112,7 @@ Partial Class frmLogin
         Me.chkShowPassword.Location = New System.Drawing.Point(462, 241)
         Me.chkShowPassword.Name = "chkShowPassword"
         Me.chkShowPassword.Size = New System.Drawing.Size(230, 29)
-        Me.chkShowPassword.TabIndex = 9
+        Me.chkShowPassword.TabIndex = 4
         Me.chkShowPassword.Text = "Afficher le mot de passe"
         Me.chkShowPassword.UseVisualStyleBackColor = True
         '
