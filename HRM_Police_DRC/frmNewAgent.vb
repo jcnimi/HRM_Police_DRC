@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports STPadCaptLib
 
 Public Class frmNewAgent
     Private formLoading = False
@@ -593,6 +594,7 @@ Public Class frmNewAgent
     Private Sub btnWebCam_Click(sender As Object, e As EventArgs) Handles btnWebCam.Click
         Dim frm As New frmWebcam()
         frm.ShowDialog()
+        picPhoto.Image = frm.PictureBox1.Image
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

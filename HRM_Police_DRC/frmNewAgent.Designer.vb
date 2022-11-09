@@ -44,6 +44,11 @@ Partial Class frmNewAgent
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.picSignature = New System.Windows.Forms.PictureBox()
         Me.btnWebCam = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.picPhoto = New System.Windows.Forms.PictureBox()
@@ -123,6 +128,7 @@ Partial Class frmNewAgent
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.picSignature, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
@@ -281,9 +287,9 @@ Partial Class frmNewAgent
         Me.GroupBox6.Controls.Add(Me.PictureBox3)
         Me.GroupBox6.Controls.Add(Me.PictureBox2)
         Me.GroupBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox6.Location = New System.Drawing.Point(418, 20)
+        Me.GroupBox6.Location = New System.Drawing.Point(579, 20)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(679, 356)
+        Me.GroupBox6.Size = New System.Drawing.Size(529, 356)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
@@ -291,7 +297,7 @@ Partial Class frmNewAgent
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button3.Location = New System.Drawing.Point(421, 303)
+        Me.Button3.Location = New System.Drawing.Point(273, 290)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(112, 34)
         Me.Button3.TabIndex = 5
@@ -301,7 +307,7 @@ Partial Class frmNewAgent
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button2.Location = New System.Drawing.Point(84, 303)
+        Me.Button2.Location = New System.Drawing.Point(29, 290)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(112, 34)
         Me.Button2.TabIndex = 4
@@ -312,7 +318,7 @@ Partial Class frmNewAgent
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label24.Location = New System.Drawing.Point(426, 29)
+        Me.Label24.Location = New System.Drawing.Point(341, 25)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(65, 25)
         Me.Label24.TabIndex = 3
@@ -322,7 +328,7 @@ Partial Class frmNewAgent
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label14.Location = New System.Drawing.Point(77, 29)
+        Me.Label14.Location = New System.Drawing.Point(79, 25)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(76, 25)
         Me.Label14.TabIndex = 2
@@ -331,7 +337,7 @@ Partial Class frmNewAgent
         'PictureBox3
         '
         Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox3.Location = New System.Drawing.Point(358, 65)
+        Me.PictureBox3.Location = New System.Drawing.Point(273, 61)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(225, 223)
         Me.PictureBox3.TabIndex = 1
@@ -340,7 +346,7 @@ Partial Class frmNewAgent
         'PictureBox2
         '
         Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox2.Location = New System.Drawing.Point(27, 65)
+        Me.PictureBox2.Location = New System.Drawing.Point(29, 61)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(216, 223)
         Me.PictureBox2.TabIndex = 0
@@ -349,22 +355,75 @@ Partial Class frmNewAgent
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.GroupBox5.Controls.Add(Me.Button5)
+        Me.GroupBox5.Controls.Add(Me.Button4)
+        Me.GroupBox5.Controls.Add(Me.Label31)
+        Me.GroupBox5.Controls.Add(Me.Label22)
+        Me.GroupBox5.Controls.Add(Me.picSignature)
         Me.GroupBox5.Controls.Add(Me.btnWebCam)
         Me.GroupBox5.Controls.Add(Me.Button1)
         Me.GroupBox5.Controls.Add(Me.picPhoto)
         Me.GroupBox5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox5.Location = New System.Drawing.Point(14, 20)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(374, 356)
+        Me.GroupBox5.Size = New System.Drawing.Size(544, 356)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Photo"
+        Me.GroupBox5.Text = "Photo et signature"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(403, 290)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(108, 34)
+        Me.Button5.TabIndex = 9
+        Me.Button5.Text = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(285, 290)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(112, 34)
+        Me.Button4.TabIndex = 8
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label31.Location = New System.Drawing.Point(354, 27)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(99, 25)
+        Me.Label31.TabIndex = 7
+        Me.Label31.Text = "Empreinte"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label22.Location = New System.Drawing.Point(104, 25)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(63, 25)
+        Me.Label22.TabIndex = 6
+        Me.Label22.Text = "Photo"
+        '
+        'picSignature
+        '
+        Me.picSignature.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picSignature.Location = New System.Drawing.Point(284, 61)
+        Me.picSignature.Name = "picSignature"
+        Me.picSignature.Size = New System.Drawing.Size(227, 223)
+        Me.picSignature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picSignature.TabIndex = 3
+        Me.picSignature.TabStop = False
         '
         'btnWebCam
         '
-        Me.btnWebCam.Location = New System.Drawing.Point(197, 303)
+        Me.btnWebCam.Location = New System.Drawing.Point(155, 290)
         Me.btnWebCam.Name = "btnWebCam"
-        Me.btnWebCam.Size = New System.Drawing.Size(112, 34)
+        Me.btnWebCam.Size = New System.Drawing.Size(109, 34)
         Me.btnWebCam.TabIndex = 2
         Me.btnWebCam.Text = "&Webcam"
         Me.btnWebCam.UseVisualStyleBackColor = True
@@ -372,7 +431,7 @@ Partial Class frmNewAgent
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Button1.Location = New System.Drawing.Point(79, 303)
+        Me.Button1.Location = New System.Drawing.Point(37, 290)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(112, 34)
         Me.Button1.TabIndex = 1
@@ -382,9 +441,9 @@ Partial Class frmNewAgent
         'picPhoto
         '
         Me.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.picPhoto.Location = New System.Drawing.Point(37, 33)
+        Me.picPhoto.Location = New System.Drawing.Point(37, 61)
         Me.picPhoto.Name = "picPhoto"
-        Me.picPhoto.Size = New System.Drawing.Size(297, 251)
+        Me.picPhoto.Size = New System.Drawing.Size(227, 223)
         Me.picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPhoto.TabIndex = 0
         Me.picPhoto.TabStop = False
@@ -1113,6 +1172,8 @@ Partial Class frmNewAgent
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        CType(Me.picSignature, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picPhoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
         Me.GroupBox7.ResumeLayout(False)
@@ -1226,4 +1287,9 @@ Partial Class frmNewAgent
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents btnSuivant As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents picSignature As PictureBox
 End Class

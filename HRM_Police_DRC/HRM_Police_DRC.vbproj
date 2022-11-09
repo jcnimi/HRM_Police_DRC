@@ -14,6 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="STPadCaptLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>24</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>4943cd22-c6d6-4703-9a34-ee1c461f1291</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="Emgu.CV" />
     <Import Include="Emgu.CV.CvEnum" />
     <Import Include="Emgu.CV.Structure" />

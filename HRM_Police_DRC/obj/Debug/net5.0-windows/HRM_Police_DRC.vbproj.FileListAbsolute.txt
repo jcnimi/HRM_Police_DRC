@@ -74,3 +74,5 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.pdb
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.genruntimeconfig.cache
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\ref\HRM_Police_DRC.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\Interop.STPadCaptLib.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.vbproj.ResolveComReference.cache
