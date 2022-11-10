@@ -58,28 +58,59 @@ Module Module1
 
 
     Sub Main()
-        'config file
-        Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
-        Dim fileReader As New System.IO.StreamReader(configFile)
-        Dim configFileContent As String = fileReader.ReadToEnd()
-        Dim parsejson As JObject = JObject.Parse(configFileContent)
-        Dim windows_authetication = parsejson.SelectToken("windows_authetication").ToString()
-        Dim Server = parsejson.SelectToken("Server").ToString()
-        Dim Database = parsejson.SelectToken("Database").ToString()
-        Dim UserId = parsejson.SelectToken("UserId").ToString()
-        Dim Password = parsejson.SelectToken("Password").ToString()
-        If windows_authetication = "yes" Then
-            connString = $"Persist Security Info=False;Trusted_Connection=True;database={Database};server={Server}"
-        Else
-            connString = $"Server={Server};Database={Database};User Id={UserId};Password={Password};"
-        End If
+        Try
+            'config file
+            Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
+            Dim fileReader As New System.IO.StreamReader(configFile)
+            Dim configFileContent As String = fileReader.ReadToEnd()
+            Dim parsejson As JObject = JObject.Parse(configFileContent)
+            Dim db As JObject = JObject.Parse(parsejson.SelectToken("db").ToString())
+            Dim windows_authetication = parsejson.SelectToken("db.windows_authetication").ToString()
+            Dim Server = parsejson.SelectToken("db.Server").ToString()
+            Dim Database = parsejson.SelectToken("db.Database").ToString()
+            Dim UserId = parsejson.SelectToken("db.UserId").ToString()
+            Dim Password = parsejson.SelectToken("db.Password").ToString()
+            If windows_authetication = "yes" Then
+                connString = $"Persist Security Info=False;Trusted_Connection=True;database={Database};server={Server}"
+            Else
+                connString = $"Server={Server};Database={Database};User Id={UserId};Password={Password};"
+            End If
 
-        conn.ConnectionString = connString
-        conn.Open()
-        Dim frm As New frmLogin
-        frm.ShowDialog()
-        conn.Close()
+            conn.ConnectionString = connString
+            conn.Open()
+            Dim frm As New frmLogin
+            frm.ShowDialog()
+            conn.Close()
+        Catch ex As Exception
+
+        End Try
     End Sub
+
+    Public Function btnScale_Click(ByRef img As System.Drawing.Image, ByVal scale As Integer) As System.Drawing.Image
+        ' Get the scale factor.
+        Dim scale_factor As Single = Single.Parse(scale)
+
+        ' Get the source bitmap.
+        Dim bm_source As New Bitmap(img)
+
+        ' Make a bitmap for the result.
+        Dim bm_dest As New Bitmap(
+            CInt(bm_source.Width * scale_factor),
+            CInt(bm_source.Height * scale_factor))
+
+        ' Make a Graphics object for the result Bitmap.
+        Dim gr_dest As Graphics = Graphics.FromImage(bm_dest)
+
+        ' Copy the source image into the destination bitmap.
+        gr_dest.DrawImage(bm_source, 0, 0,
+            bm_dest.Width + 1,
+            bm_dest.Height + 1)
+
+        ' Display the result.
+        Return bm_dest
+    End Function
+
+
 End Module
 
 

@@ -37,6 +37,8 @@ Partial Class frmNewAgent
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.btnFingerRImport = New System.Windows.Forms.Button()
+        Me.btnFingerLImport = New System.Windows.Forms.Button()
         Me.btnFingerRScan = New System.Windows.Forms.Button()
         Me.btnFingerLScan = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -54,12 +56,12 @@ Partial Class frmNewAgent
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.dtDateNaisEnfant = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.gridEnfant = New System.Windows.Forms.DataGridView()
         Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Sexe = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.Date_naissance = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtNomConjoint = New System.Windows.Forms.TextBox()
         Me.cmbSexeConjoint = New System.Windows.Forms.ComboBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -69,6 +71,7 @@ Partial Class frmNewAgent
         Me.dtDateMariageCivil = New System.Windows.Forms.DateTimePicker()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.dtDateNaisEnfant = New System.Windows.Forms.DateTimePicker()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.picAddVillage = New System.Windows.Forms.PictureBox()
@@ -120,8 +123,6 @@ Partial Class frmNewAgent
         Me.cmdAnnuler = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnSuivant = New System.Windows.Forms.Button()
-        Me.btnFingerLImport = New System.Windows.Forms.Button()
-        Me.btnFingerRImport = New System.Windows.Forms.Button()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.picAddCommissariat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,6 +136,7 @@ Partial Class frmNewAgent
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gridEnfant, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox8.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.picAddVillage, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -296,6 +298,24 @@ Partial Class frmNewAgent
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
+        '
+        'btnFingerRImport
+        '
+        Me.btnFingerRImport.Location = New System.Drawing.Point(386, 290)
+        Me.btnFingerRImport.Name = "btnFingerRImport"
+        Me.btnFingerRImport.Size = New System.Drawing.Size(112, 34)
+        Me.btnFingerRImport.TabIndex = 7
+        Me.btnFingerRImport.Text = "Importer"
+        Me.btnFingerRImport.UseVisualStyleBackColor = True
+        '
+        'btnFingerLImport
+        '
+        Me.btnFingerLImport.Location = New System.Drawing.Point(147, 290)
+        Me.btnFingerLImport.Name = "btnFingerLImport"
+        Me.btnFingerLImport.Size = New System.Drawing.Size(98, 34)
+        Me.btnFingerLImport.TabIndex = 6
+        Me.btnFingerLImport.Text = "Importer"
+        Me.btnFingerLImport.UseVisualStyleBackColor = True
         '
         'btnFingerRScan
         '
@@ -463,7 +483,6 @@ Partial Class frmNewAgent
         'GroupBox7
         '
         Me.GroupBox7.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.GroupBox7.Controls.Add(Me.dtDateNaisEnfant)
         Me.GroupBox7.Controls.Add(Me.GroupBox2)
         Me.GroupBox7.Controls.Add(Me.txtNomConjoint)
         Me.GroupBox7.Controls.Add(Me.cmbSexeConjoint)
@@ -481,13 +500,6 @@ Partial Class frmNewAgent
         Me.GroupBox7.TabIndex = 4
         Me.GroupBox7.TabStop = False
         '
-        'dtDateNaisEnfant
-        '
-        Me.dtDateNaisEnfant.Location = New System.Drawing.Point(533, 203)
-        Me.dtDateNaisEnfant.Name = "dtDateNaisEnfant"
-        Me.dtDateNaisEnfant.Size = New System.Drawing.Size(249, 31)
-        Me.dtDateNaisEnfant.TabIndex = 42
-        '
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke
@@ -504,7 +516,7 @@ Partial Class frmNewAgent
         '
         Me.gridEnfant.AllowDrop = True
         Me.gridEnfant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridEnfant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nom, Me.Sexe, Me.Date_naissance})
+        Me.gridEnfant.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nom, Me.Sexe, Me.Date_naissance, Me.id})
         Me.gridEnfant.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gridEnfant.GridColor = System.Drawing.SystemColors.ControlDarkDark
         Me.gridEnfant.Location = New System.Drawing.Point(3, 27)
@@ -539,6 +551,14 @@ Partial Class frmNewAgent
         Me.Date_naissance.MinimumWidth = 8
         Me.Date_naissance.Name = "Date_naissance"
         Me.Date_naissance.Width = 250
+        '
+        'id
+        '
+        Me.id.HeaderText = "ID"
+        Me.id.MinimumWidth = 8
+        Me.id.Name = "id"
+        Me.id.Visible = False
+        Me.id.Width = 150
         '
         'txtNomConjoint
         '
@@ -618,11 +638,19 @@ Partial Class frmNewAgent
         '
         'GroupBox8
         '
+        Me.GroupBox8.Controls.Add(Me.dtDateNaisEnfant)
         Me.GroupBox8.Location = New System.Drawing.Point(18, 15)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Size = New System.Drawing.Size(1072, 224)
         Me.GroupBox8.TabIndex = 43
         Me.GroupBox8.TabStop = False
+        '
+        'dtDateNaisEnfant
+        '
+        Me.dtDateNaisEnfant.Location = New System.Drawing.Point(523, 168)
+        Me.dtDateNaisEnfant.Name = "dtDateNaisEnfant"
+        Me.dtDateNaisEnfant.Size = New System.Drawing.Size(249, 31)
+        Me.dtDateNaisEnfant.TabIndex = 42
         '
         'TabPage1
         '
@@ -1139,24 +1167,6 @@ Partial Class frmNewAgent
         Me.btnSuivant.Text = "&Suivant"
         Me.btnSuivant.UseVisualStyleBackColor = True
         '
-        'btnFingerLImport
-        '
-        Me.btnFingerLImport.Location = New System.Drawing.Point(147, 290)
-        Me.btnFingerLImport.Name = "btnFingerLImport"
-        Me.btnFingerLImport.Size = New System.Drawing.Size(98, 34)
-        Me.btnFingerLImport.TabIndex = 6
-        Me.btnFingerLImport.Text = "Importer"
-        Me.btnFingerLImport.UseVisualStyleBackColor = True
-        '
-        'btnFingerRImport
-        '
-        Me.btnFingerRImport.Location = New System.Drawing.Point(386, 290)
-        Me.btnFingerRImport.Name = "btnFingerRImport"
-        Me.btnFingerRImport.Size = New System.Drawing.Size(112, 34)
-        Me.btnFingerRImport.TabIndex = 7
-        Me.btnFingerRImport.Text = "Importer"
-        Me.btnFingerRImport.UseVisualStyleBackColor = True
-        '
         'frmNewAgent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
@@ -1191,6 +1201,7 @@ Partial Class frmNewAgent
         Me.GroupBox7.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.gridEnfant, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox8.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -1290,9 +1301,6 @@ Partial Class frmNewAgent
     Friend WithEvents picAddFonction As PictureBox
     Friend WithEvents picAddCommissariat As PictureBox
     Friend WithEvents dtDateNaisEnfant As DateTimePicker
-    Friend WithEvents Nom As DataGridViewTextBoxColumn
-    Friend WithEvents Sexe As DataGridViewComboBoxColumn
-    Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
     Friend WithEvents btnWebCam As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents GroupBox4 As GroupBox
@@ -1304,4 +1312,8 @@ Partial Class frmNewAgent
     Friend WithEvents picSignature As PictureBox
     Friend WithEvents btnFingerRImport As Button
     Friend WithEvents btnFingerLImport As Button
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents Sexe As DataGridViewComboBoxColumn
+    Friend WithEvents Date_naissance As DataGridViewTextBoxColumn
+    Friend WithEvents id As DataGridViewTextBoxColumn
 End Class

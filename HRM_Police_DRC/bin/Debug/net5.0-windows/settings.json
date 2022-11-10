@@ -1,7 +1,17 @@
 {
+	
+	"db" : {
 	"windows_authetication": "no",
 	"Server": "localhost",
 	"Database": "hrm_police",
 	"UserId": "jcnimi",
 	"Password": "finca4321"
+	},
+	"pasword_policy":{
+		"max_length": 50,
+		"min_length": 8,
+		"special_char": "yes",
+		"number" : "yes",
+		"capital": "yes"
+	}
 }

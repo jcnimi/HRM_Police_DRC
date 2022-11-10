@@ -43,6 +43,7 @@ Partial Class frmLogin
         Me.txtUsername.Size = New System.Drawing.Size(332, 31)
         Me.txtUsername.TabIndex = 2
         Me.txtUsername.Tag = ""
+        Me.txtUsername.Text = "admin"
         '
         'txtpassword
         '
@@ -51,6 +52,7 @@ Partial Class frmLogin
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtpassword.Size = New System.Drawing.Size(332, 31)
         Me.txtpassword.TabIndex = 3
+        Me.txtpassword.Text = "123456"
         Me.txtpassword.UseSystemPasswordChar = True
         '
         'PictureBox1

@@ -15,6 +15,7 @@ Public Class frmNewAgent
     Private telephone3 As String = ""
     Public matriculeAgent As String = ""
     Public isUpdating As Boolean = False
+    Private idAgent As String
     Private Sub frmNewAgent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         formLoading = True  'avoid cascade update of territoire, secteur, etc to happen 
         'when loading the form
@@ -83,6 +84,11 @@ Public Class frmNewAgent
 
         If isUpdating = True Then
             Dim dateNaissance As String
+            Dim dateMariageCivil As String
+            Dim dateRecrutement As String
+            Dim dateExpiration As String
+            Dim dateGrade As String
+
             btnSuivant.Enabled = False
             'load the agent data
             query = $"
@@ -94,40 +100,127 @@ Public Class frmNewAgent
                 Using reader As SqlDataReader = getData(query)
                     If reader.HasRows Then
                         reader.Read()
+                        idAgent = reader("id_agent").ToString
+                        'texts
                         maskMatric.Text = matriculeAgent
                         txtNom.Text = reader("nom").ToString
                         txtPostnom.Text = reader("postnom").ToString
                         txtPrenom.Text = reader("prenom").ToString
                         txtAdresse.Text = reader("adresse").ToString
+                        txtNomConjoint.Text = reader("nom_conjoint").ToString
+                        'lists
                         cmbSexe.Text = reader("sexe").ToString
                         cmbUnite.SelectedValue = reader("unite_agent")
-                        'oldPassword = reader("password").ToString
+                        cmbCommissariatRecrutement.SelectedValue = reader("commissariat_recrutement").ToString
+                        cmbEtatCivil.Text = reader("etat_civil").ToString
+                        cmbFonction.SelectedValue = reader("fonction").ToString
+                        cmbGrade.SelectedValue = reader("grade").ToString
+                        cmbGroupeSanguin.Text = reader("groupe_sanguin").ToString
+                        cmbLieuNaissance.SelectedValue = reader("lieu_naissance").ToString
+                        cmbProvinceRecrutement.SelectedValue = reader("province_recrutement").ToString
+                        cmbProvOrigine.SelectedValue = reader("province_origine").ToString
+                        cmbSecteurOrigine.SelectedValue = reader("secteur_origine").ToString
+                        cmbSexeConjoint.Text = reader("sexe_conjoint").ToString
+                        cmbTerritoireOrigine.SelectedValue = reader("territoire_origine").ToString
+                        cmbVillage.SelectedValue = reader("regroupement").ToString
+
+                        'dates
+                        'Date de naissance
                         dateNaissance = reader("date_naissance").ToString
                         If IsDate(dateNaissance) Then
                             dtDateNaissance.Value = dateNaissance
                         End If
 
+                        'Date mariage civil
+                        dateMariageCivil = reader("date_mariage_civil").ToString
+                        If IsDate(dateMariageCivil) Then
+                            dtDateMariageCivil.Value = dateMariageCivil
+                        End If
 
-                        Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
-                            Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                            picPhoto.Image = img
-                        End Using
+                        'Date recrutement
+                        dateRecrutement = reader("date_recructement").ToString
+                        If IsDate(dateRecrutement) Then
+                            dtDateRecrutement.Value = dateRecrutement
+                        End If
+
+                        'Date expiration
+                        dateExpiration = reader("date_expiration").ToString
+                        If IsDate(dateExpiration) Then
+                            dtDateExpiration.Value = dateExpiration
+                        End If
+
+                        'Date entré en grade
+                        dateGrade = reader("entre_grade").ToString
+                        If IsDate(dateGrade) Then
+                            dtDateEntreGrade.Value = dateGrade
+                        End If
+
+                        'photo, signature, fingerprints
+                        'photo
+                        If Not reader.IsDBNull("photo") Then
+                            Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
+                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                                picPhoto.Image = img
+                            End Using
+                        End If
+
+                        'signature
+                        If Not reader.IsDBNull("signature") Then
+                            Using ms As New IO.MemoryStream(CType(reader("signature"), Byte()))
+                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                                picSignature.Image = img
+                            End Using
+                        End If
 
 
+                        'fingerprint left
+                        If Not reader.IsDBNull("empreinte_gauche") Then
+                            Using ms As New IO.MemoryStream(CType(reader("empreinte_gauche"), Byte()))
+                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                                picfingerprintL.Image = img
+                            End Using
+                        End If
 
+                        'fingerprint right
+                        If Not reader.IsDBNull("empreinte_droite") Then
+                            Using ms As New IO.MemoryStream(CType(reader("empreinte_droite"), Byte()))
+                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                                picFingerprintR.Image = img
+                            End Using
+                        End If
+
+                        'maskedit
+                        maskTel1.Text = reader("telephone1").ToString
+                        maskTel2.Text = reader("telephone2").ToString
+                        maskTel3.Text = reader("telephone3").ToString
+                    End If
+                End Using
+                'load childs
+                query = $"
+                SELECT *
+                FROM [dbo].[enfant]
+                WHERE id_agent = '{idAgent}'
+                "
+                Using reader As SqlDataReader = getData(query)
+                    If reader.HasRows Then
+                        While reader.Read()
+                            Dim nom As String = reader("nom")
+                            Dim sexe As String = reader("sexe")
+                            Dim id As String = reader("id_enfant")
+                            Dim datenaissanceEnfant As String = reader("date_naissance")
+                            Dim row As String() = New String() {$"{nom}", $"{sexe}", $"{datenaissanceEnfant}", $"{id}"}
+                            gridEnfant.Rows.Add(row)
+                        End While
                     End If
                 End Using
             Catch ex As Exception
                 MessageBox.Show("Error :" + ex.Message)
             End Try
         End If
-
         formLoading = False
     End Sub
 
     Private Sub cmdValider_Click(sender As Object, e As EventArgs) Handles cmdValider.Click
-
-
         'Get the data from input controls
         Try
             Dim nom As String = txtNom.Text
@@ -150,13 +243,6 @@ Public Class frmNewAgent
             Dim nom_conjoint As String = txtNomConjoint.Text
             Dim province_recrutement As String = cmbProvinceRecrutement.SelectedValue
             Dim commissariat_recrutement As String = cmbCommissariatRecrutement.SelectedValue
-
-
-
-
-
-
-
 
             'Make sure that all the mandatory fields are filled
             If nom = "" Then
@@ -261,7 +347,8 @@ Public Class frmNewAgent
             End If
 
 
-            Dim query As String = $"
+
+            Dim queryInsert As String = $"
             INSERT INTO [dbo].[agent]
            ([matricule]
            ,[nom]
@@ -293,23 +380,26 @@ Public Class frmNewAgent
            ,[telephone1]
            ,[telephone2]
            ,[telephone3]
-           ,photo)
+           ,photo
+           ,[signature]
+           ,[empreinte_gauche]
+           ,[empreinte_droite])
             VALUES
            ('{matricule}'
            ,'{nom}'
            ,'{postnom}'
            ,'{prenom}'
            ,'{sexe}'
-           ,{grade}
-           ,{lieu_naissance}
-           ,{territoire_origine}
-           ,{secteur_origine}
-           ,{province_origine}
+           ,'{grade}'
+           ,'{lieu_naissance}'
+           ,'{territoire_origine}'
+           ,'{secteur_origine}'
+           ,'{province_origine}'
            ,'{adresse}'
            ,'{If(groupe_sanguin = "Select", Nothing, groupe_sanguin)}'     
-           ,{If(fonction = "0", Nothing, fonction)}  
-           ,{unite_agent}
-           ,{regroupement}
+           ,'{If(fonction = "0", Nothing, fonction)}'
+           ,'{unite_agent}'
+           ,'{regroupement}'
            ,'{dateNaissanceAgent}'
            ,'{etat_civil}'
            ,'{If(dateMariageCivilAgent = "", Nothing, dateMariageCivilAgent)}' 
@@ -318,59 +408,163 @@ Public Class frmNewAgent
            ,'{dateRecructementAgent}'
            ,'{If(dateExpirationAgent = "", Nothing, dateExpirationAgent)}' 
            ,'{If(dateEntreGradeAgent = "", Nothing, dateEntreGradeAgent)}' 
-           ,{province_recrutement}
+           ,'{province_recrutement}'
            ,{userId}
-           ,{If(commissariat_recrutement = "0", Nothing, commissariat_recrutement)} 
+           ,'{If(commissariat_recrutement = "0", Nothing, commissariat_recrutement)}' 
            ,SYSDATETIME()
            ,'{telephone1}'
            ,'{If(telephone2 = "", Nothing, telephone2)}' 
            ,'{If(telephone3 = "", Nothing, telephone3)}' 
            ,@photo
+           ,@signature
+           ,@lfingerp
+           ,@rfingerp
             )
             "
 
-            'add the photo
-            Dim im1 As Image = picPhoto.Image
-            Dim ms As New System.IO.MemoryStream
-            im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
-            Dim md As Byte() = ms.GetBuffer
-            Dim param As New SqlClient.SqlParameter("@photo", SqlDbType.Image)
-            param.Value = md
+            Dim queryUpdate As String = $"
+            UPDATE [dbo].[agent]
+               SET [matricule] = '{matricule}'
+                  ,[nom] = '{nom}'
+                  ,[postnom] = '{postnom}'
+                  ,[prenom] = '{prenom}'
+                  ,[sexe] = '{sexe}'
+                  ,[grade] = '{grade}'
+                  ,[lieu_naissance] = '{lieu_naissance}'
+                  ,[territoire_origine] = '{territoire_origine}'
+                  ,[secteur_origine] = '{secteur_origine}'
+                  ,[province_origine] = '{province_origine}'
+                  ,[adresse] = '{adresse}'
+                  ,[groupe_sanguin] = '{If(groupe_sanguin = "Select", Nothing, groupe_sanguin)}'
+                  ,[fonction] = '{If(fonction = "0", Nothing, fonction)}'
+                  ,[unite_agent] = '{unite_agent}'
+                  ,[regroupement] = '{regroupement}'
+                  ,[date_naissance] = '{dateNaissanceAgent}'
+                  ,[photo] = @photo
+                  ,[empreinte_gauche] = @lfingerp
+                  ,[empreinte_droite] = @rfingerp
+                  ,[signature] = @signature
+                  ,[etat_civil] = '{etat_civil}'
+                  ,[date_mariage_civil] = '{If(dateMariageCivilAgent = "", Nothing, dateMariageCivilAgent)}' 
+                  ,[sexe_conjoint] = '{If(sexe_conjoint = "Select", Nothing, sexe_conjoint)}'
+                  ,[nom_conjoint] = '{nom_conjoint}'
+                  ,[date_recructement] = '{dateRecructementAgent}'
+                  ,[date_expiration] = '{If(dateExpirationAgent = "", Nothing, dateExpirationAgent)}'
+                  ,[entre_grade] = '{If(dateEntreGradeAgent = "", Nothing, dateEntreGradeAgent)}' 
+                  ,[province_recrutement] = '{province_recrutement}'
+                  ,[commissariat_recrutement] = '{If(commissariat_recrutement = "0", Nothing, commissariat_recrutement)}'
+                  ,[telephone1] = '{telephone1}'
+                  ,[telephone2] = '{If(telephone2 = "", Nothing, telephone2)}' 
+                  ,[telephone3] = '{If(telephone3 = "", Nothing, telephone3)}' 
+             WHERE [id_agent] = {idAgent}
+            "
 
+            Dim im1 As Image
+            Dim ms As System.IO.MemoryStream
+            Dim md As Byte()
+            Dim param As SqlParameter
             Dim listParams As New Generic.List(Of SqlParameter)
-            listParams.Add(param)
 
-            'add agent
-            saveData(query, listParams)
+            'add the photo
+            If picPhoto.Image IsNot Nothing Then
+                im1 = picPhoto.Image
+                ms = New System.IO.MemoryStream()
+                im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
+                md = ms.GetBuffer()
+                param = New SqlParameter("@photo", SqlDbType.Image)
+                param.Value = md
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@photo", SqlDbType.Image)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
+            'add signature
+            If picSignature.Image IsNot Nothing Then
+                im1 = picSignature.Image
+                ms = New System.IO.MemoryStream
+                im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
+                md = ms.GetBuffer
+                param = New SqlParameter("@signature", SqlDbType.Image)
+                param.Value = md
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@signature", SqlDbType.Image)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
+            'add left fingerprint
+            If picfingerprintL.Image IsNot Nothing Then
+                im1 = picfingerprintL.Image
+                ms = New System.IO.MemoryStream
+                im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
+                md = ms.GetBuffer
+                param = New SqlParameter("@lfingerp", SqlDbType.Image)
+                param.Value = md
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@lfingerp", SqlDbType.Image)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
+            'add right fingerprint
+            If picFingerprintR.Image IsNot Nothing Then
+                im1 = picFingerprintR.Image
+                ms = New System.IO.MemoryStream
+                im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
+                md = ms.GetBuffer
+                param = New SqlParameter("@rfingerp", SqlDbType.Image)
+                param.Value = md
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@rfingerp", SqlDbType.Image)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
+            'add or update agent
+            If isUpdating = False Then
+                saveData(queryInsert, listParams)
+            Else
+                saveData(queryUpdate, listParams)
+            End If
 
             'Get childs from datagridview and save in the db
+            Dim idEnfant As String
             Dim nomEnfant As String
             Dim sexeEnfant As String
             Dim dateNaissanceEnfant As String
             Dim id As String = ""
 
-            'get from the db the id of the agent
-            Dim queryID As String = $"
+            If isUpdating = False Then
+                'get from the db the id of the agent
+                Dim queryID As String = $"
                     select id_agent
                     from agent 
                     where matricule = '{matricule}'
                     "
-            Using reader As SqlDataReader = getData(queryID)
-                If reader.HasRows Then
-                    reader.Read()
-                    id = reader("id_agent")
-                Else
-                    MessageBox.Show("Erreur en tentant d'inserer les enfants ")
-                    Exit Sub
-                End If
-            End Using
+                Using reader As SqlDataReader = getData(queryID)
+                    If reader.HasRows Then
+                        reader.Read()
+                        idAgent = reader("id_agent")
+                    Else
+                        MessageBox.Show("Erreur de lecture de données dans la base de données")
+                        Exit Sub
+                    End If
+                End Using
+            End If
 
+            'Processing childs from datagridview
             For Each Row As DataGridViewRow In gridEnfant.Rows
+                idEnfant = CStr(Row.Cells("id").Value)
                 nomEnfant = CStr(Row.Cells("Nom").Value)
                 sexeEnfant = CStr(Row.Cells("Sexe").Value)
                 dateNaissanceEnfant = CStr(Row.Cells("Date_naissance").Value)
 
-                Dim queryEnfant = $"
+                Dim queryEnfantInsert = $"
                     INSERT INTO [dbo].[enfant]
                    ([nom]
                    ,[sexe]
@@ -382,14 +576,25 @@ Public Class frmNewAgent
                    ('{nomEnfant}'
                    ,'{sexeEnfant}'
                    ,'{dateNaissanceEnfant}'
-                   ,{id}
+                   ,{idAgent}
                    ,{userId}
                    ,SYSDATETIME()
                    )
                 "
 
-                saveData(queryEnfant)
+                Dim queryEnfantUpdate = $"
+                update [dbo].[enfant]
+                SET [nom] = '{nomEnfant}'
+                   ,[sexe] = '{sexeEnfant}'
+                   ,[date_naissance] = '{dateNaissanceEnfant}'
+                WHERE ID_ENFANT = {idEnfant}
+                "
 
+                If isUpdating = False Then
+                    saveData(queryEnfantInsert)
+                Else
+                    saveData(queryEnfantUpdate)
+                End If
             Next
 
             MessageBox.Show("Enregistrement effectué avec succès")
@@ -492,9 +697,11 @@ Public Class frmNewAgent
         'ajouter village
         Dim frm As New frmVillageorigine
         frm.ShowDialog()
-        'update fonction list
-        Dim query As String = "Select 0 value, 'Select' display union  SELECT id_village as value, description as display FROM [dbo].village"
-        loadComboBox(cmbVillage, query)
+        If frm.isCancelled = False Then
+            'update fonction list
+            Dim query As String = "Select 0 value, 'Select' display union  SELECT id_village as value, description as display FROM [dbo].village"
+            loadComboBox(cmbVillage, query)
+        End If
     End Sub
 
     Private Sub cmbVillage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbVillage.SelectedIndexChanged
@@ -511,7 +718,7 @@ Public Class frmNewAgent
             where id_village = {village}
             "
             Using reader As SqlDataReader = getData(query)
-                If reader.HasRows Then
+                If reader IsNot Nothing AndAlso reader.HasRows Then
                     reader.Read()
                     'id = reader("id_village")
                     secteur = reader("secteur")
@@ -569,11 +776,12 @@ Public Class frmNewAgent
 
     Private Sub gridEnfant_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridEnfant.CellClick
         If e.ColumnIndex = 2 Then 'CHECK IF IT IS THE RIGHT COLUMN
+            dtDateNaisEnfant.Parent = GroupBox2
             'SET SIZE AND LOCATION
             Dim rect = gridEnfant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, True)
             dtDateNaisEnfant.Size = New Size(rect.Width, rect.Height)
-            dtDateNaisEnfant.Location = New Point(rect.X + 9, rect.Y + 157) 'USE YOU OFFSET HERE
-
+            dtDateNaisEnfant.Location = New Point(rect.X, rect.Y + 18) 'USE YOU OFFSET HERE
+            dtDateNaisEnfant.BringToFront()
             dtDateNaisEnfant.Visible = True
             ActiveControl = dtDateNaisEnfant
         End If
@@ -711,4 +919,5 @@ Public Class frmNewAgent
         picfingerprintL.Image = Nothing
         picFingerprintR.Image = Nothing
     End Sub
+
 End Class

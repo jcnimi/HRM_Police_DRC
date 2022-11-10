@@ -1,5 +1,10 @@
 ﻿Public Class frmVillageorigine
+    Public isCancelled As Boolean = True
     Private Sub cmdValider_Click(sender As Object, e As EventArgs) Handles cmdValider.Click
+        If txtDesc.Text = "" Then
+            MessageBox.Show("Aucune valeur saisie")
+            Exit Sub
+        End If
         Dim desc As String = txtDesc.Text
         Dim secteur As String = cmbSecteur.SelectedValue
         Dim query As String = $"
@@ -19,7 +24,7 @@
             saveData(query)
             txtDesc.Text = ""
             cmbSecteur.SelectedValue = 0
-
+            isCancelled = False
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message)
         End Try
