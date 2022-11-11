@@ -1,4 +1,6 @@
 ﻿Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports STPadCaptLib
 
@@ -465,15 +467,17 @@ Public Class frmNewAgent
             Dim param As SqlParameter
             Dim listParams As New Generic.List(Of SqlParameter)
 
+
             'add the photo
             If picPhoto.Image IsNot Nothing Then
                 im1 = picPhoto.Image
-                ms = New System.IO.MemoryStream()
-                im1.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp)
-                md = ms.GetBuffer()
-                param = New SqlParameter("@photo", SqlDbType.Image)
-                param.Value = md
-                listParams.Add(param)
+                Using ms_ As IO.MemoryStream = New IO.MemoryStream()
+                    im1.Save(ms_, System.Drawing.Imaging.ImageFormat.Png)
+                    md = ms_.GetBuffer()
+                    param = New SqlParameter("@photo", SqlDbType.Image)
+                    param.Value = md
+                    listParams.Add(param)
+                End Using
             Else
                 param = New SqlParameter("@photo", SqlDbType.Image)
                 param.Value = System.DBNull.Value

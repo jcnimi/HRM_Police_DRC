@@ -18,22 +18,24 @@ Public Class frmMain
 
         'tooltip
         Dim tt As New ToolTip()
+        tt.SetToolTip(picSearch, "Filtrer")
         tt.SetToolTip(picAddAgent, "Ajouter un nouvel agent")
         tt.SetToolTip(picExportAgent, "Exporter les données")
         tt.SetToolTip(picSettings, "Administration du système")
 
 
         Dim queryString = "SELECT top 20 [matricule] Matricule
-        ,[nom] Nom
+        ,a.[nom] Nom
         ,[postnom] Postnom
         ,[prenom] Prenom 
-        ,[sexe] Sexe
-		,[etat_civil] ""Etat Civil""
         ,c.description as Grade
+		,d.[nom] ""Lieu de naissance""
+		,a.[date_naissance] ""Date de Naissance""
 	    ,b.description as Fonction
         FROM [dbo].[agent] a
         join [dbo].[fonction] b on a.fonction = b.id_fonction
         join [dbo].[grade] c on a.grade = c.id_grade
+		join [dbo].[lieu] d on a.[lieu_naissance] = d.id_lieu
         order by a.date_creation desc
         "
 
@@ -105,17 +107,6 @@ Public Class frmMain
             adapter.Fill(table)
             DataGridView1.DataSource = table
             picExportAgent.Enabled = True
-            'open cardpresso
-
-            Dim pi As ProcessStartInfo = New ProcessStartInfo()
-            Dim proc As Process
-            Try
-                pi.Arguments = " /C " + """" + "notepad.exe" + """"
-                pi.FileName = "cmd.exe"
-                proc = Process.Start(pi)
-            Catch ex As Exception
-                '
-            End Try
 
             'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
         Catch ex As Exception
@@ -155,6 +146,18 @@ Public Class frmMain
             End With
             cmd.ExecuteNonQueryAsync()
             MessageBox.Show("Exportation reussie")
+
+            'open cardpresso
+
+            Dim pi As ProcessStartInfo = New ProcessStartInfo()
+            Dim proc As Process
+            Try
+                pi.Arguments = " /C " + """" + cardPressoPath + """"
+                pi.FileName = "cmd.exe"
+                proc = Process.Start(pi)
+            Catch ex As Exception
+                '
+            End Try
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
@@ -215,5 +218,9 @@ Public Class frmMain
         If DataGridView1.SelectedRows.Count > 0 Then
             selectedRow = DataGridView1.SelectedRows.Item(0)
         End If
+    End Sub
+
+    Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
+        MessageBox.Show(e.ToString)
     End Sub
 End Class

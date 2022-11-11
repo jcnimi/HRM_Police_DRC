@@ -1,11 +1,10 @@
 {
-	
 	"db" : {
-	"windows_authetication": "no",
-	"Server": "localhost",
-	"Database": "hrm_police",
-	"UserId": "jcnimi",
-	"Password": "finca4321"
+		"windows_authetication": "no",
+		"Server": "localhost",
+		"Database": "hrm_police",
+		"UserId": "jcnimi",
+		"Password": "finca4321"
 	},
 	"pasword_policy":{
 		"max_length": 50,
@@ -13,5 +12,8 @@
 		"special_char": "yes",
 		"number" : "yes",
 		"capital": "yes"
+	},
+	"cardpresso": {
+		"path": "C:\\Program Files\\cardPresso\\cardPresso.exe"
 	}
 }

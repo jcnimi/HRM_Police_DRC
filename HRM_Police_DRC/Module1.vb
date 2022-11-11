@@ -1,5 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Drawing.Imaging
+Imports System.IO
 Imports Newtonsoft.Json.Linq
 
 Module Module1
@@ -7,6 +9,7 @@ Module Module1
     Public connString As String = ""
     Public conn As New SqlConnection()
     Public capturedImage As String
+    Public cardPressoPath As String
 
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
@@ -50,7 +53,6 @@ Module Module1
                 combo.DisplayMember = "display"
             End Using
             combo.EndUpdate()
-
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message)
         End Try
@@ -75,6 +77,7 @@ Module Module1
             Else
                 connString = $"Server={Server};Database={Database};User Id={UserId};Password={Password};"
             End If
+            cardPressoPath = parsejson.SelectToken("cardpresso.path").ToString()
 
             conn.ConnectionString = connString
             conn.Open()
@@ -82,7 +85,7 @@ Module Module1
             frm.ShowDialog()
             conn.Close()
         Catch ex As Exception
-
+            MessageBox.Show(ex.Message)
         End Try
     End Sub
 
@@ -110,6 +113,15 @@ Module Module1
         Return bm_dest
     End Function
 
+
+    Public Function ImgToByteArray(img As Image, imgFormat As ImageFormat) As Byte()
+        Dim tmpData As Byte()
+        Using ms As New MemoryStream()
+            img.Save(ms, imgFormat)
+            tmpData = ms.ToArray
+        End Using              ' dispose of memstream
+        Return tmpData
+    End Function
 
 End Module
 
