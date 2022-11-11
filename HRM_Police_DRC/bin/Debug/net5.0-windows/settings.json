@@ -1,9 +1,9 @@
 {
 	"db" : {
 		"windows_authetication": "no",
-		"Server": "localhost",
+		"Server": "10.64.38.121\\FINCASANTE",
 		"Database": "hrm_police",
-		"UserId": "jcnimi",
+		"UserId": "fsa",
 		"Password": "finca4321"
 	},
 	"pasword_policy":{

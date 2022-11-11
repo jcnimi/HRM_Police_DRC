@@ -2,15 +2,18 @@
 Imports System.Data.SqlClient
 Imports System.Drawing.Imaging
 Imports System.IO
+Imports Microsoft.VisualBasic.Devices
 Imports Newtonsoft.Json.Linq
 
 Module Module1
-    Public userId As String = 1
+    Public userId As String = ""
+    Public userFullName As String = ""
+    Public userName_ As String = ""
+    Public userPwd As String = ""
     Public connString As String = ""
     Public conn As New SqlConnection()
     Public capturedImage As String
     Public cardPressoPath As String
-
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
@@ -113,15 +116,15 @@ Module Module1
         Return bm_dest
     End Function
 
-
-    Public Function ImgToByteArray(img As Image, imgFormat As ImageFormat) As Byte()
-        Dim tmpData As Byte()
-        Using ms As New MemoryStream()
-            img.Save(ms, imgFormat)
-            tmpData = ms.ToArray
-        End Using              ' dispose of memstream
-        Return tmpData
-    End Function
+    Public Sub imageLoad(buffer As Byte(), ByRef pic As PictureBox)
+        Dim fileName As String = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".png"
+        Using ms As New IO.MemoryStream(buffer)
+            Using img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                img.Save(fileName)
+                pic.Image = Image.FromFile(fileName)
+            End Using
+        End Using
+    End Sub
 
 End Module
 

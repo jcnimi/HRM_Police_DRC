@@ -156,39 +156,44 @@ Public Class frmNewAgent
                         If IsDate(dateGrade) Then
                             dtDateEntreGrade.Value = dateGrade
                         End If
-
+                        'Dim myComputer = New Microsoft.VisualBasic.Devices.Computer()
                         'photo, signature, fingerprints
                         'photo
                         If Not reader.IsDBNull("photo") Then
-                            Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
-                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                                picPhoto.Image = img
-                            End Using
+                            imageLoad(CType(reader("photo"), Byte()), picPhoto)
+                            '    Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
+                            '        Using img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                            '            picPhoto.Image = img
+                            '        End Using
+                            '    End Using
                         End If
 
                         'signature
                         If Not reader.IsDBNull("signature") Then
-                            Using ms As New IO.MemoryStream(CType(reader("signature"), Byte()))
-                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                                picSignature.Image = img
-                            End Using
+                            imageLoad(CType(reader("signature"), Byte()), picSignature)
+                            '    Using ms As New IO.MemoryStream(CType(reader("signature"), Byte()))
+                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                            '        picSignature.Image = img
+                            '    End Using
                         End If
 
 
                         'fingerprint left
                         If Not reader.IsDBNull("empreinte_gauche") Then
-                            Using ms As New IO.MemoryStream(CType(reader("empreinte_gauche"), Byte()))
-                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                                picfingerprintL.Image = img
-                            End Using
+                            imageLoad(CType(reader("empreinte_gauche"), Byte()), picfingerprintL)
+                            '    Using ms As New IO.MemoryStream(CType(reader("empreinte_gauche"), Byte()))
+                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                            '        picfingerprintL.Image = img
+                            '    End Using
                         End If
 
                         'fingerprint right
                         If Not reader.IsDBNull("empreinte_droite") Then
-                            Using ms As New IO.MemoryStream(CType(reader("empreinte_droite"), Byte()))
-                                Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                                picFingerprintR.Image = img
-                            End Using
+                            imageLoad(CType(reader("empreinte_droite"), Byte()), picFingerprintR)
+                            '    Using ms As New IO.MemoryStream(CType(reader("empreinte_droite"), Byte()))
+                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
+                            '        picFingerprintR.Image = img
+                            '    End Using
                         End If
 
                         'maskedit
@@ -484,6 +489,8 @@ Public Class frmNewAgent
                 listParams.Add(param)
             End If
 
+
+
             'add signature
             If picSignature.Image IsNot Nothing Then
                 im1 = picSignature.Image
@@ -568,6 +575,10 @@ Public Class frmNewAgent
                 sexeEnfant = CStr(Row.Cells("Sexe").Value)
                 dateNaissanceEnfant = CStr(Row.Cells("Date_naissance").Value)
 
+                If nomEnfant = "" Then
+                    Continue For
+                End If
+
                 Dim queryEnfantInsert = $"
                     INSERT INTO [dbo].[enfant]
                    ([nom]
@@ -594,7 +605,7 @@ Public Class frmNewAgent
                 WHERE ID_ENFANT = {idEnfant}
                 "
 
-                If isUpdating = False Then
+                If idEnfant = "" Then
                     saveData(queryEnfantInsert)
                 Else
                     saveData(queryEnfantUpdate)
@@ -603,7 +614,7 @@ Public Class frmNewAgent
 
             MessageBox.Show("Enregistrement effectué avec succès")
         Catch ex As Exception
-            MessageBox.Show("Error: ", ex.Message())
+            MessageBox.Show("Error: " + ex.Message())
         End Try
     End Sub
 
@@ -857,13 +868,12 @@ Public Class frmNewAgent
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         With OpenFileDialog1
-            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png"
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
             .Title = "Ouvrir une image"
-            .ShowDialog()
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                picPhoto.Image = New Bitmap(OpenFileDialog1.FileName)
+            End If
         End With
-        If OpenFileDialog1.FileName <> "" Then
-            picPhoto.Image = New Bitmap(OpenFileDialog1.FileName)
-        End If
     End Sub
 
     Private Sub picAddUnite_MouseHover(sender As Object, e As EventArgs) Handles picAddUnite.MouseHover,
@@ -924,4 +934,23 @@ Public Class frmNewAgent
         picFingerprintR.Image = Nothing
     End Sub
 
+    Private Sub btnFingerLImport_Click(sender As Object, e As EventArgs) Handles btnFingerLImport.Click
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
+            .Title = "Ouvrir une image"
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                picfingerprintL.Image = New Bitmap(OpenFileDialog1.FileName)
+            End If
+        End With
+    End Sub
+
+    Private Sub btnFingerRImport_Click(sender As Object, e As EventArgs) Handles btnFingerRImport.Click
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
+            .Title = "Ouvrir une image"
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                picFingerprintR.Image = New Bitmap(OpenFileDialog1.FileName)
+            End If
+        End With
+    End Sub
 End Class

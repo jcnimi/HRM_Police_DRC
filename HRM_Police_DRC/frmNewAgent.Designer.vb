@@ -292,9 +292,9 @@ Partial Class frmNewAgent
         Me.GroupBox6.Controls.Add(Me.picFingerprintR)
         Me.GroupBox6.Controls.Add(Me.picfingerprintL)
         Me.GroupBox6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox6.Location = New System.Drawing.Point(579, 20)
+        Me.GroupBox6.Location = New System.Drawing.Point(564, 20)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(529, 356)
+        Me.GroupBox6.Size = New System.Drawing.Size(544, 356)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
@@ -363,6 +363,7 @@ Partial Class frmNewAgent
         Me.picFingerprintR.Location = New System.Drawing.Point(273, 61)
         Me.picFingerprintR.Name = "picFingerprintR"
         Me.picFingerprintR.Size = New System.Drawing.Size(225, 223)
+        Me.picFingerprintR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picFingerprintR.TabIndex = 1
         Me.picFingerprintR.TabStop = False
         '
@@ -372,6 +373,7 @@ Partial Class frmNewAgent
         Me.picfingerprintL.Location = New System.Drawing.Point(29, 61)
         Me.picfingerprintL.Name = "picfingerprintL"
         Me.picfingerprintL.Size = New System.Drawing.Size(216, 223)
+        Me.picfingerprintL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picfingerprintL.TabIndex = 0
         Me.picfingerprintL.TabStop = False
         '
@@ -465,7 +467,7 @@ Partial Class frmNewAgent
         '
         Me.GroupBox4.Location = New System.Drawing.Point(14, 368)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1083, 188)
+        Me.GroupBox4.Size = New System.Drawing.Size(1094, 188)
         Me.GroupBox4.TabIndex = 59
         Me.GroupBox4.TabStop = False
         '

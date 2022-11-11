@@ -50,4 +50,7 @@
         End If
     End Sub
 
+    Private Sub dgvUsers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellContentClick
+
+    End Sub
 End Class

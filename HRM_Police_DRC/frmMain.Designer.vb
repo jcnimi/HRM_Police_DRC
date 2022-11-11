@@ -47,6 +47,15 @@ Partial Class frmMain
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangerDeMotDePasseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuRechercher = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExportCardPresso = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAjouterAgent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuModifierAgent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuParametres = New System.Windows.Forms.ToolStripMenuItem()
+        Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.picSearch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,6 +67,7 @@ Partial Class frmMain
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -66,7 +76,7 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.grpValue)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
-        Me.GroupBox1.Location = New System.Drawing.Point(14, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 42)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(10)
@@ -252,7 +262,7 @@ Partial Class frmMain
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 27)
+        Me.Label1.Location = New System.Drawing.Point(20, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 25)
         Me.Label1.TabIndex = 3
@@ -278,7 +288,7 @@ Partial Class frmMain
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.DataGridView1)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 175)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 209)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(1499, 469)
         Me.GroupBox2.TabIndex = 1
@@ -303,13 +313,75 @@ Partial Class frmMain
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ActionToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1523, 33)
+        Me.MenuStrip1.TabIndex = 2
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'ActionToolStripMenuItem
+        '
+        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangerDeMotDePasseToolStripMenuItem, Me.mnuRechercher, Me.mnuExportCardPresso, Me.mnuAjouterAgent, Me.mnuModifierAgent, Me.mnuParametres, Me.QuitterToolStripMenuItem})
+        Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
+        Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(79, 29)
+        Me.ActionToolStripMenuItem.Text = "Action"
+        '
+        'ChangerDeMotDePasseToolStripMenuItem
+        '
+        Me.ChangerDeMotDePasseToolStripMenuItem.Name = "ChangerDeMotDePasseToolStripMenuItem"
+        Me.ChangerDeMotDePasseToolStripMenuItem.Size = New System.Drawing.Size(318, 34)
+        Me.ChangerDeMotDePasseToolStripMenuItem.Text = "&Changer de mot de passe"
+        '
+        'mnuRechercher
+        '
+        Me.mnuRechercher.Name = "mnuRechercher"
+        Me.mnuRechercher.Size = New System.Drawing.Size(318, 34)
+        Me.mnuRechercher.Text = "&Rechercher"
+        '
+        'mnuExportCardPresso
+        '
+        Me.mnuExportCardPresso.Enabled = False
+        Me.mnuExportCardPresso.Name = "mnuExportCardPresso"
+        Me.mnuExportCardPresso.Size = New System.Drawing.Size(318, 34)
+        Me.mnuExportCardPresso.Text = "&Exporter vers cardPresso"
+        '
+        'mnuAjouterAgent
+        '
+        Me.mnuAjouterAgent.Name = "mnuAjouterAgent"
+        Me.mnuAjouterAgent.Size = New System.Drawing.Size(318, 34)
+        Me.mnuAjouterAgent.Text = "&Ajouter un agent"
+        '
+        'mnuModifierAgent
+        '
+        Me.mnuModifierAgent.Enabled = False
+        Me.mnuModifierAgent.Name = "mnuModifierAgent"
+        Me.mnuModifierAgent.Size = New System.Drawing.Size(318, 34)
+        Me.mnuModifierAgent.Text = "&Modifier un agent"
+        '
+        'mnuParametres
+        '
+        Me.mnuParametres.Name = "mnuParametres"
+        Me.mnuParametres.Size = New System.Drawing.Size(318, 34)
+        Me.mnuParametres.Text = "&Parametres"
+        '
+        'QuitterToolStripMenuItem
+        '
+        Me.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem"
+        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(318, 34)
+        Me.QuitterToolStripMenuItem.Text = "&Quitter"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1523, 656)
+        Me.ClientSize = New System.Drawing.Size(1523, 700)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -317,7 +389,7 @@ Partial Class frmMain
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Identification de l'agent"
+        Me.Text = "Gestion des agents"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         CType(Me.picSearch, System.ComponentModel.ISupportInitialize).EndInit()
@@ -332,7 +404,10 @@ Partial Class frmMain
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -360,4 +435,13 @@ Partial Class frmMain
     Friend WithEvents cmbCriterionPeronel As ComboBox
     Friend WithEvents cmbValuePersonal As ComboBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents ActionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ChangerDeMotDePasseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuRechercher As ToolStripMenuItem
+    Friend WithEvents mnuExportCardPresso As ToolStripMenuItem
+    Friend WithEvents mnuAjouterAgent As ToolStripMenuItem
+    Friend WithEvents mnuModifierAgent As ToolStripMenuItem
+    Friend WithEvents mnuParametres As ToolStripMenuItem
+    Friend WithEvents QuitterToolStripMenuItem As ToolStripMenuItem
 End Class

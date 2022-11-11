@@ -3,7 +3,7 @@ Imports System.Data.Sql
 Imports System.Drawing
 Imports Emgu.CV.Fuzzy.FuzzyInvoke
 Imports System.Security.Cryptography.Xml
-
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class frmMain
     Dim dtFrom As String = ""
@@ -11,6 +11,7 @@ Public Class frmMain
     Dim query As String = ""
     Dim selectedRow As DataGridViewRow
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = Me.Text + $" - [{userFullName}]"
         Me.Width = GroupBox1.Width + 40
         Me.Height = 450
         'Me.StartPosition = FormStartPosition.CenterScreen
@@ -81,37 +82,7 @@ Public Class frmMain
     End Sub
 
     Private Sub picSearch_Click(sender As Object, e As EventArgs) Handles picSearch.Click
-        'Search
-        Try
-            DataGridView1.DataSource = Nothing
-            Dim cmd As SqlCommand = conn.CreateCommand()
-            With cmd
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "sp_FilterAgent"
-                With .Parameters
-                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
-                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
-                    .Add(New SqlParameter("creation_date_from", dtFrom))
-                    .Add(New SqlParameter("creation_date_to", dtTo))
-                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
-                    If cmbCriterionPeronel.Text = "Matricule" Then
-                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
-                    Else
-                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
-                    End If
-
-                End With
-            End With
-            Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable
-            adapter.Fill(table)
-            DataGridView1.DataSource = table
-            picExportAgent.Enabled = True
-
-            'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
-        Catch ex As Exception
-            MessageBox.Show("Erreur: " + ex.Message)
-        End Try
+        searchAgents()
     End Sub
 
     Private Sub picSearch_MouseHover(sender As Object, e As EventArgs) Handles picSearch.MouseHover
@@ -125,42 +96,7 @@ Public Class frmMain
     End Sub
 
     Private Sub picExportAgent_Click(sender As Object, e As EventArgs) Handles picExportAgent.Click
-        Try
-            Dim cmd As SqlCommand = conn.CreateCommand()
-            With cmd
-                .CommandType = CommandType.StoredProcedure
-                .CommandText = "sp_ExportAgent"
-                With .Parameters
-                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
-                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
-                    .Add(New SqlParameter("creation_date_from", dtFrom))
-                    .Add(New SqlParameter("creation_date_to", dtTo))
-                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
-                    If cmbCriterionPeronel.Text = "Matricule" Then
-                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
-                    Else
-                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
-                    End If
-
-                End With
-            End With
-            cmd.ExecuteNonQueryAsync()
-            MessageBox.Show("Exportation reussie")
-
-            'open cardpresso
-
-            Dim pi As ProcessStartInfo = New ProcessStartInfo()
-            Dim proc As Process
-            Try
-                pi.Arguments = " /C " + """" + cardPressoPath + """"
-                pi.FileName = "cmd.exe"
-                proc = Process.Start(pi)
-            Catch ex As Exception
-                '
-            End Try
-        Catch ex As Exception
-            MessageBox.Show("Erreur: " + ex.Message)
-        End Try
+        ExportAgent()
     End Sub
 
     Private Sub dtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtpFrom.ValueChanged
@@ -222,5 +158,133 @@ Public Class frmMain
 
     Private Sub DataGridView1_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
         MessageBox.Show(e.ToString)
+    End Sub
+
+    Private Sub ChangerDeMotDePasseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangerDeMotDePasseToolStripMenuItem.Click
+        Dim frmCP As New frmChangePwd()
+        frmCP.userName = userName_
+        frmCP.oldPassword = userPwd
+        frmCP.ShowDialog()
+        If frmCP.clickedButton = "cancel" Then
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub QuitterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitterToolStripMenuItem.Click
+        conn.Close()
+        conn.Dispose()
+        Application.Exit()
+    End Sub
+
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        conn.Close()
+        conn.Dispose()
+    End Sub
+
+    Private Sub ExportAgent()
+        Try
+            Dim cmd As SqlCommand = conn.CreateCommand()
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "sp_ExportAgent"
+                With .Parameters
+                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
+                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
+                    .Add(New SqlParameter("creation_date_from", dtFrom))
+                    .Add(New SqlParameter("creation_date_to", dtTo))
+                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
+                    If cmbCriterionPeronel.Text = "Matricule" Then
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
+                    Else
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
+                    End If
+
+                End With
+            End With
+            cmd.ExecuteNonQueryAsync()
+            MessageBox.Show("Exportation reussie")
+
+            'open cardpresso
+
+            Dim pi As ProcessStartInfo = New ProcessStartInfo()
+            Dim proc As Process
+            Try
+                'pi.Arguments = " /C " + """" + cardPressoPath + """"
+                pi.FileName = cardPressoPath
+                proc = Process.Start(pi)
+            Catch ex As Exception
+                '
+            End Try
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub searchAgents()
+        'Search
+        Try
+            DataGridView1.DataSource = Nothing
+            Dim cmd As SqlCommand = conn.CreateCommand()
+            With cmd
+                .CommandType = CommandType.StoredProcedure
+                .CommandText = "sp_FilterAgent"
+                With .Parameters
+                    .Add(New SqlParameter("criterion_location", cmbCriterionLocation.Text))
+                    .Add(New SqlParameter("location_value", cmbValueLocation.SelectedValue))
+                    .Add(New SqlParameter("creation_date_from", dtFrom))
+                    .Add(New SqlParameter("creation_date_to", dtTo))
+                    .Add(New SqlParameter("criterion_personal", cmbCriterionPeronel.Text))
+                    If cmbCriterionPeronel.Text = "Matricule" Then
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.Text))
+                    Else
+                        .Add(New SqlParameter("criterion_personal_value", cmbValuePersonal.SelectedValue))
+                    End If
+
+                End With
+            End With
+            Dim adapter As New SqlDataAdapter(cmd)
+            Dim table As New DataTable
+            adapter.Fill(table)
+            DataGridView1.DataSource = table
+            picExportAgent.Enabled = True
+            mnuExportCardPresso.Enabled = True
+
+            'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub mnuRechercher_Click(sender As Object, e As EventArgs) Handles mnuRechercher.Click
+        searchAgents()
+    End Sub
+
+    Private Sub DataGridView1_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles DataGridView1.RowStateChanged
+        If e.StateChanged = DataGridViewElementStates.Selected Then
+            mnuModifierAgent.Enabled = True
+        Else
+            mnuModifierAgent.Enabled = False
+        End If
+    End Sub
+
+    Private Sub mnuModifierAgent_Click(sender As Object, e As EventArgs) Handles mnuModifierAgent.Click
+        Dim frm As New frmNewAgent
+        frm.matriculeAgent = selectedRow.Cells("matricule").Value
+        frm.isUpdating = True
+        frm.ShowDialog()
+    End Sub
+
+    Private Sub mnuAjouterAgent_Click(sender As Object, e As EventArgs) Handles mnuAjouterAgent.Click
+        Dim frm As New frmNewAgent
+        frm.ShowDialog()
+    End Sub
+
+    Private Sub mnuParametres_Click(sender As Object, e As EventArgs) Handles mnuParametres.Click
+        Dim frm As New frmParametres()
+        frm.ShowDialog()
+    End Sub
+
+    Private Sub mnuExportCardPresso_Click(sender As Object, e As EventArgs) Handles mnuExportCardPresso.Click
+        ExportAgent()
     End Sub
 End Class

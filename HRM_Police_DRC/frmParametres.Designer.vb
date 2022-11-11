@@ -41,7 +41,7 @@ Partial Class frmParametres
         '
         'picUsers
         '
-        Me.picUsers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picUsers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.picUsers.Image = CType(resources.GetObject("picUsers.Image"), System.Drawing.Image)
         Me.picUsers.Location = New System.Drawing.Point(19, 46)
         Me.picUsers.Name = "picUsers"
@@ -63,7 +63,7 @@ Partial Class frmParametres
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmParametres"
+        Me.Text = "Parametres"
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.picUsers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

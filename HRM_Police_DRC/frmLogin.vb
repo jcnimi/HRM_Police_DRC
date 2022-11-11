@@ -13,7 +13,7 @@
         Dim locked As Boolean
         Dim status As String
         Dim query As String = $"
-            select username, password, status, date_debut, date_fin, locked, must_change_pwd, last_pwd_change_dt
+            select id_user, nom, username, password, status, date_debut, date_fin, locked, must_change_pwd, last_pwd_change_dt
             from users
             where username = '{username}'
         "
@@ -21,6 +21,9 @@
             Using reader As SqlDataReader = getData(query)
                 If reader.HasRows Then
                     reader.Read()
+                    userId = reader("id_user").ToString
+                    userFullName = reader("nom").ToString
+
                     hashFromDb = reader("password").ToString
                     If Not DateTime.TryParse(reader("date_debut").ToString, startDT) Then
                         startDT = Nothing
@@ -67,7 +70,8 @@
                     End If
 
                 End If
-
+                userName_ = username
+                userPwd = password
                 Me.Close()
                 Dim frmM As New frmMain()
                 frmM.ShowDialog()
@@ -110,7 +114,9 @@
     End Sub
 
     Private Sub picCancel_Click(sender As Object, e As EventArgs) Handles picCancel.Click
-        Me.Close()
+        conn.Close()
+        conn.Dispose()
+        Application.Exit()
     End Sub
 
 End Class

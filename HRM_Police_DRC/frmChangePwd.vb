@@ -31,7 +31,7 @@
             "
         Try
             saveData(query)
-            MessageBox.Show("Mot de passe MIS à jour avec succes")
+            MessageBox.Show("Mot de passe changé avec succes")
             clickedButton = "validate"
             Me.Close()
         Catch ex As Exception
