@@ -3,6 +3,9 @@ Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports STPadCaptLib
+Imports SourceAFIS
+Imports SourceAFIS.Engine
+Imports System.Security.Principal
 
 
 Public Class frmNewAgent
@@ -18,6 +21,7 @@ Public Class frmNewAgent
     Public matriculeAgent As String = ""
     Public isUpdating As Boolean = False
     Private idAgent As String
+    Private matcher As ImageMatcher = New ImageMatcher()
     Private Sub frmNewAgent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         formLoading = True  'avoid cascade update of territoire, secteur, etc to happen 
         'when loading the form
@@ -230,24 +234,24 @@ Public Class frmNewAgent
     Private Sub cmdValider_Click(sender As Object, e As EventArgs) Handles cmdValider.Click
         'Get the data from input controls
         Try
-            Dim nom As String = txtNom.Text
-            Dim postnom As String = txtPostnom.Text
-            Dim prenom As String = txtPrenom.Text
-            Dim matricule As String = maskMatric.Text
+            Dim nom As String = excapeSpecialChar(txtNom.Text)
+            Dim postnom As String = excapeSpecialChar(txtPostnom.Text)
+            Dim prenom As String = excapeSpecialChar(txtPrenom.Text)
+            Dim matricule As String = excapeSpecialChar(maskMatric.Text)
             Dim sexe As String = cmbSexe.Text
             Dim grade As String = cmbGrade.SelectedValue
             Dim lieu_naissance As String = cmbLieuNaissance.SelectedValue
             Dim territoire_origine As String = cmbTerritoireOrigine.SelectedValue
             Dim secteur_origine As String = cmbSecteurOrigine.SelectedValue
             Dim province_origine As String = cmbProvOrigine.SelectedValue
-            Dim adresse As String = txtAdresse.Text
+            Dim adresse As String = excapeSpecialChar(txtAdresse.Text)
             Dim groupe_sanguin As String = cmbGroupeSanguin.Text
             Dim fonction As String = cmbFonction.SelectedValue
             Dim unite_agent As String = cmbUnite.SelectedValue
             Dim regroupement As String = cmbVillage.SelectedValue
             Dim etat_civil As String = cmbEtatCivil.Text
             Dim sexe_conjoint As String = cmbSexeConjoint.Text
-            Dim nom_conjoint As String = txtNomConjoint.Text
+            Dim nom_conjoint As String = excapeSpecialChar(txtNomConjoint.Text)
             Dim province_recrutement As String = cmbProvinceRecrutement.SelectedValue
             Dim commissariat_recrutement As String = cmbCommissariatRecrutement.SelectedValue
 
@@ -390,7 +394,9 @@ Public Class frmNewAgent
            ,photo
            ,[signature]
            ,[empreinte_gauche]
-           ,[empreinte_droite])
+           ,[empreinte_gauche_template]
+           ,[empreinte_droite]
+           ,[empreinte_droite_template])
             VALUES
            ('{matricule}'
            ,'{nom}'
@@ -425,7 +431,9 @@ Public Class frmNewAgent
            ,@photo
            ,@signature
            ,@lfingerp
+           ,@lfingerp_template
            ,@rfingerp
+           ,@rfingerp_template
             )
             "
 
@@ -450,6 +458,8 @@ Public Class frmNewAgent
                   ,[photo] = @photo
                   ,[empreinte_gauche] = @lfingerp
                   ,[empreinte_droite] = @rfingerp
+                  ,[empreinte_gauche_template] = @lfingerp_template
+                  ,[empreinte_droite_template] = @rfingerp_template
                   ,[signature] = @signature
                   ,[etat_civil] = '{etat_civil}'
                   ,[date_mariage_civil] = '{If(dateMariageCivilAgent = "", Nothing, dateMariageCivilAgent)}' 
@@ -521,6 +531,19 @@ Public Class frmNewAgent
                 listParams.Add(param)
             End If
 
+            'add left fingerprint template
+            If picfingerprintL.Image IsNot Nothing Then
+                Dim encoded = matcher.encodeFingerPrintImage(picfingerprintL.Image)
+                Dim serial = SerialiseFingerPrintTemplate(matcher.getTemplate(encoded))
+                param = New SqlParameter("@lfingerp_template", SqlDbType.VarBinary)
+                param.Value = serial
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@lfingerp_template", SqlDbType.VarBinary)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
             'add right fingerprint
             If picFingerprintR.Image IsNot Nothing Then
                 im1 = picFingerprintR.Image
@@ -532,6 +555,19 @@ Public Class frmNewAgent
                 listParams.Add(param)
             Else
                 param = New SqlParameter("@rfingerp", SqlDbType.Image)
+                param.Value = System.DBNull.Value
+                listParams.Add(param)
+            End If
+
+            'add left fingerprint template
+            If picfingerprintL.Image IsNot Nothing Then
+                Dim encoded = matcher.encodeFingerPrintImage(picFingerprintR.Image)
+                Dim serial = SerialiseFingerPrintTemplate(matcher.getTemplate(encoded))
+                param = New SqlParameter("@rfingerp_template", SqlDbType.VarBinary)
+                param.Value = serial
+                listParams.Add(param)
+            Else
+                param = New SqlParameter("@rfingerp_template", SqlDbType.VarBinary)
                 param.Value = System.DBNull.Value
                 listParams.Add(param)
             End If
@@ -953,4 +989,43 @@ Public Class frmNewAgent
             End If
         End With
     End Sub
+
+    Private Sub getFingerPrint(ByRef pic As PictureBox)
+        Dim pi As ProcessStartInfo = New ProcessStartInfo()
+        Dim proc As Process
+        Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
+        Dim grabpicture As System.Drawing.Image
+        Try
+            pi.FileName = Application.StartupPath + "/" + "Scanner/" + "Matching_vb.exe"
+            proc = Process.Start(pi)
+            proc.WaitForExit()
+
+            grabpicture = MyComputer.Clipboard.GetImage()
+            pic.Image = grabpicture
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+
+    End Sub
+
+    Private Sub btnFingerLScan_Click(sender As Object, e As EventArgs) Handles btnFingerLScan.Click
+        Me.Cursor = Cursors.WaitCursor
+        getFingerPrint(picfingerprintL)
+        Dim encoded = matcher.encodeFingerPrintImage(picfingerprintL.Image)
+        Dim matchCandidate As Subject = matcher.Identify(matcher.getTemplate(encoded), Candidates)
+        'Dim simularity As Double = matcher.matchFingerPrints(picfingerprintL.Image, picFingerprintR.Image)
+        If matchCandidate IsNot Nothing Then
+            MessageBox.Show("Un utilisateur avec la meme empreinte existe deja" + matchCandidate.Name)
+        End If
+        'MessageBox.Show($"Matching score : {simularity}")
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnFingerRScan_Click(sender As Object, e As EventArgs) Handles btnFingerRScan.Click
+        Me.Cursor = Cursors.WaitCursor
+        getFingerPrint(picFingerprintR)
+        Me.Cursor = Cursors.Default
+    End Sub
+
+
 End Class

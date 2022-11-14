@@ -72,7 +72,10 @@
                 End If
                 userName_ = username
                 userPwd = password
-                Me.Close()
+                Me.Hide()
+                Dim frmload As New frmLoadingData()
+                frmload.ShowDialog()
+
                 Dim frmM As New frmMain()
                 frmM.ShowDialog()
             Else

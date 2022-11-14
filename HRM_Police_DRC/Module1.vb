@@ -1,9 +1,10 @@
-﻿Imports System.Data
-Imports System.Data.SqlClient
-Imports System.Drawing.Imaging
-Imports System.IO
-Imports Microsoft.VisualBasic.Devices
+﻿Imports System.IO
+Imports System.Xml.Serialization
 Imports Newtonsoft.Json.Linq
+Imports SourceAFIS
+Imports SourceAFIS.Engine
+Imports System.Xml
+Imports Emgu.CV.OCR
 
 Module Module1
     Public userId As String = ""
@@ -14,6 +15,7 @@ Module Module1
     Public conn As New SqlConnection()
     Public capturedImage As String
     Public cardPressoPath As String
+    Public Candidates As List(Of Subject)
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
@@ -27,7 +29,7 @@ Module Module1
         End Using
     End Sub
 
-    Public Function getData(ByVal queryString As String)
+    Public Function getData(ByVal queryString As String) As SqlDataReader
         Using cmd As New SqlCommand(queryString, conn)
             Try
                 Dim result As SqlDataReader = cmd.ExecuteReader()
@@ -61,8 +63,10 @@ Module Module1
         End Try
     End Sub
 
-
     Sub Main()
+        Application.EnableVisualStyles()
+        Application.SetCompatibleTextRenderingDefault(False)
+
         Try
             'config file
             Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
@@ -84,37 +88,16 @@ Module Module1
 
             conn.ConnectionString = connString
             conn.Open()
+
             Dim frm As New frmLogin
             frm.ShowDialog()
+
             conn.Close()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
     End Sub
-
-    Public Function btnScale_Click(ByRef img As System.Drawing.Image, ByVal scale As Integer) As System.Drawing.Image
-        ' Get the scale factor.
-        Dim scale_factor As Single = Single.Parse(scale)
-
-        ' Get the source bitmap.
-        Dim bm_source As New Bitmap(img)
-
-        ' Make a bitmap for the result.
-        Dim bm_dest As New Bitmap(
-            CInt(bm_source.Width * scale_factor),
-            CInt(bm_source.Height * scale_factor))
-
-        ' Make a Graphics object for the result Bitmap.
-        Dim gr_dest As Graphics = Graphics.FromImage(bm_dest)
-
-        ' Copy the source image into the destination bitmap.
-        gr_dest.DrawImage(bm_source, 0, 0,
-            bm_dest.Width + 1,
-            bm_dest.Height + 1)
-
-        ' Display the result.
-        Return bm_dest
-    End Function
 
     Public Sub imageLoad(buffer As Byte(), ByRef pic As PictureBox)
         Dim fileName As String = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".png"
@@ -125,6 +108,29 @@ Module Module1
             End Using
         End Using
     End Sub
+
+    Public Function SerialiseFingerPrintTemplate(ByRef template As FingerprintTemplate) As Byte()
+        'old way
+        'Dim memStream As MemoryStream = New MemoryStream()
+        'Dim serializer As New XmlSerializer(GetType(FingerprintTemplate))
+        'serializer.Serialize(memStream, template)
+        'Dim memData As Byte() = memStream.GetBuffer()
+        'memStream.Close()
+        Return template.ToByteArray()
+    End Function
+    Public Function DeserializeFingerPrintTemplate(ByRef data As Byte()) As FingerprintTemplate
+        'Dim serializer As New XmlSerializer(GetType(FingerprintTemplate))
+        'Dim memStream As MemoryStream = New IO.MemoryStream(data)
+        'Dim template As FingerprintTemplate = CType(serializer.Deserialize(memStream), FingerprintTemplate)
+        Return New FingerprintTemplate(data)
+    End Function
+
+    Public Function excapeSpecialChar(ByVal text As String) As String
+        If text.Contains("'") Then
+            Return text.Replace("'", "''")
+        End If
+        Return text
+    End Function
 
 End Module
 

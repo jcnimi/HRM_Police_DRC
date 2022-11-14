@@ -58,7 +58,6 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmLogin.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmMain.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmNewAgent.resources
-C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmParametres.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmSecteur.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmUniteAgent.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmUser.resources
@@ -78,3 +77,11 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.genruntimeconfig.cache
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\HRM_Police_DRC.pdb
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\ref\HRM_Police_DRC.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmAdministration.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmParams.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\SecuGen.FDxSDKPro.Windows.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\Dahomey.Cbor.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\SixLabors.ImageSharp.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\SourceAFIS.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\System.IO.Pipelines.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmLoadingData.resources

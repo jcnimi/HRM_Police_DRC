@@ -69,7 +69,7 @@ Public Class frmMain
     End Sub
 
     Private Sub picSettings_Click(sender As Object, e As EventArgs) Handles picSettings.Click
-        Dim frm As New frmParametres()
+        Dim frm As New frmAdministration()
         frm.ShowDialog()
     End Sub
 
@@ -213,7 +213,7 @@ Public Class frmMain
                 pi.FileName = cardPressoPath
                 proc = Process.Start(pi)
             Catch ex As Exception
-                '
+                MessageBox.Show("Erreur: " + ex.Message)
             End Try
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
@@ -280,7 +280,7 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuParametres_Click(sender As Object, e As EventArgs) Handles mnuParametres.Click
-        Dim frm As New frmParametres()
+        Dim frm As New frmAdministration()
         frm.ShowDialog()
     End Sub
 
