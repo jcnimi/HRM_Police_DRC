@@ -9,6 +9,7 @@ Public Class ImageMatcher
           ,[matricule]
           ,[nom] + ' ' + [postnom] + ' ' + [prenom] as nom
           ,[empreinte_gauche_template]
+          ,[empreinte_droite_template]
           FROM [hrm_police].[dbo].[agent]
           where empreinte_gauche_template is not null
         "
@@ -19,8 +20,13 @@ Public Class ImageMatcher
                 Dim matric As String = queryresults("matricule")
                 Dim serialFingerPrintTempl As Byte() = queryresults("empreinte_gauche_template")
                 Dim templ As FingerprintTemplate = New FingerprintTemplate(serialFingerPrintTempl)
+
+                Dim serialFingerPrintTemplR As Byte() = queryresults("empreinte_droite_template")
+                Dim templR As FingerprintTemplate = New FingerprintTemplate(serialFingerPrintTemplR)
+
+
                 Dim candidate As Subject
-                candidate = New Subject(id, name, matric, templ)
+                candidate = New Subject(id, name, matric, templ, templR)
                 _Candidates.Add(candidate)
             End While
         End Using
@@ -52,6 +58,21 @@ Public Class ImageMatcher
         Dim max As Double = Double.NegativeInfinity
         For Each candidate In Candidates
             Dim similarity As Double = matcher.Match(candidate.Template)
+            If similarity > max Then
+                max = similarity
+                match = candidate
+            End If
+        Next
+        Dim threshold As Double = 40
+        Return If((max >= threshold), match, Nothing)
+    End Function
+
+    Public Function IdentifyR(ByRef probe As FingerprintTemplate, ByRef Candidates As List(Of Subject)) As Subject
+        Dim matcher = New FingerprintMatcher(probe)
+        Dim match As Subject = Nothing
+        Dim max As Double = Double.NegativeInfinity
+        For Each candidate In Candidates
+            Dim similarity As Double = matcher.Match(candidate.TemplateR)
             If similarity > max Then
                 max = similarity
                 match = candidate

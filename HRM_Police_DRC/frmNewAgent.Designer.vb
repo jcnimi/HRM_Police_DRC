@@ -37,8 +37,6 @@ Partial Class frmNewAgent
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.btnFingerRImport = New System.Windows.Forms.Button()
-        Me.btnFingerLImport = New System.Windows.Forms.Button()
         Me.btnFingerRScan = New System.Windows.Forms.Button()
         Me.btnFingerLScan = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -283,8 +281,6 @@ Partial Class frmNewAgent
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.btnFingerRImport)
-        Me.GroupBox6.Controls.Add(Me.btnFingerLImport)
         Me.GroupBox6.Controls.Add(Me.btnFingerRScan)
         Me.GroupBox6.Controls.Add(Me.btnFingerLScan)
         Me.GroupBox6.Controls.Add(Me.Label24)
@@ -299,28 +295,10 @@ Partial Class frmNewAgent
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Empreintes"
         '
-        'btnFingerRImport
-        '
-        Me.btnFingerRImport.Location = New System.Drawing.Point(386, 290)
-        Me.btnFingerRImport.Name = "btnFingerRImport"
-        Me.btnFingerRImport.Size = New System.Drawing.Size(112, 34)
-        Me.btnFingerRImport.TabIndex = 7
-        Me.btnFingerRImport.Text = "Importer"
-        Me.btnFingerRImport.UseVisualStyleBackColor = True
-        '
-        'btnFingerLImport
-        '
-        Me.btnFingerLImport.Location = New System.Drawing.Point(147, 290)
-        Me.btnFingerLImport.Name = "btnFingerLImport"
-        Me.btnFingerLImport.Size = New System.Drawing.Size(98, 34)
-        Me.btnFingerLImport.TabIndex = 6
-        Me.btnFingerLImport.Text = "Importer"
-        Me.btnFingerLImport.UseVisualStyleBackColor = True
-        '
         'btnFingerRScan
         '
         Me.btnFingerRScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnFingerRScan.Location = New System.Drawing.Point(273, 290)
+        Me.btnFingerRScan.Location = New System.Drawing.Point(331, 290)
         Me.btnFingerRScan.Name = "btnFingerRScan"
         Me.btnFingerRScan.Size = New System.Drawing.Size(112, 34)
         Me.btnFingerRScan.TabIndex = 5
@@ -330,7 +308,7 @@ Partial Class frmNewAgent
         'btnFingerLScan
         '
         Me.btnFingerLScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnFingerLScan.Location = New System.Drawing.Point(29, 290)
+        Me.btnFingerLScan.Location = New System.Drawing.Point(89, 290)
         Me.btnFingerLScan.Name = "btnFingerLScan"
         Me.btnFingerLScan.Size = New System.Drawing.Size(112, 34)
         Me.btnFingerLScan.TabIndex = 4
@@ -1312,8 +1290,6 @@ Partial Class frmNewAgent
     Friend WithEvents Label31 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents picSignature As PictureBox
-    Friend WithEvents btnFingerRImport As Button
-    Friend WithEvents btnFingerLImport As Button
     Friend WithEvents Nom As DataGridViewTextBoxColumn
     Friend WithEvents Sexe As DataGridViewComboBoxColumn
     Friend WithEvents Date_naissance As DataGridViewTextBoxColumn

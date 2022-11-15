@@ -647,6 +647,13 @@ Public Class frmNewAgent
                     saveData(queryEnfantUpdate)
                 End If
             Next
+            'add the new fingerprints in the candidates list
+            Dim encodedL As FingerprintImage = matcher.encodeFingerPrintImage(picfingerprintL.Image)
+            Dim templL As FingerprintTemplate = matcher.getTemplate(encodedL)
+            Dim encodedR As FingerprintImage = matcher.encodeFingerPrintImage(picFingerprintR.Image)
+            Dim templR As FingerprintTemplate = matcher.getTemplate(encodedR)
+            Dim cand As New Subject(idAgent, nom + " " + postnom + " " + prenom, matricule, templL, templR)
+            Candidates.Add(cand)
 
             MessageBox.Show("Enregistrement effectué avec succès")
         Catch ex As Exception
@@ -970,7 +977,7 @@ Public Class frmNewAgent
         picFingerprintR.Image = Nothing
     End Sub
 
-    Private Sub btnFingerLImport_Click(sender As Object, e As EventArgs) Handles btnFingerLImport.Click
+    Private Sub btnFingerLImport_Click(sender As Object, e As EventArgs)
         With OpenFileDialog1
             .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
             .Title = "Ouvrir une image"
@@ -980,7 +987,7 @@ Public Class frmNewAgent
         End With
     End Sub
 
-    Private Sub btnFingerRImport_Click(sender As Object, e As EventArgs) Handles btnFingerRImport.Click
+    Private Sub btnFingerRImport_Click(sender As Object, e As EventArgs)
         With OpenFileDialog1
             .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
             .Title = "Ouvrir une image"
@@ -1001,7 +1008,10 @@ Public Class frmNewAgent
             proc.WaitForExit()
 
             grabpicture = MyComputer.Clipboard.GetImage()
-            pic.Image = grabpicture
+
+            If grabpicture IsNot Nothing Then
+                pic.Image = grabpicture
+            End If
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
@@ -1011,20 +1021,34 @@ Public Class frmNewAgent
     Private Sub btnFingerLScan_Click(sender As Object, e As EventArgs) Handles btnFingerLScan.Click
         Me.Cursor = Cursors.WaitCursor
         getFingerPrint(picfingerprintL)
+        If picfingerprintL.Image Is Nothing Then
+            Me.Cursor = Cursors.Default
+            Exit Sub
+        End If
         Dim encoded = matcher.encodeFingerPrintImage(picfingerprintL.Image)
         Dim matchCandidate As Subject = matcher.Identify(matcher.getTemplate(encoded), Candidates)
         'Dim simularity As Double = matcher.matchFingerPrints(picfingerprintL.Image, picFingerprintR.Image)
         If matchCandidate IsNot Nothing Then
-            MessageBox.Show("Un utilisateur avec la meme empreinte existe deja" + matchCandidate.Name)
+            MessageBox.Show("Un utilisateur avec la même empreinte existe déjà." + vbCrLf + "Nom: " + matchCandidate.Name + vbCrLf + " Matricule:" + matchCandidate.Matric)
         End If
-        'MessageBox.Show($"Matching score : {simularity}")
+
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub btnFingerRScan_Click(sender As Object, e As EventArgs) Handles btnFingerRScan.Click
         Me.Cursor = Cursors.WaitCursor
         getFingerPrint(picFingerprintR)
+        If picfingerprintL.Image Is Nothing Then
+            Me.Cursor = Cursors.Default
+            Exit Sub
+        End If
+        Dim encoded = matcher.encodeFingerPrintImage(picFingerprintR.Image)
+        Dim matchCandidate As Subject = matcher.IdentifyR(matcher.getTemplate(encoded), Candidates)
+        If matchCandidate IsNot Nothing Then
+            MessageBox.Show("Un utilisateur avec la même empreinte existe déjà." + vbCrLf + "Nom: " + matchCandidate.Name + vbCrLf + " Matricule:" + matchCandidate.Matric)
+        End If
         Me.Cursor = Cursors.Default
+
     End Sub
 
 
