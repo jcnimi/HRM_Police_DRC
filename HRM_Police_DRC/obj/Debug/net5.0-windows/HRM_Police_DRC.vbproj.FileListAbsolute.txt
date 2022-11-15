@@ -85,3 +85,7 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\SourceAFIS.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\bin\Debug\net5.0-windows\System.IO.Pipelines.dll
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmLoadingData.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmImportData.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmRapports.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmImportStatus.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll

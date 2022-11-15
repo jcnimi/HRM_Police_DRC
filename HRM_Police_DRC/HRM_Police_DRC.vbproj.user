@@ -16,6 +16,12 @@
     <Compile Update="frmGrade.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmImportData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmImportStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmLieu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -35,6 +41,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmParams.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmRapports.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmSecteur.vb">

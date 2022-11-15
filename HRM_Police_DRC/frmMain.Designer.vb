@@ -54,6 +54,8 @@ Partial Class frmMain
         Me.mnuExportCardPresso = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAjouterAgent = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuModifierAgent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuParametres = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
@@ -325,7 +327,7 @@ Partial Class frmMain
         '
         'ActionToolStripMenuItem
         '
-        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangerDeMotDePasseToolStripMenuItem, Me.mnuRechercher, Me.mnuExportCardPresso, Me.mnuAjouterAgent, Me.mnuModifierAgent, Me.mnuParametres, Me.QuitterToolStripMenuItem})
+        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangerDeMotDePasseToolStripMenuItem, Me.mnuRechercher, Me.mnuExportCardPresso, Me.mnuAjouterAgent, Me.mnuModifierAgent, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.mnuParametres, Me.QuitterToolStripMenuItem})
         Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
         Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(79, 29)
         Me.ActionToolStripMenuItem.Text = "Action"
@@ -361,6 +363,18 @@ Partial Class frmMain
         Me.mnuModifierAgent.Name = "mnuModifierAgent"
         Me.mnuModifierAgent.Size = New System.Drawing.Size(318, 34)
         Me.mnuModifierAgent.Text = "&Modifier un agent"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(318, 34)
+        Me.ToolStripMenuItem2.Text = "Importation"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(318, 34)
+        Me.ToolStripMenuItem1.Text = "Rapports"
         '
         'mnuParametres
         '
@@ -441,4 +455,6 @@ Partial Class frmMain
     Friend WithEvents mnuModifierAgent As ToolStripMenuItem
     Friend WithEvents mnuParametres As ToolStripMenuItem
     Friend WithEvents QuitterToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class

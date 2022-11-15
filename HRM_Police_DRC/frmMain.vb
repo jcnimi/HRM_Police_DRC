@@ -287,4 +287,14 @@ Public Class frmMain
     Private Sub mnuExportCardPresso_Click(sender As Object, e As EventArgs) Handles mnuExportCardPresso.Click
         ExportAgent()
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Dim frm As New frmRapports()
+        frm.ShowDialog()
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        Dim frm As New frmImportData()
+        frm.ShowDialog()
+    End Sub
 End Class
