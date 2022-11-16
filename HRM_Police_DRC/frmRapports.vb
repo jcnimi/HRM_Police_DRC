@@ -2,6 +2,8 @@
 Imports Microsoft.Office
 Imports System.Runtime.InteropServices
 Public Class frmRapports
+    Dim dtFrom As String = ""
+    Dim dtTo As String = ""
     Private Sub Filter()
         Try
             Dim cmd As SqlCommand = conn.CreateCommand()
@@ -9,13 +11,13 @@ Public Class frmRapports
                 .CommandType = CommandType.StoredProcedure
                 .CommandText = "sp_FilterPrintingHistory"
                 With .Parameters
-                    .Add(New SqlParameter("creation_date_from", dtpFrom.Value))
-                    .Add(New SqlParameter("creation_date_to", dtpTo.Value))
+                    .Add(New SqlParameter("creation_date_from", dtFrom))
+                    .Add(New SqlParameter("creation_date_to", dtTo))
                     .Add(New SqlParameter("criterion_personal", cmbCriterion.Text))
                     If cmbCriterion.Text = "Matricule" Then
                         .Add(New SqlParameter("criterion_personal_value", cmbValue.Text))
                     Else
-                        .Add(New SqlParameter("criterion_personal_value", cmbValue.SelectedValue))
+                        .Add(New SqlParameter("criterion_personal_value", cmbValue.Text))
                     End If
 
                 End With
@@ -161,4 +163,11 @@ Public Class frmRapports
         xlapp.Quit()
     End Sub
 
+    Private Sub dtpFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtpFrom.ValueChanged
+        dtFrom = dtpFrom.Value
+    End Sub
+
+    Private Sub dtpTo_ValueChanged(sender As Object, e As EventArgs) Handles dtpTo.ValueChanged
+        dtTo = dtpTo.Value
+    End Sub
 End Class
