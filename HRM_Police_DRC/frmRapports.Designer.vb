@@ -23,10 +23,10 @@ Partial Class frmRapports
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.cboSeparateur = New System.Windows.Forms.ComboBox()
+        Me.cboFormatSeparateur = New System.Windows.Forms.ComboBox()
         Me.lblSep = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.cboValeur = New System.Windows.Forms.ComboBox()
+        Me.cboFormatValeur = New System.Windows.Forms.ComboBox()
         Me.grpValue = New System.Windows.Forms.GroupBox()
         Me.lbldtA = New System.Windows.Forms.Label()
         Me.dtpTo = New System.Windows.Forms.DateTimePicker()
@@ -54,10 +54,10 @@ Partial Class frmRapports
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.cboSeparateur)
+        Me.GroupBox4.Controls.Add(Me.cboFormatSeparateur)
         Me.GroupBox4.Controls.Add(Me.lblSep)
         Me.GroupBox4.Controls.Add(Me.Label3)
-        Me.GroupBox4.Controls.Add(Me.cboValeur)
+        Me.GroupBox4.Controls.Add(Me.cboFormatValeur)
         Me.GroupBox4.Location = New System.Drawing.Point(716, 12)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(324, 121)
@@ -65,15 +65,16 @@ Partial Class frmRapports
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Format"
         '
-        'cboSeparateur
+        'cboFormatSeparateur
         '
-        Me.cboSeparateur.Enabled = False
-        Me.cboSeparateur.FormattingEnabled = True
-        Me.cboSeparateur.Items.AddRange(New Object() {"Virgule (,)", "Point virgule (;)", "Tabulation", "Espace"})
-        Me.cboSeparateur.Location = New System.Drawing.Point(118, 69)
-        Me.cboSeparateur.Name = "cboSeparateur"
-        Me.cboSeparateur.Size = New System.Drawing.Size(190, 33)
-        Me.cboSeparateur.TabIndex = 8
+        Me.cboFormatSeparateur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboFormatSeparateur.Enabled = False
+        Me.cboFormatSeparateur.FormattingEnabled = True
+        Me.cboFormatSeparateur.Items.AddRange(New Object() {"Virgule (,)", "Point virgule (;)", "Tabulation", "Espace"})
+        Me.cboFormatSeparateur.Location = New System.Drawing.Point(118, 69)
+        Me.cboFormatSeparateur.Name = "cboFormatSeparateur"
+        Me.cboFormatSeparateur.Size = New System.Drawing.Size(190, 33)
+        Me.cboFormatSeparateur.TabIndex = 8
         '
         'lblSep
         '
@@ -94,14 +95,15 @@ Partial Class frmRapports
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Valeur:"
         '
-        'cboValeur
+        'cboFormatValeur
         '
-        Me.cboValeur.FormattingEnabled = True
-        Me.cboValeur.Items.AddRange(New Object() {"Excel", "CSV", "PDF"})
-        Me.cboValeur.Location = New System.Drawing.Point(118, 29)
-        Me.cboValeur.Name = "cboValeur"
-        Me.cboValeur.Size = New System.Drawing.Size(190, 33)
-        Me.cboValeur.TabIndex = 5
+        Me.cboFormatValeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboFormatValeur.FormattingEnabled = True
+        Me.cboFormatValeur.Items.AddRange(New Object() {"Excel", "CSV"})
+        Me.cboFormatValeur.Location = New System.Drawing.Point(118, 29)
+        Me.cboFormatValeur.Name = "cboFormatValeur"
+        Me.cboFormatValeur.Size = New System.Drawing.Size(190, 33)
+        Me.cboFormatValeur.TabIndex = 5
         '
         'grpValue
         '
@@ -289,10 +291,10 @@ Partial Class frmRapports
     End Sub
 
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents cboSeparateur As ComboBox
+    Friend WithEvents cboFormatSeparateur As ComboBox
     Friend WithEvents lblSep As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents cboValeur As ComboBox
+    Friend WithEvents cboFormatValeur As ComboBox
     Friend WithEvents grpValue As GroupBox
     Friend WithEvents lbldtA As Label
     Friend WithEvents dtpTo As DateTimePicker
