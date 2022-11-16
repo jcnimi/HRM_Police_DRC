@@ -582,7 +582,7 @@ Partial Class frmNewAgent
         'cmbEtatCivil
         '
         Me.cmbEtatCivil.FormattingEnabled = True
-        Me.cmbEtatCivil.Items.AddRange(New Object() {"Select", "Celibataire", "Marié(e)"})
+        Me.cmbEtatCivil.Items.AddRange(New Object() {"Select", "Celibataire", "Marié(e)", "Divorcé(e)", "Veuf(ve)"})
         Me.cmbEtatCivil.Location = New System.Drawing.Point(223, 36)
         Me.cmbEtatCivil.Name = "cmbEtatCivil"
         Me.cmbEtatCivil.Size = New System.Drawing.Size(236, 33)
