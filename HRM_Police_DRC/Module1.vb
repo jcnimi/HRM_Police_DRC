@@ -16,6 +16,8 @@ Module Module1
     Public capturedImage As String
     Public cardPressoPath As String
     Public Candidates As List(Of Subject)
+    Public MappingList As List(Of Mapping)
+    Public fileFieldList As ArrayList
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
@@ -64,10 +66,14 @@ Module Module1
     End Sub
 
     Sub Main()
+
         Application.EnableVisualStyles()
         Application.SetCompatibleTextRenderingDefault(False)
 
         Try
+            Dim myuuid As Guid = Guid.NewGuid()
+            Dim myuuidAsString As String = myuuid.ToString().ToUpper().Replace("-", "")
+
             'config file
             Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
             Dim fileReader As New System.IO.StreamReader(configFile)
@@ -132,6 +138,32 @@ Module Module1
         Return text
     End Function
 
+    Public Function exportMapping() As String
+        Dim retString As String = ""
+        For Each item As Mapping In MappingList
+            retString += $"{item.ToString()}{vbCrLf}"
+        Next
+        Return retString
+    End Function
+
+    'get the file colum equivalent to the provided db colum
+    Public Function getMappingByDB(ByVal db As String) As String
+        For Each item As Mapping In MappingList
+            If db = item.dbFieldName Then
+                Return item.fileFieldName
+            End If
+        Next
+    End Function
+
+
+    'get the db colum equivalent to the provided file colum
+    Public Function getMappingByFile(ByVal file As String) As String
+        For Each item As Mapping In MappingList
+            If file = item.fileFieldName Then
+                Return item.dbFieldName
+            End If
+        Next
+    End Function
 End Module
 
 

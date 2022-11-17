@@ -51,7 +51,6 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.vbproj.ResolveComReference.cache
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmChangePwd.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmCommissariat.resources
-C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmExport.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmFonction.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmGrade.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmLieu.resources
@@ -89,3 +88,5 @@ C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmRapports.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmImportStatus.resources
 C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmMapageChamp.resources
+C:\Nimi\Perso\Development\HRM_Police_DRC\HRM_Police_DRC\obj\Debug\net5.0-windows\HRM_Police_DRC.frmExport________.resources

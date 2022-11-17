@@ -67,6 +67,7 @@ Public Class frmRapports
 
     Private Sub btnExporter_Click_1(sender As Object, e As EventArgs) Handles btnExporter.Click
         Dim exportFormat As String = cboFormatValeur.Text
+        Me.Cursor = Cursors.WaitCursor
         Try
             If exportFormat = "Excel" Then
                 exportExcel()
@@ -79,6 +80,8 @@ Public Class frmRapports
             End If
         Catch ex As Exception
             MessageBox.Show("Erreur d'exportation: " + ex.Message)
+        Finally
+            Me.Cursor = Cursors.Default
         End Try
     End Sub
 
