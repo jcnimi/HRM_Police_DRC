@@ -51,18 +51,20 @@ Partial Class frmUser
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(37, 36)
+        Me.Label1.Location = New System.Drawing.Point(26, 22)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 25)
+        Me.Label1.Size = New System.Drawing.Size(37, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Nom:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(37, 87)
+        Me.Label2.Location = New System.Drawing.Point(26, 52)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(52, 25)
+        Me.Label2.Size = New System.Drawing.Size(34, 15)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Sexe:"
         '
@@ -87,59 +89,67 @@ Partial Class frmUser
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(7, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(958, 311)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(671, 187)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
         'txtpassword
         '
-        Me.txtpassword.Location = New System.Drawing.Point(620, 246)
+        Me.txtpassword.Location = New System.Drawing.Point(434, 148)
+        Me.txtpassword.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(300, 31)
+        Me.txtpassword.Size = New System.Drawing.Size(211, 23)
         Me.txtpassword.TabIndex = 20
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(468, 246)
+        Me.Label8.Location = New System.Drawing.Point(328, 148)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(124, 25)
+        Me.Label8.Size = New System.Drawing.Size(80, 15)
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Mot de passe:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(463, 142)
+        Me.Label5.Location = New System.Drawing.Point(324, 85)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(75, 25)
+        Me.Label5.Size = New System.Drawing.Size(49, 15)
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Groupe:"
         '
         'cboGroup
         '
         Me.cboGroup.FormattingEnabled = True
-        Me.cboGroup.Location = New System.Drawing.Point(620, 134)
+        Me.cboGroup.Location = New System.Drawing.Point(434, 80)
+        Me.cboGroup.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboGroup.Name = "cboGroup"
-        Me.cboGroup.Size = New System.Drawing.Size(300, 33)
+        Me.cboGroup.Size = New System.Drawing.Size(211, 23)
         Me.cboGroup.TabIndex = 17
         '
         'txtMail
         '
-        Me.txtMail.Location = New System.Drawing.Point(198, 196)
+        Me.txtMail.Location = New System.Drawing.Point(139, 118)
+        Me.txtMail.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtMail.Name = "txtMail"
-        Me.txtMail.Size = New System.Drawing.Size(236, 31)
+        Me.txtMail.Size = New System.Drawing.Size(166, 23)
         Me.txtMail.TabIndex = 16
         '
         'chkLocked
         '
         Me.chkLocked.AutoSize = True
-        Me.chkLocked.Location = New System.Drawing.Point(37, 255)
+        Me.chkLocked.Location = New System.Drawing.Point(26, 153)
+        Me.chkLocked.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chkLocked.Name = "chkLocked"
-        Me.chkLocked.Size = New System.Drawing.Size(105, 29)
+        Me.chkLocked.Size = New System.Drawing.Size(71, 19)
         Me.chkLocked.TabIndex = 15
         Me.chkLocked.Text = "Verouillé"
         Me.chkLocked.UseVisualStyleBackColor = True
@@ -148,130 +158,146 @@ Partial Class frmUser
         '
         Me.cboStatus.FormattingEnabled = True
         Me.cboStatus.Items.AddRange(New Object() {"Actif", "Inactif"})
-        Me.cboStatus.Location = New System.Drawing.Point(620, 188)
+        Me.cboStatus.Location = New System.Drawing.Point(434, 113)
+        Me.cboStatus.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboStatus.Name = "cboStatus"
-        Me.cboStatus.Size = New System.Drawing.Size(300, 33)
+        Me.cboStatus.Size = New System.Drawing.Size(211, 23)
         Me.cboStatus.TabIndex = 14
         '
         'dtpDateExpiration
         '
-        Me.dtpDateExpiration.Location = New System.Drawing.Point(620, 82)
+        Me.dtpDateExpiration.Location = New System.Drawing.Point(434, 49)
+        Me.dtpDateExpiration.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dtpDateExpiration.Name = "dtpDateExpiration"
-        Me.dtpDateExpiration.Size = New System.Drawing.Size(300, 31)
+        Me.dtpDateExpiration.Size = New System.Drawing.Size(211, 23)
         Me.dtpDateExpiration.TabIndex = 13
         '
         'dtpDateDebut
         '
-        Me.dtpDateDebut.Location = New System.Drawing.Point(620, 22)
+        Me.dtpDateDebut.Location = New System.Drawing.Point(434, 13)
+        Me.dtpDateDebut.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dtpDateDebut.Name = "dtpDateDebut"
-        Me.dtpDateDebut.Size = New System.Drawing.Size(300, 31)
+        Me.dtpDateDebut.Size = New System.Drawing.Size(211, 23)
         Me.dtpDateDebut.TabIndex = 12
         '
         'cboSexe
         '
         Me.cboSexe.FormattingEnabled = True
         Me.cboSexe.Items.AddRange(New Object() {"Homme", "Femme"})
-        Me.cboSexe.Location = New System.Drawing.Point(198, 80)
+        Me.cboSexe.Location = New System.Drawing.Point(139, 48)
+        Me.cboSexe.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboSexe.Name = "cboSexe"
-        Me.cboSexe.Size = New System.Drawing.Size(236, 33)
+        Me.cboSexe.Size = New System.Drawing.Size(166, 23)
         Me.cboSexe.TabIndex = 11
         '
         'txtUser
         '
-        Me.txtUser.Location = New System.Drawing.Point(198, 142)
+        Me.txtUser.Location = New System.Drawing.Point(139, 85)
+        Me.txtUser.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtUser.Name = "txtUser"
-        Me.txtUser.Size = New System.Drawing.Size(236, 31)
+        Me.txtUser.Size = New System.Drawing.Size(166, 23)
         Me.txtUser.TabIndex = 9
         '
         'txtNom
         '
-        Me.txtNom.Location = New System.Drawing.Point(198, 30)
+        Me.txtNom.Location = New System.Drawing.Point(139, 18)
+        Me.txtNom.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtNom.Name = "txtNom"
-        Me.txtNom.Size = New System.Drawing.Size(236, 31)
+        Me.txtNom.Size = New System.Drawing.Size(166, 23)
         Me.txtNom.TabIndex = 8
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(463, 196)
+        Me.Label7.Location = New System.Drawing.Point(324, 118)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(62, 25)
+        Me.Label7.Size = New System.Drawing.Size(41, 15)
         Me.Label7.TabIndex = 6
         Me.Label7.Text = "Statut:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(459, 27)
+        Me.Label6.Location = New System.Drawing.Point(321, 16)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(105, 25)
+        Me.Label6.Size = New System.Drawing.Size(68, 15)
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "Date debut:"
         '
         'lblDateExpiration
         '
         Me.lblDateExpiration.AutoSize = True
-        Me.lblDateExpiration.Location = New System.Drawing.Point(463, 88)
+        Me.lblDateExpiration.Location = New System.Drawing.Point(324, 53)
+        Me.lblDateExpiration.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateExpiration.Name = "lblDateExpiration"
-        Me.lblDateExpiration.Size = New System.Drawing.Size(151, 25)
+        Me.lblDateExpiration.Size = New System.Drawing.Size(100, 15)
         Me.lblDateExpiration.TabIndex = 4
         Me.lblDateExpiration.Text = "Date d'expiration:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(37, 148)
+        Me.Label4.Location = New System.Drawing.Point(26, 89)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(152, 25)
+        Me.Label4.Size = New System.Drawing.Size(102, 15)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Nom d'utilisateur:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(37, 202)
+        Me.Label3.Location = New System.Drawing.Point(26, 121)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 25)
+        Me.Label3.Size = New System.Drawing.Size(33, 15)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Mail:"
         '
         'cmdValider
         '
-        Me.cmdValider.Location = New System.Drawing.Point(555, 336)
+        Me.cmdValider.Location = New System.Drawing.Point(388, 202)
+        Me.cmdValider.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmdValider.Name = "cmdValider"
-        Me.cmdValider.Size = New System.Drawing.Size(112, 34)
+        Me.cmdValider.Size = New System.Drawing.Size(78, 20)
         Me.cmdValider.TabIndex = 3
         Me.cmdValider.Text = "Valider"
         Me.cmdValider.UseVisualStyleBackColor = True
         '
         'cmdSuivant
         '
-        Me.cmdSuivant.Location = New System.Drawing.Point(690, 336)
+        Me.cmdSuivant.Location = New System.Drawing.Point(483, 202)
+        Me.cmdSuivant.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmdSuivant.Name = "cmdSuivant"
-        Me.cmdSuivant.Size = New System.Drawing.Size(112, 34)
+        Me.cmdSuivant.Size = New System.Drawing.Size(78, 20)
         Me.cmdSuivant.TabIndex = 4
         Me.cmdSuivant.Text = "Suivant"
         Me.cmdSuivant.UseVisualStyleBackColor = True
         '
         'cmdAnnuler
         '
-        Me.cmdAnnuler.Location = New System.Drawing.Point(837, 336)
+        Me.cmdAnnuler.Location = New System.Drawing.Point(586, 202)
+        Me.cmdAnnuler.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmdAnnuler.Name = "cmdAnnuler"
-        Me.cmdAnnuler.Size = New System.Drawing.Size(112, 34)
+        Me.cmdAnnuler.Size = New System.Drawing.Size(78, 20)
         Me.cmdAnnuler.TabIndex = 5
         Me.cmdAnnuler.Text = "Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
         '
         'frmUser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(971, 382)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(680, 229)
         Me.Controls.Add(Me.cmdAnnuler)
         Me.Controls.Add(Me.cmdSuivant)
         Me.Controls.Add(Me.cmdValider)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUser"

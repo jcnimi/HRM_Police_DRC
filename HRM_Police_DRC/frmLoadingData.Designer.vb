@@ -32,17 +32,20 @@ Partial Class frmLoadingData
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.ProgressBar1)
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 15)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 9)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(770, 141)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(539, 85)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(16, 60)
+        Me.ProgressBar1.Location = New System.Drawing.Point(11, 36)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(737, 34)
+        Me.ProgressBar1.Size = New System.Drawing.Size(516, 20)
         Me.ProgressBar1.TabIndex = 0
         '
         'Timer1
@@ -50,12 +53,14 @@ Partial Class frmLoadingData
         '
         'frmLoadingData
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(796, 168)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(554, 98)
         Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmLoadingData"

@@ -7,6 +7,7 @@ Public Class frmMapageChamp
         Dim dbFieldName As String = ""
         Dim fileFieldName As String = ""
         MappingList = New List(Of Mapping)()
+
         Try
             For Each Row As DataGridViewRow In DataGridView1.Rows
                 dbFieldName = CStr(Row.Cells("db").Value)
@@ -32,6 +33,7 @@ Public Class frmMapageChamp
 
     Private Sub frmMapageChamp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         fileFieldList = New ArrayList()
+        fileFieldList.Add("")
         'add datagridview combobox items
         Dim fileCol As DataGridViewComboBoxColumn = CType(DataGridView1.Columns.Item("file"), DataGridViewComboBoxColumn)
         'read the source file to get the colum name
@@ -79,14 +81,21 @@ Public Class frmMapageChamp
     End Sub
 
     Private Sub btnOuvrir_Click(sender As Object, e As EventArgs) Handles btnOuvrir.Click
+        DataGridView1.Rows.Clear()
         Try
             With OpenFileDialog1
                 .Filter = "Fichier mapping (.map)|*.map|All(*.*)|*.*"
                 .Title = "Ouvrir un fichier mapping"
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
-                    Using fileReader As System.IO.StreamReader = New System.IO.StreamReader(SaveFileDialog1.FileName)
+                    Using fileReader As System.IO.StreamReader = New System.IO.StreamReader(OpenFileDialog1.FileName)
                         Dim FileContent As String = fileReader.ReadToEnd()
-                        MessageBox.Show(FileContent)
+                        For Each item As String In FileContent.Split(vbCrLf)
+                            If item <> "" Then
+                                Dim items As String() = item.Split(",")
+                                Dim row As String() = New String() {$"{items(1)}", $"{items(0)}"}
+                                DataGridView1.Rows.Add(row)
+                            End If
+                        Next
                     End Using
                 End If
             End With

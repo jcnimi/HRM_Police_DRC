@@ -58,9 +58,11 @@ Partial Class frmRapports
         Me.GroupBox4.Controls.Add(Me.lblSep)
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Controls.Add(Me.cboFormatValeur)
-        Me.GroupBox4.Location = New System.Drawing.Point(716, 12)
+        Me.GroupBox4.Location = New System.Drawing.Point(501, 7)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(324, 121)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox4.Size = New System.Drawing.Size(227, 73)
         Me.GroupBox4.TabIndex = 13
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Format"
@@ -71,27 +73,30 @@ Partial Class frmRapports
         Me.cboFormatSeparateur.Enabled = False
         Me.cboFormatSeparateur.FormattingEnabled = True
         Me.cboFormatSeparateur.Items.AddRange(New Object() {"Virgule (,)", "Point virgule (;)", "Tabulation", "Espace"})
-        Me.cboFormatSeparateur.Location = New System.Drawing.Point(118, 69)
+        Me.cboFormatSeparateur.Location = New System.Drawing.Point(83, 41)
+        Me.cboFormatSeparateur.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboFormatSeparateur.Name = "cboFormatSeparateur"
-        Me.cboFormatSeparateur.Size = New System.Drawing.Size(190, 33)
+        Me.cboFormatSeparateur.Size = New System.Drawing.Size(134, 23)
         Me.cboFormatSeparateur.TabIndex = 8
         '
         'lblSep
         '
         Me.lblSep.AutoSize = True
         Me.lblSep.Enabled = False
-        Me.lblSep.Location = New System.Drawing.Point(11, 72)
+        Me.lblSep.Location = New System.Drawing.Point(8, 43)
+        Me.lblSep.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblSep.Name = "lblSep"
-        Me.lblSep.Size = New System.Drawing.Size(101, 25)
+        Me.lblSep.Size = New System.Drawing.Size(66, 15)
         Me.lblSep.TabIndex = 7
         Me.lblSep.Text = "Separateur:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(11, 35)
+        Me.Label3.Location = New System.Drawing.Point(8, 21)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 25)
+        Me.Label3.Size = New System.Drawing.Size(42, 15)
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Valeur:"
         '
@@ -100,9 +105,10 @@ Partial Class frmRapports
         Me.cboFormatValeur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFormatValeur.FormattingEnabled = True
         Me.cboFormatValeur.Items.AddRange(New Object() {"Excel", "CSV"})
-        Me.cboFormatValeur.Location = New System.Drawing.Point(118, 29)
+        Me.cboFormatValeur.Location = New System.Drawing.Point(83, 17)
+        Me.cboFormatValeur.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cboFormatValeur.Name = "cboFormatValeur"
-        Me.cboFormatValeur.Size = New System.Drawing.Size(190, 33)
+        Me.cboFormatValeur.Size = New System.Drawing.Size(134, 23)
         Me.cboFormatValeur.TabIndex = 5
         '
         'grpValue
@@ -111,9 +117,11 @@ Partial Class frmRapports
         Me.grpValue.Controls.Add(Me.dtpTo)
         Me.grpValue.Controls.Add(Me.dtpFrom)
         Me.grpValue.Controls.Add(Me.lbldtDe)
-        Me.grpValue.Location = New System.Drawing.Point(18, 12)
+        Me.grpValue.Location = New System.Drawing.Point(13, 7)
+        Me.grpValue.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.grpValue.Name = "grpValue"
-        Me.grpValue.Size = New System.Drawing.Size(354, 121)
+        Me.grpValue.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grpValue.Size = New System.Drawing.Size(248, 73)
         Me.grpValue.TabIndex = 12
         Me.grpValue.TabStop = False
         Me.grpValue.Text = "Date d'impression"
@@ -122,33 +130,37 @@ Partial Class frmRapports
         '
         Me.lbldtA.AutoSize = True
         Me.lbldtA.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lbldtA.Location = New System.Drawing.Point(23, 75)
+        Me.lbldtA.Location = New System.Drawing.Point(16, 45)
+        Me.lbldtA.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbldtA.Name = "lbldtA"
-        Me.lbldtA.Size = New System.Drawing.Size(22, 25)
+        Me.lbldtA.Size = New System.Drawing.Size(13, 15)
         Me.lbldtA.TabIndex = 9
         Me.lbldtA.Text = "à"
         '
         'dtpTo
         '
-        Me.dtpTo.Location = New System.Drawing.Point(64, 71)
+        Me.dtpTo.Location = New System.Drawing.Point(45, 43)
+        Me.dtpTo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dtpTo.Name = "dtpTo"
-        Me.dtpTo.Size = New System.Drawing.Size(270, 31)
+        Me.dtpTo.Size = New System.Drawing.Size(190, 23)
         Me.dtpTo.TabIndex = 8
         '
         'dtpFrom
         '
-        Me.dtpFrom.Location = New System.Drawing.Point(63, 27)
+        Me.dtpFrom.Location = New System.Drawing.Point(44, 16)
+        Me.dtpFrom.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dtpFrom.Name = "dtpFrom"
-        Me.dtpFrom.Size = New System.Drawing.Size(271, 31)
+        Me.dtpFrom.Size = New System.Drawing.Size(191, 23)
         Me.dtpFrom.TabIndex = 7
         '
         'lbldtDe
         '
         Me.lbldtDe.AutoSize = True
         Me.lbldtDe.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.lbldtDe.Location = New System.Drawing.Point(22, 27)
+        Me.lbldtDe.Location = New System.Drawing.Point(15, 16)
+        Me.lbldtDe.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbldtDe.Name = "lbldtDe"
-        Me.lbldtDe.Size = New System.Drawing.Size(35, 25)
+        Me.lbldtDe.Size = New System.Drawing.Size(23, 15)
         Me.lbldtDe.TabIndex = 4
         Me.lbldtDe.Text = "De"
         '
@@ -158,9 +170,11 @@ Partial Class frmRapports
         Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.Controls.Add(Me.cmbCriterion)
         Me.GroupBox3.Controls.Add(Me.cmbValue)
-        Me.GroupBox3.Location = New System.Drawing.Point(381, 12)
+        Me.GroupBox3.Location = New System.Drawing.Point(267, 7)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(329, 121)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Size = New System.Drawing.Size(230, 73)
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Critère"
@@ -168,18 +182,20 @@ Partial Class frmRapports
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(20, 71)
+        Me.Label2.Location = New System.Drawing.Point(14, 43)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(63, 25)
+        Me.Label2.Size = New System.Drawing.Size(42, 15)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "valeur:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 26)
+        Me.Label1.Location = New System.Drawing.Point(14, 16)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(67, 25)
+        Me.Label1.Size = New System.Drawing.Size(45, 15)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Critère:"
         '
@@ -187,25 +203,29 @@ Partial Class frmRapports
         '
         Me.cmbCriterion.FormattingEnabled = True
         Me.cmbCriterion.Items.AddRange(New Object() {"Fonction", "Grade", "Matricule"})
-        Me.cmbCriterion.Location = New System.Drawing.Point(93, 24)
+        Me.cmbCriterion.Location = New System.Drawing.Point(65, 14)
+        Me.cmbCriterion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmbCriterion.Name = "cmbCriterion"
-        Me.cmbCriterion.Size = New System.Drawing.Size(218, 33)
+        Me.cmbCriterion.Size = New System.Drawing.Size(154, 23)
         Me.cmbCriterion.TabIndex = 1
         '
         'cmbValue
         '
         Me.cmbValue.FormattingEnabled = True
-        Me.cmbValue.Location = New System.Drawing.Point(93, 67)
+        Me.cmbValue.Location = New System.Drawing.Point(65, 40)
+        Me.cmbValue.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmbValue.Name = "cmbValue"
-        Me.cmbValue.Size = New System.Drawing.Size(218, 33)
+        Me.cmbValue.Size = New System.Drawing.Size(154, 23)
         Me.cmbValue.TabIndex = 2
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 132)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 79)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1027, 352)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(719, 211)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Aperçu"
@@ -213,11 +233,12 @@ Partial Class frmRapports
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(20, 30)
+        Me.DataGridView1.Location = New System.Drawing.Point(14, 18)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 62
         Me.DataGridView1.RowTemplate.Height = 33
-        Me.DataGridView1.Size = New System.Drawing.Size(992, 304)
+        Me.DataGridView1.Size = New System.Drawing.Size(694, 182)
         Me.DataGridView1.TabIndex = 0
         '
         'GroupBox2
@@ -225,51 +246,58 @@ Partial Class frmRapports
         Me.GroupBox2.Controls.Add(Me.btnExporter)
         Me.GroupBox2.Controls.Add(Me.btnAnnuler)
         Me.GroupBox2.Controls.Add(Me.btnFiltrer)
-        Me.GroupBox2.Location = New System.Drawing.Point(1047, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(733, 7)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(150, 472)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Size = New System.Drawing.Size(105, 283)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         '
         'btnExporter
         '
         Me.btnExporter.Enabled = False
-        Me.btnExporter.Location = New System.Drawing.Point(16, 100)
+        Me.btnExporter.Location = New System.Drawing.Point(11, 60)
+        Me.btnExporter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnExporter.Name = "btnExporter"
-        Me.btnExporter.Size = New System.Drawing.Size(112, 34)
+        Me.btnExporter.Size = New System.Drawing.Size(78, 20)
         Me.btnExporter.TabIndex = 2
         Me.btnExporter.Text = "Exporter"
         Me.btnExporter.UseVisualStyleBackColor = True
         '
         'btnAnnuler
         '
-        Me.btnAnnuler.Location = New System.Drawing.Point(16, 174)
+        Me.btnAnnuler.Location = New System.Drawing.Point(11, 104)
+        Me.btnAnnuler.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(112, 34)
+        Me.btnAnnuler.Size = New System.Drawing.Size(78, 20)
         Me.btnAnnuler.TabIndex = 1
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = True
         '
         'btnFiltrer
         '
-        Me.btnFiltrer.Location = New System.Drawing.Point(16, 35)
+        Me.btnFiltrer.Location = New System.Drawing.Point(11, 21)
+        Me.btnFiltrer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnFiltrer.Name = "btnFiltrer"
-        Me.btnFiltrer.Size = New System.Drawing.Size(112, 34)
+        Me.btnFiltrer.Size = New System.Drawing.Size(78, 20)
         Me.btnFiltrer.TabIndex = 0
         Me.btnFiltrer.Text = "Filtrer"
         Me.btnFiltrer.UseVisualStyleBackColor = True
         '
         'frmRapports
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1207, 496)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(845, 298)
         Me.Controls.Add(Me.grpValue)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmRapports"

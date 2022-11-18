@@ -21,7 +21,10 @@ Public Class frmImportData
     End Sub
 
     Private Sub frmImportData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        cboSourceFormat.SelectedItem = "Excel"
+        cboSourceFormat.Enabled = False
+        txtImageFolder.Text = Application.StartupPath
+        txtLeftFingerPrintFolder.Text = Application.StartupPath
     End Sub
 
     Private Sub btnAnnuler_Click(sender As Object, e As EventArgs) Handles btnAnnuler.Click
@@ -29,6 +32,11 @@ Public Class frmImportData
     End Sub
 
     Private Sub btnImporter_Click(sender As Object, e As EventArgs) Handles btnImporter.Click
+        'get input
+        sourceFileFormat = cboSourceFormat.Text
+        sourceFilePath = txtSourceFilePath.Text
+        imgFolder = txtImageFolder.Text
+        fingerPrintFolder = txtLeftFingerPrintFolder.Text
         If MappingList Is Nothing Then
             MessageBox.Show("Mapping enexistant, veuillez d'abord cliquer sur Mapping")
             Exit Sub
@@ -36,9 +44,7 @@ Public Class frmImportData
         If sourceFileFormat = "Excel" Then
             importExcel()
         End If
-
     End Sub
-
 
     Private Sub btnImageFolder_Click(sender As Object, e As EventArgs) Handles btnImageFolder.Click
         If FolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
@@ -63,8 +69,11 @@ Public Class frmImportData
     End Sub
 
 
-    Private Function getSqltParameters(fileField As String, value As String) As SqlParameter
-        Dim dbField As String = getMappingByFile(fileField)
+    Private Function getSqltParameter(fileField As String, value As String) As SqlParameter
+        Dim dbField As String = getDBFieldMappingByFileField(fileField)
+        If dbField = "" Then
+            Return Nothing
+        End If
         Dim param As SqlParameter
         Dim imgFields As List(Of String)
         imgFields = New List(Of String)({"photo", "signature", "empreinte_gauche", "empreinte_droite"})
@@ -79,13 +88,93 @@ Public Class frmImportData
         Else
             param = New SqlParameter($"@{dbField}", SqlDbType.NVarChar)
             If value <> "" Then
-                param.Value = value
+                'particular case for lieu_naissance, territoire_origine, secteur_origine, province_origine, 
+                'fonction, unite_agent, regroupement, province_recrutement, commissariat_recrutement
+                Dim foreighKeyList As List(Of String) = New List(Of String)({"lieu_naissance", "territoire_origine" _
+                    , "secteur_origine", "province_origine", "fonction", "unite_agent", "regroupement" _
+                    , "province_recrutement", "commissariat_recrutement", "grade"})
+                If foreighKeyList.Contains(dbField) Then
+
+                    Dim foreignKey As String = getForeignKeyValue(dbField, value)
+                    If foreignKey <> "" Then
+                        param.Value = foreignKey
+                    Else
+                        param.Value = System.DBNull.Value
+                    End If
+
+                Else
+                    param.Value = value
+                End If
+
             Else
                 param.Value = System.DBNull.Value
             End If
         End If
 
         Return param
+    End Function
+
+    Public Function getForeignKeyValue(ByVal field As String, ByVal value As String) As String
+        Dim query As String = ""
+        Dim returnValue As String = ""
+        If field = "lieu_naissance" Then
+            query = $"select top(1) id_lieu id
+                    from lieu
+                    where nom = '{value}'
+                    "
+        ElseIf field = "territoire_origine" Then
+            query = $"select top(1) id_territoire id
+                    from territoire
+                    where nom = '{value}'
+                    "
+        ElseIf field = "secteur_origine" Then
+            query = $"select top(1) id_secteur id
+                    from secteur
+                    where nom = '{value}'
+                    "
+        ElseIf field = "province_origine" Then
+            query = $"select top(1) id_province id
+                    from province
+                    where nom = '{value}'
+                    "
+        ElseIf field = "fonction" Then
+            query = $"select top(1) id_fonction id
+                    from fonction
+                    where description = '{value}'
+                    "
+        ElseIf field = "unite_agent" Then
+            query = $"select top(1) id_unite id
+                    from unite
+                    where description = '{value}'
+                    "
+        ElseIf field = "regroupement" Then
+            query = $"select top(1) id_village id
+                    from village
+                    where description = '{value}'
+                    "
+        ElseIf field = "province_recrutement" Then
+            query = $"select top(1) id_province id
+                    from province
+                    where nom = '{value}'
+                    "
+        ElseIf field = "commissariat_recrutement" Then
+            query = $"Select Top(1) id_commissariat id
+                    From commissariat
+                    Where description = '{value}'
+                    "
+        ElseIf field = "grade" Then
+            query = $"Select Top(1) id_grade id
+                    From grade
+                    Where description = '{value}'
+                    "
+        End If
+        Using queryResult As SqlDataReader = getData(query)
+            If queryResult.HasRows() Then
+                queryResult.Read()
+                returnValue = queryResult("id").ToString()
+            End If
+        End Using
+        Return returnValue
     End Function
 
     Private Function getMemoryStream(ByRef img As Image) As Byte()
@@ -120,43 +209,49 @@ Public Class frmImportData
     End Function
 
     Private Sub importExcel()
-        Dim query As String
+        Dim paramList As List(Of SqlParameter)
         Dim xlApp As Excel.Application = New Excel.Application
         Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(sourceFilePath)
         Dim xlWorkSheet As Excel.Worksheet = CType(xlWorkBook.Worksheets("sheet1"), Excel.Worksheet)
         Dim Range As Excel.Range = xlWorkSheet.UsedRange
 
         ProgressBar1.Visible = True
-        ProgressBar1.Minimum = 0
-
-        'get input
-        sourceFileFormat = cboSourceFormat.Text
-        sourceFilePath = txtSourceFilePath.Text
-        imgFolder = txtImageFolder.Text
-        fingerPrintFolder = txtLeftFingerPrintFolder.Text
+        ProgressBar1.Minimum = 2
+        ProgressBar1.Maximum = Range.Rows.Count
         Try
-
-            'read the source file to get the colum name
-
-            For rCnt = 1 To Range.Rows.Count
+            For rCnt = 2 To Range.Rows.Count
+                paramList = New List(Of SqlParameter)()
                 For cCnt = 1 To Range.Columns.Count
-                    Obj = CType(Range.Cells(rCnt, cCnt), Excel.Range)
-                    ' Obj.value now contains the value in the cell.. 
+                    Dim Obj As Excel.Range = CType(Range.Cells(rCnt, cCnt), Excel.Range)
+                    Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt), Obj.Text)
+                    If param IsNot Nothing Then
+                        paramList.Add(param)
+                    End If
                 Next
+                saveDataSP("[sp_InsertAgent]", paramList)
+                ProgressBar1.Value = rCnt
+                Me.Text = $"Importation des données - [{Math.Round((rCnt / Range.Rows.Count) * 100, 2)} %]"
+                Application.DoEvents()
             Next
-
-            For cCnt = 1 To Range.Columns.Count
-                'xlWorkSheet.Cells(1, k + 1)
-                Dim Obj As Excel.Range = CType(Range.Cells(1, cCnt), Excel.Range)
-                fileCol.Items.Add(Obj.Text)
-                fileFieldList.Add(Obj.Text)
-            Next
-
-
-
+            MessageBox.Show("Importation des données reussies")
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
     End Sub
 
+    Private Sub txtLeftFingerPrintFolder_TextChanged(sender As Object, e As EventArgs) Handles txtLeftFingerPrintFolder.TextChanged
+        If cboSourceFormat.Text <> "" AndAlso txtSourceFilePath.Text <> "" AndAlso
+                txtImageFolder.Text <> "" AndAlso txtLeftFingerPrintFolder.Text <> "" Then
+            btnImporter.Enabled = True
+            btnMapping.Enabled = True
+        End If
+    End Sub
+
+    Private Sub txtSourceFilePath_TextChanged(sender As Object, e As EventArgs) Handles txtSourceFilePath.TextChanged
+        If cboSourceFormat.Text <> "" AndAlso txtSourceFilePath.Text <> "" AndAlso
+                txtImageFolder.Text <> "" AndAlso txtLeftFingerPrintFolder.Text <> "" Then
+            btnImporter.Enabled = True
+            btnMapping.Enabled = True
+        End If
+    End Sub
 End Class

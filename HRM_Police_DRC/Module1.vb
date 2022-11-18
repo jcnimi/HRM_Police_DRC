@@ -31,6 +31,19 @@ Module Module1
         End Using
     End Sub
 
+    Public Sub saveDataSP(ByVal procName As String, dbParam As List(Of SqlParameter))
+        Using cmd As New SqlCommand(procName, conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            'if param not null, add
+            If dbParam IsNot Nothing AndAlso dbParam.Count > 0 Then
+                For Each e As SqlParameter In dbParam
+                    cmd.Parameters.Add(e)
+                Next
+            End If
+            cmd.ExecuteNonQuery()
+        End Using
+    End Sub
+
     Public Function getData(ByVal queryString As String) As SqlDataReader
         Using cmd As New SqlCommand(queryString, conn)
             Try
@@ -66,7 +79,6 @@ Module Module1
     End Sub
 
     Sub Main()
-
         Application.EnableVisualStyles()
         Application.SetCompatibleTextRenderingDefault(False)
 
@@ -146,23 +158,15 @@ Module Module1
         Return retString
     End Function
 
-    'get the file colum equivalent to the provided db colum
-    Public Function getMappingByDB(ByVal db As String) As String
-        For Each item As Mapping In MappingList
-            If db = item.dbFieldName Then
-                Return item.fileFieldName
-            End If
-        Next
-    End Function
-
-
     'get the db colum equivalent to the provided file colum
-    Public Function getMappingByFile(ByVal file As String) As String
+    Public Function getDBFieldMappingByFileField(ByVal file As String) As String
+        Dim returnValue As String = ""
         For Each item As Mapping In MappingList
             If file = item.fileFieldName Then
-                Return item.dbFieldName
+                returnValue = item.dbFieldName
             End If
         Next
+        Return returnValue
     End Function
 End Module
 

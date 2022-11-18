@@ -38,18 +38,21 @@ Partial Class frmUserList
         Me.GroupBox2.Controls.Add(Me.btnAnnuler)
         Me.GroupBox2.Controls.Add(Me.btnModifier)
         Me.GroupBox2.Controls.Add(Me.btnAjouter)
-        Me.GroupBox2.Location = New System.Drawing.Point(1015, 9)
+        Me.GroupBox2.Location = New System.Drawing.Point(710, 5)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(184, 477)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Size = New System.Drawing.Size(129, 286)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Actions"
         '
         'btnAnnuler
         '
-        Me.btnAnnuler.Location = New System.Drawing.Point(22, 175)
+        Me.btnAnnuler.Location = New System.Drawing.Point(15, 105)
+        Me.btnAnnuler.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(141, 34)
+        Me.btnAnnuler.Size = New System.Drawing.Size(99, 20)
         Me.btnAnnuler.TabIndex = 3
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = True
@@ -57,18 +60,20 @@ Partial Class frmUserList
         'btnModifier
         '
         Me.btnModifier.Enabled = False
-        Me.btnModifier.Location = New System.Drawing.Point(22, 113)
+        Me.btnModifier.Location = New System.Drawing.Point(15, 68)
+        Me.btnModifier.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnModifier.Name = "btnModifier"
-        Me.btnModifier.Size = New System.Drawing.Size(141, 34)
+        Me.btnModifier.Size = New System.Drawing.Size(99, 20)
         Me.btnModifier.TabIndex = 2
         Me.btnModifier.Text = "Modifier"
         Me.btnModifier.UseVisualStyleBackColor = True
         '
         'btnAjouter
         '
-        Me.btnAjouter.Location = New System.Drawing.Point(22, 53)
+        Me.btnAjouter.Location = New System.Drawing.Point(15, 32)
+        Me.btnAjouter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnAjouter.Name = "btnAjouter"
-        Me.btnAjouter.Size = New System.Drawing.Size(145, 34)
+        Me.btnAjouter.Size = New System.Drawing.Size(102, 20)
         Me.btnAjouter.TabIndex = 0
         Me.btnAjouter.Text = "Ajouter"
         Me.btnAjouter.UseVisualStyleBackColor = True
@@ -76,9 +81,11 @@ Partial Class frmUserList
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.dgvUsers)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 8)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 5)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(997, 477)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(698, 286)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Utilisateurs"
@@ -88,22 +95,25 @@ Partial Class frmUserList
         Me.dgvUsers.AllowUserToAddRows = False
         Me.dgvUsers.AllowUserToDeleteRows = False
         Me.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvUsers.Location = New System.Drawing.Point(9, 27)
+        Me.dgvUsers.Location = New System.Drawing.Point(6, 16)
+        Me.dgvUsers.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.dgvUsers.MultiSelect = False
         Me.dgvUsers.Name = "dgvUsers"
         Me.dgvUsers.ReadOnly = True
         Me.dgvUsers.RowHeadersWidth = 62
         Me.dgvUsers.RowTemplate.Height = 33
-        Me.dgvUsers.Size = New System.Drawing.Size(982, 433)
+        Me.dgvUsers.Size = New System.Drawing.Size(687, 260)
         Me.dgvUsers.TabIndex = 0
         '
         'frmUserList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1211, 496)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(848, 298)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmUserList"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

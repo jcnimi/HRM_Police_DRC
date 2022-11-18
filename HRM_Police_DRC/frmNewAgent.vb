@@ -698,10 +698,6 @@ Public Class frmNewAgent
         loadComboBox(cmbFonction, query)
     End Sub
 
-    'user selected
-    Private Sub cmbTerritoireOrigine_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cmbTerritoireOrigine.SelectionChangeCommitted
-
-    End Sub
 
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles picAddLieu.Click
         'ajouter lieu de naissance

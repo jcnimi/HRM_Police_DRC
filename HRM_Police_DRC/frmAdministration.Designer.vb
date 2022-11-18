@@ -32,9 +32,11 @@ Partial Class frmAdministration
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.picUsers)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 7)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(751, 269)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(526, 161)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Administration du système"
@@ -43,23 +45,26 @@ Partial Class frmAdministration
         '
         Me.picUsers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.picUsers.Image = CType(resources.GetObject("picUsers.Image"), System.Drawing.Image)
-        Me.picUsers.Location = New System.Drawing.Point(19, 46)
+        Me.picUsers.Location = New System.Drawing.Point(13, 28)
+        Me.picUsers.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.picUsers.Name = "picUsers"
-        Me.picUsers.Size = New System.Drawing.Size(179, 180)
+        Me.picUsers.Size = New System.Drawing.Size(126, 110)
         Me.picUsers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picUsers.TabIndex = 0
         Me.picUsers.TabStop = False
         '
-        'frmParametres
+        'frmAdministration
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(777, 295)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(544, 177)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmParametres"
+        Me.Name = "frmAdministration"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

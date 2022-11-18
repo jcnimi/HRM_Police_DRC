@@ -36,36 +36,40 @@ Partial Class frmWebcam
         'PictureBox1
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(8, 7)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(518, 426)
+        Me.PictureBox1.Size = New System.Drawing.Size(364, 257)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'btnStart
         '
-        Me.btnStart.Location = New System.Drawing.Point(557, 24)
+        Me.btnStart.Location = New System.Drawing.Point(390, 14)
+        Me.btnStart.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnStart.Name = "btnStart"
-        Me.btnStart.Size = New System.Drawing.Size(112, 34)
+        Me.btnStart.Size = New System.Drawing.Size(78, 20)
         Me.btnStart.TabIndex = 1
         Me.btnStart.Text = "Demarrer"
         Me.btnStart.UseVisualStyleBackColor = True
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(557, 156)
+        Me.btnSave.Location = New System.Drawing.Point(390, 94)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(112, 34)
+        Me.btnSave.Size = New System.Drawing.Size(78, 20)
         Me.btnSave.TabIndex = 2
         Me.btnSave.Text = "Enregistrer"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'btnStop
         '
-        Me.btnStop.Location = New System.Drawing.Point(557, 88)
+        Me.btnStop.Location = New System.Drawing.Point(390, 53)
+        Me.btnStop.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(112, 34)
+        Me.btnStop.Size = New System.Drawing.Size(78, 20)
         Me.btnStop.TabIndex = 3
         Me.btnStop.Text = "Arreter"
         Me.btnStop.UseVisualStyleBackColor = True
@@ -75,23 +79,26 @@ Partial Class frmWebcam
         '
         'btnValidate
         '
-        Me.btnValidate.Location = New System.Drawing.Point(557, 214)
+        Me.btnValidate.Location = New System.Drawing.Point(390, 128)
+        Me.btnValidate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnValidate.Name = "btnValidate"
-        Me.btnValidate.Size = New System.Drawing.Size(112, 34)
+        Me.btnValidate.Size = New System.Drawing.Size(78, 20)
         Me.btnValidate.TabIndex = 4
         Me.btnValidate.Text = "Valider"
         Me.btnValidate.UseVisualStyleBackColor = True
         '
         'frmWebcam
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(685, 450)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(480, 270)
         Me.Controls.Add(Me.btnValidate)
         Me.Controls.Add(Me.btnStop)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.PictureBox1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmWebcam"

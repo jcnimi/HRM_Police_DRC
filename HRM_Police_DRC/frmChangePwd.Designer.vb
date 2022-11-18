@@ -44,88 +44,101 @@ Partial Class frmChangePwd
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, -1)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, -1)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(550, 220)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(385, 132)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'btnValider
         '
-        Me.btnValider.Location = New System.Drawing.Point(414, 166)
+        Me.btnValider.Location = New System.Drawing.Point(290, 100)
+        Me.btnValider.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnValider.Name = "btnValider"
-        Me.btnValider.Size = New System.Drawing.Size(112, 34)
+        Me.btnValider.Size = New System.Drawing.Size(78, 24)
         Me.btnValider.TabIndex = 7
         Me.btnValider.Text = "valider"
         Me.btnValider.UseVisualStyleBackColor = True
         '
         'btnAnnuler
         '
-        Me.btnAnnuler.Location = New System.Drawing.Point(276, 166)
+        Me.btnAnnuler.Location = New System.Drawing.Point(193, 100)
+        Me.btnAnnuler.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(112, 34)
+        Me.btnAnnuler.Size = New System.Drawing.Size(78, 24)
         Me.btnAnnuler.TabIndex = 6
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = True
         '
         'txtNewPwdRepeat
         '
-        Me.txtNewPwdRepeat.Location = New System.Drawing.Point(240, 111)
+        Me.txtNewPwdRepeat.Location = New System.Drawing.Point(168, 67)
+        Me.txtNewPwdRepeat.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtNewPwdRepeat.Name = "txtNewPwdRepeat"
-        Me.txtNewPwdRepeat.Size = New System.Drawing.Size(286, 31)
+        Me.txtNewPwdRepeat.Size = New System.Drawing.Size(201, 23)
         Me.txtNewPwdRepeat.TabIndex = 5
         Me.txtNewPwdRepeat.UseSystemPasswordChar = True
         '
         'txtnewPwd
         '
-        Me.txtnewPwd.Location = New System.Drawing.Point(240, 71)
+        Me.txtnewPwd.Location = New System.Drawing.Point(168, 43)
+        Me.txtnewPwd.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtnewPwd.Name = "txtnewPwd"
-        Me.txtnewPwd.Size = New System.Drawing.Size(286, 31)
+        Me.txtnewPwd.Size = New System.Drawing.Size(201, 23)
         Me.txtnewPwd.TabIndex = 4
         Me.txtnewPwd.UseSystemPasswordChar = True
         '
         'txtOldPwd
         '
-        Me.txtOldPwd.Location = New System.Drawing.Point(240, 31)
+        Me.txtOldPwd.Location = New System.Drawing.Point(168, 19)
+        Me.txtOldPwd.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtOldPwd.Name = "txtOldPwd"
-        Me.txtOldPwd.Size = New System.Drawing.Size(286, 31)
+        Me.txtOldPwd.Size = New System.Drawing.Size(201, 23)
         Me.txtOldPwd.TabIndex = 3
         Me.txtOldPwd.UseSystemPasswordChar = True
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(23, 114)
+        Me.Label3.Location = New System.Drawing.Point(16, 68)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(171, 25)
+        Me.Label3.Size = New System.Drawing.Size(113, 15)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Rasaisir le nouveau :"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(23, 76)
+        Me.Label2.Location = New System.Drawing.Point(16, 46)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(200, 25)
+        Me.Label2.Size = New System.Drawing.Size(131, 15)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Nouveau mot de passe:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(23, 38)
+        Me.Label1.Location = New System.Drawing.Point(16, 23)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(182, 25)
+        Me.Label1.Size = New System.Drawing.Size(120, 15)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Ancien Mot de passe:"
         '
         'frmChangePwd
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(577, 224)
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ClientSize = New System.Drawing.Size(404, 137)
+        Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmChangePwd"

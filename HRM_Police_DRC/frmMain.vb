@@ -12,10 +12,10 @@ Public Class frmMain
     Dim selectedRow As DataGridViewRow
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = Me.Text + $" - [{userFullName}]"
-        Me.Width = GroupBox1.Width + 40
-        Me.Height = 450
-        'Me.StartPosition = FormStartPosition.CenterScreen
-        Me.Left = 30
+        'Me.Width = GroupBox1.Width + 40
+        'Me.Height = 450
+        Me.StartPosition = FormStartPosition.CenterScreen
+        'Me.Left = 30
 
         'tooltip
         Dim tt As New ToolTip()
