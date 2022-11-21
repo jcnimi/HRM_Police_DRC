@@ -1,10 +1,10 @@
 {
 	"db" : {
-		"windows_authetication": "no",
-		"Server": "10.64.38.121\\FINCASANTE",
+		"windows_authetication": "yes",
+		"Server": "CDGMBITL22\\SQLN",
 		"Database": "hrm_police",
-		"UserId": "fsa",
-		"Password": "finca4321"
+		"UserId": "sa",
+		"Password": "pwd!s3cr3t$$"
 	},
 	"pasword_policy":{
 		"max_length": 50,

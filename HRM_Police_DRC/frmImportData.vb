@@ -4,12 +4,14 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports Emgu.CV.Fuzzy.FuzzyInvoke
 Imports Microsoft.Office.Interop
 Imports Newtonsoft.Json.Linq
+Imports SourceAFIS
 
 Public Class frmImportData
     Dim sourceFileFormat As String = ""
     Dim sourceFilePath As String = ""
     Dim imgFolder As String = ""
     Dim fingerPrintFolder As String = ""
+    Dim separator As String
     Private Sub btnDataFile_Click(sender As Object, e As EventArgs) Handles btnDataFilePath.Click
         With OpenFileDialog1
             .Filter = "Excel (.xslx)|*.xlsx|CSV (.csv)|*.csv"
@@ -21,8 +23,8 @@ Public Class frmImportData
     End Sub
 
     Private Sub frmImportData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cboSourceFormat.SelectedItem = "Excel"
-        cboSourceFormat.Enabled = False
+        'cboSourceFormat.SelectedItem = "Excel"
+        'cboSourceFormat.Enabled = False
         txtImageFolder.Text = Application.StartupPath
         txtLeftFingerPrintFolder.Text = Application.StartupPath
     End Sub
@@ -32,17 +34,31 @@ Public Class frmImportData
     End Sub
 
     Private Sub btnImporter_Click(sender As Object, e As EventArgs) Handles btnImporter.Click
-        'get input
-        sourceFileFormat = cboSourceFormat.Text
-        sourceFilePath = txtSourceFilePath.Text
-        imgFolder = txtImageFolder.Text
-        fingerPrintFolder = txtLeftFingerPrintFolder.Text
-        If MappingList Is Nothing Then
-            MessageBox.Show("Mapping enexistant, veuillez d'abord cliquer sur Mapping")
-            Exit Sub
-        End If
-        If sourceFileFormat = "Excel" Then
-            importExcel()
+        Dim msg As String = "Vous êtes sur le point d'importer les enregistrements dans la base de données, cliquez sur oui pour continuer et non pour annuler"
+        If MessageBox.Show(msg, "Confirmation", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            'get input
+            sourceFileFormat = cboSourceFormat.Text
+            sourceFilePath = txtSourceFilePath.Text
+            imgFolder = txtImageFolder.Text
+            fingerPrintFolder = txtLeftFingerPrintFolder.Text
+            If sourceFileFormat = "CSV(Separateur Virgule)" Then
+                separator = ","
+            ElseIf sourceFileFormat = "CSV(Separateur Point Virgule)" Then
+                separator = ";"
+            ElseIf sourceFileFormat = "CSV(Separateur Tabulation)" Then
+                separator = vbTab
+            ElseIf sourceFileFormat = "CSV(Separateur Espace)" Then
+                separator = " "
+            End If
+            If MappingList Is Nothing Then
+                MessageBox.Show("Mapping enexistant, veuillez d'abord cliquer sur Mapping")
+                Exit Sub
+            End If
+            If sourceFileFormat = "Excel" Then
+                importExcel()
+            Else
+                importCSV()
+            End If
         End If
     End Sub
 
@@ -61,12 +77,59 @@ Public Class frmImportData
     End Sub
 
     Private Sub btnMapping_Click(sender As Object, e As EventArgs) Handles btnMapping.Click
+        'get input
+        sourceFileFormat = cboSourceFormat.Text
+        sourceFilePath = txtSourceFilePath.Text
+        imgFolder = txtImageFolder.Text
+        fingerPrintFolder = txtLeftFingerPrintFolder.Text
+        If sourceFileFormat = "CSV(Separateur Virgule)" Then
+            separator = ","
+        ElseIf sourceFileFormat = "CSV(Separateur Point Virgule)" Then
+            separator = ";"
+        ElseIf sourceFileFormat = "CSV(Separateur Tabulation)" Then
+            separator = vbTab
+        ElseIf sourceFileFormat = "CSV(Separateur Espace)" Then
+            separator = " "
+        End If
         Me.Cursor = Cursors.WaitCursor
         Dim frm As New frmMapageChamp()
         frm.importSourceFilePath = txtSourceFilePath.Text
+        frm.seperator = separator
+        frm.sourceFormat = sourceFileFormat
         frm.ShowDialog()
         Me.Cursor = Cursors.Default
     End Sub
+
+
+    Private Function getTemplateSqltParameter(fileField As String, value As String) As SqlParameter
+        Dim dbField As String = getDBFieldMappingByFileField(fileField)
+        Dim templateField As String = ""
+        Dim param As SqlParameter = Nothing
+        Dim img As Image = Nothing
+        Dim matcher As ImageMatcher = New ImageMatcher()
+        If dbField = "" Then
+            Return Nothing
+        End If
+        If dbField = "empreinte_gauche" Then
+            templateField = "empreinte_gauche_template"
+        ElseIf dbField = "empreinte_droite" Then
+            templateField = "empreinte_droite_template"
+        Else
+            Return Nothing
+        End If
+
+        param = New SqlParameter($"@{templateField}", SqlDbType.VarBinary)
+        Dim path As String = $"{imgFolder}\{value}"
+        img = getImageFromFile(path)
+        If img IsNot Nothing Then
+            Dim encoded = matcher.encodeFingerPrintImage(img)
+            Dim serial = SerialiseFingerPrintTemplate(matcher.getTemplate(encoded))
+            param.Value = serial
+        Else
+            param.Value = System.DBNull.Value
+        End If
+        Return param
+    End Function
 
 
     Private Function getSqltParameter(fileField As String, value As String) As SqlParameter
@@ -77,7 +140,7 @@ Public Class frmImportData
         Dim param As SqlParameter
         Dim imgFields As List(Of String)
         imgFields = New List(Of String)({"photo", "signature", "empreinte_gauche", "empreinte_droite"})
-        If imgFields.Contains(fileField) Then
+        If imgFields.Contains(dbField) Then
             param = New SqlParameter($"@{dbField}", SqlDbType.Image)
             If value <> "" Then
                 Dim path As String = $"{imgFolder}\{value}"
@@ -223,9 +286,19 @@ Public Class frmImportData
                 paramList = New List(Of SqlParameter)()
                 For cCnt = 1 To Range.Columns.Count
                     Dim Obj As Excel.Range = CType(Range.Cells(rCnt, cCnt), Excel.Range)
+                    'check if matricule is blank
+                    If getDBFieldMappingByFileField(fileFieldList(cCnt)) = "matricule" And Obj.Text = "" Then
+                        'matricule vide, donc passe à l'iteration suivante
+                        Continue For
+                    End If
                     Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt), Obj.Text)
                     If param IsNot Nothing Then
                         paramList.Add(param)
+                        'add template in case of fingerprint
+                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt), Obj.Text)
+                        If param2 IsNot Nothing Then
+                            paramList.Add(param2)
+                        End If
                     End If
                 Next
                 saveDataSP("[sp_InsertAgent]", paramList)
@@ -238,6 +311,51 @@ Public Class frmImportData
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
     End Sub
+
+    Private Sub importCSV()
+        Dim paramList As List(Of SqlParameter)
+        Dim FileContent() As String
+
+        Using fileReader As System.IO.StreamReader = New System.IO.StreamReader(sourceFilePath)
+            FileContent = fileReader.ReadToEnd().Split(vbCrLf)
+        End Using
+
+        ProgressBar1.Visible = True
+        ProgressBar1.Minimum = 2
+        ProgressBar1.Maximum = FileContent.Count
+        Try
+            For rCnt As Integer = 2 To FileContent.Count
+                paramList = New List(Of SqlParameter)()
+                Dim fileRow As String() = FileContent(rCnt).Split(separator)
+                For cCnt As Integer = 0 To fileRow.Count - 1
+                    'Dim Obj As Excel.Range = CType(Range.Cells(rCnt, cCnt), Excel.Range)
+                    Dim data As String = fileRow(cCnt)
+                    'check if matricule is blank
+                    If getDBFieldMappingByFileField(fileFieldList(cCnt)) = "matricule" And data = "" Then
+                        'matricule vide, donc passe à l'iteration suivante
+                        Continue For
+                    End If
+                    Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt + 1), data)
+                    If param IsNot Nothing Then
+                        paramList.Add(param)
+                        'add template in case of fingerprint
+                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt), data)
+                        If param2 IsNot System.DBNull.Value Then
+                            paramList.Add(param2)
+                        End If
+                    End If
+                Next
+                saveDataSP("[sp_InsertAgent]", paramList)
+                ProgressBar1.Value = rCnt
+                Me.Text = $"Importation des données - [{Math.Round((rCnt / FileContent.Count) * 100, 2)} %]"
+                Application.DoEvents()
+            Next
+            MessageBox.Show("Importation des données reussies")
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+    End Sub
+
 
     Private Sub txtLeftFingerPrintFolder_TextChanged(sender As Object, e As EventArgs) Handles txtLeftFingerPrintFolder.TextChanged
         If cboSourceFormat.Text <> "" AndAlso txtSourceFilePath.Text <> "" AndAlso

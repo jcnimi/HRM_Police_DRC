@@ -9,6 +9,7 @@
     <OptionCompare>Text</OptionCompare>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <OptionInfer>On</OptionInfer>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -88,6 +89,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="My Project\Application.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
     <Compile Update="My Project\Resources.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -109,6 +115,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
     <None Update="My Project\Settings.settings">
       <CustomToolNamespace>My</CustomToolNamespace>
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -18,6 +18,7 @@ Module Module1
     Public Candidates As List(Of Subject)
     Public MappingList As List(Of Mapping)
     Public fileFieldList As ArrayList
+    Public dsVillage As DataSet
 
     Public Sub saveData(ByVal queryString As String, Optional dbParam As List(Of SqlParameter) = Nothing)
         Using cmd As New SqlCommand(queryString, conn)
@@ -58,7 +59,6 @@ Module Module1
     Public Sub loadComboBox(ByRef combo As ComboBox, ByVal queryString As String)
         Dim adapter As New SqlDataAdapter()
         Dim ds As New DataSet()
-        Dim i As Integer = 0
         Try
             combo.DataSource = Nothing
             combo.Items.Clear()
@@ -83,9 +83,6 @@ Module Module1
         Application.SetCompatibleTextRenderingDefault(False)
 
         Try
-            Dim myuuid As Guid = Guid.NewGuid()
-            Dim myuuidAsString As String = myuuid.ToString().ToUpper().Replace("-", "")
-
             'config file
             Dim configFile As String = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\" + "settings.json"
             Dim fileReader As New System.IO.StreamReader(configFile)
@@ -167,6 +164,11 @@ Module Module1
             End If
         Next
         Return returnValue
+    End Function
+
+    Public Function getGuid() As String
+        Dim myuuid As Guid = Guid.NewGuid()
+        Return myuuid.ToString().ToUpper().Replace("-", "")
     End Function
 End Module
 

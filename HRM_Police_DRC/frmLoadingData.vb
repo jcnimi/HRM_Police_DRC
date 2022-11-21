@@ -11,6 +11,26 @@ Public Class frmLoadingData
         Dim matcherObj As ImageMatcher = New ImageMatcher()
         Candidates = matcherObj.loadCandidates()
         Application.DoEvents()
+
+        'loading data in the village dataset
+        Dim queryString As String = "Select 0 value, 'Select' display 
+                                union  
+                                SELECT id_village as value, description as display 
+                                FROM [dbo].village
+                                "
+        Dim adapter As New SqlDataAdapter()
+        dsVillage = New DataSet()
+        Try
+            Using cmd As New SqlCommand(queryString, conn)
+                adapter.SelectCommand = cmd
+                adapter.Fill(dsVillage)
+                adapter.Dispose()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " + ex.Message)
+        End Try
+        Application.DoEvents()
+
         Timer1.Enabled = False
         Me.Close()
     End Sub

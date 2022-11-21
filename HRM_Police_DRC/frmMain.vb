@@ -12,8 +12,8 @@ Public Class frmMain
     Dim selectedRow As DataGridViewRow
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = Me.Text + $" - [{userFullName}]"
-        'Me.Width = GroupBox1.Width + 40
-        'Me.Height = 450
+        Me.Width = GroupBox1.Width + 40
+        Me.Height = 540
         Me.StartPosition = FormStartPosition.CenterScreen
         'Me.Left = 30
 
@@ -24,7 +24,6 @@ Public Class frmMain
         tt.SetToolTip(picExportAgent, "Exporter les données")
         tt.SetToolTip(picSettings, "Administration du système")
 
-
         Dim queryString = "SELECT top 20 [matricule] Matricule
         ,a.[nom] Nom
         ,[postnom] Postnom
@@ -33,6 +32,8 @@ Public Class frmMain
 		,d.[nom] ""Lieu de naissance""
 		,a.[date_naissance] ""Date de Naissance""
 	    ,b.description as Fonction
+        ,[date_expiration] ""Date expiration""
+        ,autorite
         FROM [dbo].[agent] a
         join [dbo].[fonction] b on a.fonction = b.id_fonction
         join [dbo].[grade] c on a.grade = c.id_grade
@@ -64,8 +65,10 @@ Public Class frmMain
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles picAddAgent.Click
+        Me.Cursor = Cursors.WaitCursor
         Dim frm As New frmNewAgent
         frm.ShowDialog()
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub picSettings_Click(sender As Object, e As EventArgs) Handles picSettings.Click
@@ -146,7 +149,9 @@ Public Class frmMain
             Dim frm As New frmNewAgent
             frm.matriculeAgent = selectedRow.Cells("matricule").Value
             frm.isUpdating = True
+            Me.Cursor = Cursors.WaitCursor
             frm.ShowDialog()
+            Me.Cursor = Cursors.Default
         End If
     End Sub
 
@@ -201,7 +206,7 @@ Public Class frmMain
 
                 End With
             End With
-            cmd.ExecuteNonQueryAsync()
+            cmd.ExecuteNonQuery()
             MessageBox.Show("Exportation reussie")
 
             'open cardpresso
@@ -271,7 +276,9 @@ Public Class frmMain
         Dim frm As New frmNewAgent
         frm.matriculeAgent = selectedRow.Cells("matricule").Value
         frm.isUpdating = True
+        Me.Cursor = Cursors.WaitCursor
         frm.ShowDialog()
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub mnuAjouterAgent_Click(sender As Object, e As EventArgs) Handles mnuAjouterAgent.Click
@@ -297,4 +304,5 @@ Public Class frmMain
         Dim frm As New frmImportData()
         frm.ShowDialog()
     End Sub
+
 End Class

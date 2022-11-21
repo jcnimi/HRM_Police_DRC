@@ -7,7 +7,6 @@ Imports SourceAFIS
 Imports SourceAFIS.Engine
 Imports System.Security.Principal
 
-
 Public Class frmNewAgent
     Private formLoading = False
     Private dateNaissanceAgent As String = ""
@@ -29,7 +28,6 @@ Public Class frmNewAgent
         'loding list data on combo boxes
         Dim query As String
         'territoire
-        cmbTerritoireOrigine.Items.Clear()
         query = "Select 0 value, 'Select' display union SELECT id_territoire as value, nom as display FROM [dbo].territoire"
         loadComboBox(cmbTerritoireOrigine, query)
 
@@ -62,8 +60,11 @@ Public Class frmNewAgent
         loadComboBox(cmbSecteurOrigine, query)
 
         'village
-        query = "Select 0 value, 'Select' display union  SELECT id_village as value, description as display FROM [dbo].village"
-        loadComboBox(cmbVillage, query)
+        cmbVillage.BeginUpdate()
+        cmbVillage.DisplayMember = "display"
+        cmbVillage.ValueMember = "value"
+        cmbVillage.DataSource = dsVillage.Tables(0)
+        cmbVillage.EndUpdate()
 
         'Commissariat de recrutement
         query = "Select 0 value, 'Select' display union  SELECT id_commissariat as value, description as display FROM [dbo].commissariat"
@@ -129,6 +130,8 @@ Public Class frmNewAgent
                         cmbSexeConjoint.Text = reader("sexe_conjoint").ToString
                         cmbTerritoireOrigine.SelectedValue = reader("territoire_origine").ToString
                         cmbVillage.SelectedValue = reader("regroupement").ToString
+                        cmbStatut.Text = reader("status").ToString
+                        txtAutorite.Text = reader("autorite").ToString
 
                         'dates
                         'Date de naissance
@@ -254,6 +257,8 @@ Public Class frmNewAgent
             Dim nom_conjoint As String = excapeSpecialChar(txtNomConjoint.Text)
             Dim province_recrutement As String = cmbProvinceRecrutement.SelectedValue
             Dim commissariat_recrutement As String = cmbCommissariatRecrutement.SelectedValue
+            Dim statut As String = cmbStatut.Text
+            Dim autorite As String = excapeSpecialChar(txtAutorite.Text)
 
             'Make sure that all the mandatory fields are filled
             If nom = "" Then
@@ -396,7 +401,10 @@ Public Class frmNewAgent
            ,[empreinte_gauche]
            ,[empreinte_gauche_template]
            ,[empreinte_droite]
-           ,[empreinte_droite_template])
+           ,[empreinte_droite_template]
+           ,[guid]
+           ,[status]
+           ,[autorite])
             VALUES
            ('{matricule}'
            ,'{nom}'
@@ -434,6 +442,9 @@ Public Class frmNewAgent
            ,@lfingerp_template
            ,@rfingerp
            ,@rfingerp_template
+           ,'{getGuid()}'
+           ,'{statut}'
+           ,'{autorite}'
             )
             "
 
@@ -473,6 +484,8 @@ Public Class frmNewAgent
                   ,[telephone1] = '{telephone1}'
                   ,[telephone2] = '{If(telephone2 = "", Nothing, telephone2)}' 
                   ,[telephone3] = '{If(telephone3 = "", Nothing, telephone3)}' 
+                  ,[status] = '{statut}'
+                  ,[autorite] = '{autorite}'
              WHERE [id_agent] = {idAgent}
             "
 
@@ -559,8 +572,8 @@ Public Class frmNewAgent
                 listParams.Add(param)
             End If
 
-            'add left fingerprint template
-            If picfingerprintL.Image IsNot Nothing Then
+            'add right fingerprint template
+            If picFingerprintR.Image IsNot Nothing Then
                 Dim encoded = matcher.encodeFingerPrintImage(picFingerprintR.Image)
                 Dim serial = SerialiseFingerPrintTemplate(matcher.getTemplate(encoded))
                 param = New SqlParameter("@rfingerp_template", SqlDbType.VarBinary)
@@ -648,13 +661,22 @@ Public Class frmNewAgent
                 End If
             Next
             'add the new fingerprints in the candidates list
-            Dim encodedL As FingerprintImage = matcher.encodeFingerPrintImage(picfingerprintL.Image)
-            Dim templL As FingerprintTemplate = matcher.getTemplate(encodedL)
-            Dim encodedR As FingerprintImage = matcher.encodeFingerPrintImage(picFingerprintR.Image)
-            Dim templR As FingerprintTemplate = matcher.getTemplate(encodedR)
-            Dim cand As New Subject(idAgent, nom + " " + postnom + " " + prenom, matricule, templL, templR)
-            Candidates.Add(cand)
-
+            Dim encodedL As FingerprintImage = Nothing
+            Dim templL As FingerprintTemplate = Nothing
+            Dim encodedR As FingerprintImage = Nothing
+            Dim templR As FingerprintTemplate = Nothing
+            If picfingerprintL.Image IsNot Nothing Then
+                encodedL = matcher.encodeFingerPrintImage(picfingerprintL.Image)
+                templL = matcher.getTemplate(encodedL)
+            End If
+            If picFingerprintR.Image IsNot Nothing Then
+                encodedR = matcher.encodeFingerPrintImage(picFingerprintR.Image)
+                templR = matcher.getTemplate(encodedR)
+            End If
+            If templL IsNot Nothing Or templR IsNot Nothing Then
+                Dim cand As New Subject(idAgent, nom + " " + postnom + " " + prenom, matricule, templL, templR)
+                Candidates.Add(cand)
+            End If
             MessageBox.Show("Enregistrement effectué avec succès")
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message())
@@ -752,9 +774,28 @@ Public Class frmNewAgent
         Dim frm As New frmVillageorigine
         frm.ShowDialog()
         If frm.isCancelled = False Then
+            Dim queryString As String = "Select 0 value, 'Select' display 
+                                union  
+                                SELECT id_village as value, description as display 
+                                FROM [dbo].village
+                                "
+            Dim adapter As New SqlDataAdapter()
+            dsVillage = New DataSet()
+            Try
+                Using cmd As New SqlCommand(queryString, conn)
+                    adapter.SelectCommand = cmd
+                    adapter.Fill(dsVillage)
+                    adapter.Dispose()
+                End Using
+                cmbVillage.BeginUpdate()
+                cmbVillage.DisplayMember = "display"
+                cmbVillage.ValueMember = "value"
+                cmbVillage.DataSource = dsVillage.Tables(0)
+                cmbVillage.EndUpdate()
+            Catch ex As Exception
+                MessageBox.Show("Error: " + ex.Message)
+            End Try
             'update fonction list
-            Dim query As String = "Select 0 value, 'Select' display union  SELECT id_village as value, description as display FROM [dbo].village"
-            loadComboBox(cmbVillage, query)
         End If
     End Sub
 
@@ -763,24 +804,17 @@ Public Class frmNewAgent
             Exit Sub
         End If
         Try
-            Dim secteur As String
-            Dim village = cmbVillage.SelectedValue
+            Dim village = cmbVillage.Text
             '
             Dim query As String = $"
-            select secteur
-            from village 
-            where id_village = {village}
+            Select 0 value, 'Select' display 
+            union
+            select a.secteur as value, b.nom as display
+            from village a
+            join secteur b on a.secteur = b.id_secteur
+            where a.[description]  = '{village}'
             "
-            Using reader As SqlDataReader = getData(query)
-                If reader IsNot Nothing AndAlso reader.HasRows Then
-                    reader.Read()
-                    'id = reader("id_village")
-                    secteur = reader("secteur")
-                Else
-                    secteur = 0
-                End If
-            End Using
-            cmbSecteurOrigine.SelectedValue = secteur
+            loadComboBox(cmbSecteurOrigine, query)
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message())
         End Try
@@ -792,23 +826,20 @@ Public Class frmNewAgent
         End If
 
         Try
-            Dim territoire As String
-            Dim secteur = cmbSecteurOrigine.SelectedValue
+            Dim secteur = cmbSecteurOrigine.Text
+            If secteur Is Nothing Then
+                Exit Sub
+            End If
             'get from the db the province name
             Dim query As String = $"
-            select id_territoire
-            from secteur 
-            where id_secteur = {secteur}
+            Select 0 value, 'Select' display 
+            union
+            select a.id_territoire as value, b.nom as display
+            from secteur a
+            join [territoire] b on b.id_territoire = a.id_territoire
+            where a.nom = '{secteur}'
             "
-            Using reader As SqlDataReader = getData(query)
-                If reader.HasRows Then
-                    reader.Read()
-                    territoire = reader("id_territoire")
-                Else
-                    territoire = 0
-                End If
-            End Using
-            cmbTerritoireOrigine.SelectedValue = territoire
+            loadComboBox(cmbTerritoireOrigine, query)
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message())
         End Try
@@ -971,6 +1002,8 @@ Public Class frmNewAgent
         picSignature.Image = Nothing
         picfingerprintL.Image = Nothing
         picFingerprintR.Image = Nothing
+        cmbStatut.Text = "Select"
+        txtAutorite.Text = ""
     End Sub
 
     Private Sub btnFingerLImport_Click(sender As Object, e As EventArgs)

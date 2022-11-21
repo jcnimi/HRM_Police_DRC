@@ -3,6 +3,8 @@ Imports Microsoft.Office.Interop
 
 Public Class frmMapageChamp
     Public importSourceFilePath As String = ""
+    Public seperator As String = ""
+    Public sourceFormat As String = ""
     Private Sub saveMappingMemory()
         Dim dbFieldName As String = ""
         Dim fileFieldName As String = ""
@@ -37,18 +39,36 @@ Public Class frmMapageChamp
         'add datagridview combobox items
         Dim fileCol As DataGridViewComboBoxColumn = CType(DataGridView1.Columns.Item("file"), DataGridViewComboBoxColumn)
         'read the source file to get the colum name
-        Dim xlApp As Excel.Application = New Excel.Application
-        Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(importSourceFilePath)
-        Dim xlWorkSheet As Excel.Worksheet = CType(xlWorkBook.Worksheets("sheet1"), Excel.Worksheet)
-        Dim Range As Excel.Range = xlWorkSheet.UsedRange
+        If sourceFormat = "Excel" Then
+            Try
+                Dim xlApp As Excel.Application = New Excel.Application
+                Dim xlWorkBook As Excel.Workbook = xlApp.Workbooks.Open(importSourceFilePath)
+                Dim xlWorkSheet As Excel.Worksheet = CType(xlWorkBook.Worksheets("sheet1"), Excel.Worksheet)
+                Dim Range As Excel.Range = xlWorkSheet.UsedRange
 
-        For cCnt = 1 To Range.Columns.Count
-            'xlWorkSheet.Cells(1, k + 1)
-            Dim Obj As Excel.Range = CType(Range.Cells(1, cCnt), Excel.Range)
-            fileCol.Items.Add(Obj.Text)
-            fileFieldList.Add(Obj.Text)
-        Next
-
+                For cCnt = 1 To Range.Columns.Count
+                    'xlWorkSheet.Cells(1, k + 1)
+                    Dim Obj As Excel.Range = CType(Range.Cells(1, cCnt), Excel.Range)
+                    fileCol.Items.Add(Obj.Text)
+                    fileFieldList.Add(Obj.Text)
+                Next
+            Catch ex As Exception
+                MessageBox.Show("Erreur: " + ex.Message)
+            End Try
+        Else  'CSV
+            Try
+                Using fileReader As System.IO.StreamReader = New System.IO.StreamReader(importSourceFilePath)
+                    Dim FileHeader As String = fileReader.ReadLine
+                    Dim fileFields As String() = FileHeader.Split(seperator)
+                    For i As Integer = 0 To fileFields.Count - 1
+                        fileCol.Items.Add(fileFields(i))
+                        fileFieldList.Add(fileFields(i))
+                    Next
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Erreur: " + ex.Message)
+            End Try
+        End If
 
         'Load any existing mapping
         If MappingList IsNot Nothing Then

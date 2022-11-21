@@ -56,115 +56,102 @@ Partial Class frmImportData
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.cboSourceFormat)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 2)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(660, 132)
+        Me.GroupBox1.Size = New System.Drawing.Size(943, 220)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'btnLeftFingerPrintFolder
         '
-        Me.btnLeftFingerPrintFolder.Location = New System.Drawing.Point(609, 100)
-        Me.btnLeftFingerPrintFolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnLeftFingerPrintFolder.Location = New System.Drawing.Point(870, 167)
         Me.btnLeftFingerPrintFolder.Name = "btnLeftFingerPrintFolder"
-        Me.btnLeftFingerPrintFolder.Size = New System.Drawing.Size(31, 23)
+        Me.btnLeftFingerPrintFolder.Size = New System.Drawing.Size(44, 38)
         Me.btnLeftFingerPrintFolder.TabIndex = 16
         Me.btnLeftFingerPrintFolder.Text = "..."
         Me.btnLeftFingerPrintFolder.UseVisualStyleBackColor = True
         '
         'txtLeftFingerPrintFolder
         '
-        Me.txtLeftFingerPrintFolder.Location = New System.Drawing.Point(171, 100)
-        Me.txtLeftFingerPrintFolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtLeftFingerPrintFolder.Location = New System.Drawing.Point(244, 167)
         Me.txtLeftFingerPrintFolder.Name = "txtLeftFingerPrintFolder"
-        Me.txtLeftFingerPrintFolder.Size = New System.Drawing.Size(435, 23)
+        Me.txtLeftFingerPrintFolder.Size = New System.Drawing.Size(620, 31)
         Me.txtLeftFingerPrintFolder.TabIndex = 15
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(16, 100)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Location = New System.Drawing.Point(23, 167)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(108, 15)
+        Me.Label6.Size = New System.Drawing.Size(165, 25)
         Me.Label6.TabIndex = 14
         Me.Label6.Text = "Dossier empreinte :"
         '
         'btnImageFolder
         '
-        Me.btnImageFolder.Location = New System.Drawing.Point(609, 71)
-        Me.btnImageFolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnImageFolder.Location = New System.Drawing.Point(870, 118)
         Me.btnImageFolder.Name = "btnImageFolder"
-        Me.btnImageFolder.Size = New System.Drawing.Size(31, 23)
+        Me.btnImageFolder.Size = New System.Drawing.Size(44, 38)
         Me.btnImageFolder.TabIndex = 10
         Me.btnImageFolder.Text = "..."
         Me.btnImageFolder.UseVisualStyleBackColor = True
         '
         'txtImageFolder
         '
-        Me.txtImageFolder.Location = New System.Drawing.Point(171, 71)
-        Me.txtImageFolder.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtImageFolder.Location = New System.Drawing.Point(244, 118)
         Me.txtImageFolder.Name = "txtImageFolder"
-        Me.txtImageFolder.Size = New System.Drawing.Size(435, 23)
+        Me.txtImageFolder.Size = New System.Drawing.Size(620, 31)
         Me.txtImageFolder.TabIndex = 9
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 74)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(21, 123)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 15)
+        Me.Label4.Size = New System.Drawing.Size(135, 25)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Dossier Image :"
         '
         'btnDataFilePath
         '
-        Me.btnDataFilePath.Location = New System.Drawing.Point(610, 43)
-        Me.btnDataFilePath.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnDataFilePath.Location = New System.Drawing.Point(871, 72)
         Me.btnDataFilePath.Name = "btnDataFilePath"
-        Me.btnDataFilePath.Size = New System.Drawing.Size(31, 23)
+        Me.btnDataFilePath.Size = New System.Drawing.Size(44, 38)
         Me.btnDataFilePath.TabIndex = 4
         Me.btnDataFilePath.Text = "..."
         Me.btnDataFilePath.UseVisualStyleBackColor = True
         '
         'txtSourceFilePath
         '
-        Me.txtSourceFilePath.Location = New System.Drawing.Point(172, 43)
-        Me.txtSourceFilePath.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtSourceFilePath.Location = New System.Drawing.Point(246, 72)
         Me.txtSourceFilePath.Name = "txtSourceFilePath"
-        Me.txtSourceFilePath.Size = New System.Drawing.Size(435, 23)
+        Me.txtSourceFilePath.Size = New System.Drawing.Size(620, 31)
         Me.txtSourceFilePath.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 44)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(23, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(86, 15)
+        Me.Label2.Size = New System.Drawing.Size(128, 25)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Fichier source :"
         '
         'cboSourceFormat
         '
         Me.cboSourceFormat.FormattingEnabled = True
-        Me.cboSourceFormat.Items.AddRange(New Object() {"Excel", "CSV (Separateur Virgule)", "CSV (Separateur Point Virgule)", "CSV (Separateur Tabulation)", "CSV (Separateur Espace)"})
-        Me.cboSourceFormat.Location = New System.Drawing.Point(172, 15)
-        Me.cboSourceFormat.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboSourceFormat.Items.AddRange(New Object() {"Excel", "CSV(Separateur Virgule)", "CSV(Separateur Point Virgule)", "CSV(Separateur Tabulation)", "CSV(Separateur Espace)"})
+        Me.cboSourceFormat.Location = New System.Drawing.Point(246, 25)
         Me.cboSourceFormat.Name = "cboSourceFormat"
-        Me.cboSourceFormat.Size = New System.Drawing.Size(187, 23)
+        Me.cboSourceFormat.Size = New System.Drawing.Size(265, 33)
         Me.cboSourceFormat.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 17)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(23, 28)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 15)
+        Me.Label1.Size = New System.Drawing.Size(135, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Format source :"
         '
@@ -175,20 +162,18 @@ Partial Class frmImportData
         'btnImporter
         '
         Me.btnImporter.Enabled = False
-        Me.btnImporter.Location = New System.Drawing.Point(480, 139)
-        Me.btnImporter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnImporter.Location = New System.Drawing.Point(686, 232)
         Me.btnImporter.Name = "btnImporter"
-        Me.btnImporter.Size = New System.Drawing.Size(78, 28)
+        Me.btnImporter.Size = New System.Drawing.Size(111, 47)
         Me.btnImporter.TabIndex = 1
         Me.btnImporter.Text = "Importer"
         Me.btnImporter.UseVisualStyleBackColor = True
         '
         'btnAnnuler
         '
-        Me.btnAnnuler.Location = New System.Drawing.Point(587, 139)
-        Me.btnAnnuler.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAnnuler.Location = New System.Drawing.Point(839, 232)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(78, 28)
+        Me.btnAnnuler.Size = New System.Drawing.Size(111, 47)
         Me.btnAnnuler.TabIndex = 2
         Me.btnAnnuler.Text = "Annuler"
         Me.btnAnnuler.UseVisualStyleBackColor = True
@@ -196,10 +181,9 @@ Partial Class frmImportData
         'btnMapping
         '
         Me.btnMapping.Enabled = False
-        Me.btnMapping.Location = New System.Drawing.Point(358, 140)
-        Me.btnMapping.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnMapping.Location = New System.Drawing.Point(511, 233)
         Me.btnMapping.Name = "btnMapping"
-        Me.btnMapping.Size = New System.Drawing.Size(83, 28)
+        Me.btnMapping.Size = New System.Drawing.Size(119, 47)
         Me.btnMapping.TabIndex = 3
         Me.btnMapping.Text = "Mapping"
         Me.btnMapping.UseVisualStyleBackColor = True
@@ -207,26 +191,24 @@ Partial Class frmImportData
         'ProgressBar1
         '
         Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ProgressBar1.Location = New System.Drawing.Point(0, 178)
-        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProgressBar1.Location = New System.Drawing.Point(0, 296)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(677, 19)
+        Me.ProgressBar1.Size = New System.Drawing.Size(967, 32)
         Me.ProgressBar1.TabIndex = 4
         Me.ProgressBar1.Visible = False
         '
         'frmImportData
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(677, 197)
+        Me.ClientSize = New System.Drawing.Size(967, 328)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnMapping)
         Me.Controls.Add(Me.btnAnnuler)
         Me.Controls.Add(Me.btnImporter)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmImportData"

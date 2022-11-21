@@ -38,31 +38,30 @@ Partial Class frmLogin
         '
         'txtUsername
         '
-        Me.txtUsername.Location = New System.Drawing.Point(322, 61)
-        Me.txtUsername.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtUsername.Location = New System.Drawing.Point(460, 102)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(234, 23)
+        Me.txtUsername.Size = New System.Drawing.Size(333, 31)
         Me.txtUsername.TabIndex = 2
         Me.txtUsername.Tag = ""
+        Me.txtUsername.Text = "ADMIN"
         '
         'txtpassword
         '
-        Me.txtpassword.Location = New System.Drawing.Point(322, 118)
-        Me.txtpassword.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtpassword.Location = New System.Drawing.Point(460, 197)
         Me.txtpassword.Name = "txtpassword"
         Me.txtpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtpassword.Size = New System.Drawing.Size(234, 23)
+        Me.txtpassword.Size = New System.Drawing.Size(333, 31)
         Me.txtpassword.TabIndex = 3
+        Me.txtpassword.Text = "123456"
         Me.txtpassword.UseSystemPasswordChar = True
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(47, 33)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox1.Location = New System.Drawing.Point(67, 55)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(216, 167)
+        Me.PictureBox1.Size = New System.Drawing.Size(309, 278)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
@@ -72,10 +71,9 @@ Partial Class frmLogin
         Me.picvalidate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.picvalidate.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picvalidate.Image = CType(resources.GetObject("picvalidate.Image"), System.Drawing.Image)
-        Me.picvalidate.Location = New System.Drawing.Point(322, 187)
-        Me.picvalidate.Margin = New System.Windows.Forms.Padding(2)
+        Me.picvalidate.Location = New System.Drawing.Point(460, 312)
         Me.picvalidate.Name = "picvalidate"
-        Me.picvalidate.Size = New System.Drawing.Size(106, 46)
+        Me.picvalidate.Size = New System.Drawing.Size(151, 75)
         Me.picvalidate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picvalidate.TabIndex = 5
         Me.picvalidate.TabStop = False
@@ -84,10 +82,9 @@ Partial Class frmLogin
         '
         Me.picCancel.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picCancel.Image = CType(resources.GetObject("picCancel.Image"), System.Drawing.Image)
-        Me.picCancel.Location = New System.Drawing.Point(449, 187)
-        Me.picCancel.Margin = New System.Windows.Forms.Padding(2)
+        Me.picCancel.Location = New System.Drawing.Point(641, 312)
         Me.picCancel.Name = "picCancel"
-        Me.picCancel.Size = New System.Drawing.Size(105, 45)
+        Me.picCancel.Size = New System.Drawing.Size(150, 75)
         Me.picCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picCancel.TabIndex = 6
         Me.picCancel.TabStop = False
@@ -96,10 +93,9 @@ Partial Class frmLogin
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(322, 39)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(460, 65)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(107, 15)
+        Me.Label1.Size = New System.Drawing.Size(166, 25)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Nom d'utilisateur:"
         '
@@ -107,30 +103,28 @@ Partial Class frmLogin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(322, 95)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(460, 158)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 15)
+        Me.Label2.Size = New System.Drawing.Size(130, 25)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Mot de passe:"
         '
         'chkShowPassword
         '
         Me.chkShowPassword.AutoSize = True
-        Me.chkShowPassword.Location = New System.Drawing.Point(323, 145)
-        Me.chkShowPassword.Margin = New System.Windows.Forms.Padding(2)
+        Me.chkShowPassword.Location = New System.Drawing.Point(461, 242)
         Me.chkShowPassword.Name = "chkShowPassword"
-        Me.chkShowPassword.Size = New System.Drawing.Size(153, 19)
+        Me.chkShowPassword.Size = New System.Drawing.Size(230, 29)
         Me.chkShowPassword.TabIndex = 4
         Me.chkShowPassword.Text = "Afficher le mot de passe"
         Me.chkShowPassword.UseVisualStyleBackColor = True
         '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(619, 260)
+        Me.ClientSize = New System.Drawing.Size(884, 433)
         Me.Controls.Add(Me.chkShowPassword)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -140,7 +134,6 @@ Partial Class frmLogin
         Me.Controls.Add(Me.txtpassword)
         Me.Controls.Add(Me.txtUsername)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmLogin"
