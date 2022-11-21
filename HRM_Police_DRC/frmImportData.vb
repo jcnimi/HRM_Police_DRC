@@ -14,7 +14,7 @@ Public Class frmImportData
     Dim separator As String
     Private Sub btnDataFile_Click(sender As Object, e As EventArgs) Handles btnDataFilePath.Click
         With OpenFileDialog1
-            .Filter = "Excel (.xslx)|*.xlsx|CSV (.csv)|*.csv"
+            .Filter = "Excel (.xslx)|*.xlsx|CSV (.csv)|*.csv|Tous (*.*)|*.*"
             .Title = "Ouvrir une fichier"
             If .ShowDialog = Windows.Forms.DialogResult.OK Then
                 txtSourceFilePath.Text = OpenFileDialog1.FileName
@@ -321,17 +321,16 @@ Public Class frmImportData
         End Using
 
         ProgressBar1.Visible = True
-        ProgressBar1.Minimum = 2
+        ProgressBar1.Minimum = 1
         ProgressBar1.Maximum = FileContent.Count
         Try
-            For rCnt As Integer = 2 To FileContent.Count
+            For rCnt As Integer = 1 To FileContent.Count
                 paramList = New List(Of SqlParameter)()
                 Dim fileRow As String() = FileContent(rCnt).Split(separator)
                 For cCnt As Integer = 0 To fileRow.Count - 1
-                    'Dim Obj As Excel.Range = CType(Range.Cells(rCnt, cCnt), Excel.Range)
                     Dim data As String = fileRow(cCnt)
                     'check if matricule is blank
-                    If getDBFieldMappingByFileField(fileFieldList(cCnt)) = "matricule" And data = "" Then
+                    If getDBFieldMappingByFileField(fileFieldList(cCnt + 1)) = "matricule" And data = "" Then
                         'matricule vide, donc passe à l'iteration suivante
                         Continue For
                     End If
@@ -339,8 +338,8 @@ Public Class frmImportData
                     If param IsNot Nothing Then
                         paramList.Add(param)
                         'add template in case of fingerprint
-                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt), data)
-                        If param2 IsNot System.DBNull.Value Then
+                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt + 1), data)
+                        If param2 IsNot Nothing Then
                             paramList.Add(param2)
                         End If
                     End If
