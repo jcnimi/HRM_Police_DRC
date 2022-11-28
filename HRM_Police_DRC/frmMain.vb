@@ -25,7 +25,7 @@ Public Class frmMain
         tt.SetToolTip(picExportAgent, "Exporter les données")
         tt.SetToolTip(picSettings, "Administration du système")
 
-        Dim queryString = "SELECT top 20 'False' ""Select"", [matricule] Matricule
+        Dim queryString = "SELECT top 20 [matricule] Matricule
         ,a.[nom] Nom
         ,[postnom] Postnom
         ,[prenom] Prenom 

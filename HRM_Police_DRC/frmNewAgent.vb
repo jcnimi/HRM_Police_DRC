@@ -265,96 +265,15 @@ Public Class frmNewAgent
                 ErrorProvider1.SetError(txtPostnom, "")
             End If
 
-            If prenom = "" Then
-                MessageBox.Show("Le prenom est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                txtPrenom.Select()
-                Exit Sub
-            End If
-
             If sexe = "Select" Then
                 MessageBox.Show("Le choix du sexe est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 cmbSexe.Select()
                 Exit Sub
             End If
 
-            If unite_agent = 0 Then
-                MessageBox.Show("Le choix de l'unité est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbUnite.Select()
-                Exit Sub
-            End If
-
-            If grade = 0 Then
-                MessageBox.Show("Le choix du grade est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbGrade.Select()
-                Exit Sub
-            End If
-
-            If adresse = "" Then
-                MessageBox.Show("L'adresse est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                txtAdresse.Select()
-                Exit Sub
-            End If
-
             If dateNaissanceAgent = "" Then
                 MessageBox.Show("La date de naissance est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 dtDateNaissance.Select()
-                Exit Sub
-            End If
-
-            If lieu_naissance = 0 Then
-                MessageBox.Show("Le  choix du lieu de naissance est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbLieuNaissance.Select()
-                Exit Sub
-            End If
-
-            If regroupement = 0 Then
-                MessageBox.Show("Le choix du village d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbVillage.Select()
-                Exit Sub
-            End If
-
-            If secteur_origine = 0 Then
-                MessageBox.Show("Le choix du secteur d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbSecteurOrigine.Select()
-                Exit Sub
-            End If
-
-            If territoire_origine = 0 Then
-                MessageBox.Show("Le choix du territoire d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbTerritoireOrigine.Select()
-                Exit Sub
-            End If
-
-            If province_origine = 0 Then
-                MessageBox.Show("Le choix de la province d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmbProvOrigine.Select()
-                Exit Sub
-            End If
-
-            If telephone1 = "" Then
-                MessageBox.Show("Au moins un numero de téléphone est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                maskTel1.Select()
-                Exit Sub
-            End If
-
-            If etat_civil = "Select" Then
-                MessageBox.Show("Le choix de l'etat civil est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                TabControl1.SelectedTab = TabPage3
-                cmbEtatCivil.Select()
-                Exit Sub
-            End If
-
-            If dateRecructementAgent = "" Then
-                MessageBox.Show("La date de recrutement est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                TabControl1.SelectedTab = TabPage4
-                dtDateRecrutement.Select()
-                Exit Sub
-            End If
-
-            If province_recrutement = 0 Then
-                MessageBox.Show("La choix de la province de recutement est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                TabControl1.SelectedTab = TabPage4
-                cmbProvinceRecrutement.Select()
                 Exit Sub
             End If
 
