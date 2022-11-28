@@ -22,10 +22,13 @@ Partial Class frmNewAgent
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewAgent))
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.btnImporterEmpD = New System.Windows.Forms.Button()
+        Me.btnImporterEmpG = New System.Windows.Forms.Button()
         Me.btnFingerRScan = New System.Windows.Forms.Button()
         Me.btnFingerLScan = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -33,6 +36,7 @@ Partial Class frmNewAgent
         Me.picFingerprintR = New System.Windows.Forms.PictureBox()
         Me.picfingerprintL = New System.Windows.Forms.PictureBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.btnImporterSignature = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -125,6 +129,7 @@ Partial Class frmNewAgent
         Me.cmdAnnuler = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnSuivant = New System.Windows.Forms.Button()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -149,6 +154,7 @@ Partial Class frmNewAgent
         CType(Me.picAddGrade, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picAddUnite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPage4
@@ -177,6 +183,8 @@ Partial Class frmNewAgent
         '
         'GroupBox6
         '
+        Me.GroupBox6.Controls.Add(Me.btnImporterEmpD)
+        Me.GroupBox6.Controls.Add(Me.btnImporterEmpG)
         Me.GroupBox6.Controls.Add(Me.btnFingerRScan)
         Me.GroupBox6.Controls.Add(Me.btnFingerLScan)
         Me.GroupBox6.Controls.Add(Me.Label24)
@@ -189,14 +197,32 @@ Partial Class frmNewAgent
         Me.GroupBox6.Size = New System.Drawing.Size(624, 357)
         Me.GroupBox6.TabIndex = 1
         Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Empreintes"
+        Me.GroupBox6.Text = "Empreintes Agent"
+        '
+        'btnImporterEmpD
+        '
+        Me.btnImporterEmpD.Location = New System.Drawing.Point(444, 290)
+        Me.btnImporterEmpD.Name = "btnImporterEmpD"
+        Me.btnImporterEmpD.Size = New System.Drawing.Size(112, 43)
+        Me.btnImporterEmpD.TabIndex = 7
+        Me.btnImporterEmpD.Text = "Importer"
+        Me.btnImporterEmpD.UseVisualStyleBackColor = True
+        '
+        'btnImporterEmpG
+        '
+        Me.btnImporterEmpG.Location = New System.Drawing.Point(146, 289)
+        Me.btnImporterEmpG.Name = "btnImporterEmpG"
+        Me.btnImporterEmpG.Size = New System.Drawing.Size(106, 44)
+        Me.btnImporterEmpG.TabIndex = 6
+        Me.btnImporterEmpG.Text = "Importer"
+        Me.btnImporterEmpG.UseVisualStyleBackColor = True
         '
         'btnFingerRScan
         '
         Me.btnFingerRScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnFingerRScan.Location = New System.Drawing.Point(386, 290)
+        Me.btnFingerRScan.Location = New System.Drawing.Point(327, 290)
         Me.btnFingerRScan.Name = "btnFingerRScan"
-        Me.btnFingerRScan.Size = New System.Drawing.Size(111, 33)
+        Me.btnFingerRScan.Size = New System.Drawing.Size(111, 43)
         Me.btnFingerRScan.TabIndex = 5
         Me.btnFingerRScan.Text = "Scanner"
         Me.btnFingerRScan.UseVisualStyleBackColor = True
@@ -204,9 +230,9 @@ Partial Class frmNewAgent
         'btnFingerLScan
         '
         Me.btnFingerLScan.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnFingerLScan.Location = New System.Drawing.Point(89, 290)
+        Me.btnFingerLScan.Location = New System.Drawing.Point(29, 290)
         Me.btnFingerLScan.Name = "btnFingerLScan"
-        Me.btnFingerLScan.Size = New System.Drawing.Size(111, 33)
+        Me.btnFingerLScan.Size = New System.Drawing.Size(103, 43)
         Me.btnFingerLScan.TabIndex = 4
         Me.btnFingerLScan.Text = "Scanner"
         Me.btnFingerLScan.UseVisualStyleBackColor = True
@@ -215,7 +241,7 @@ Partial Class frmNewAgent
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label24.Location = New System.Drawing.Point(396, 25)
+        Me.Label24.Location = New System.Drawing.Point(396, 29)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(65, 25)
         Me.Label24.TabIndex = 3
@@ -225,7 +251,7 @@ Partial Class frmNewAgent
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label14.Location = New System.Drawing.Point(79, 25)
+        Me.Label14.Location = New System.Drawing.Point(79, 29)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(76, 25)
         Me.Label14.TabIndex = 2
@@ -246,7 +272,7 @@ Partial Class frmNewAgent
         Me.picfingerprintL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.picfingerprintL.Location = New System.Drawing.Point(29, 62)
         Me.picfingerprintL.Name = "picfingerprintL"
-        Me.picfingerprintL.Size = New System.Drawing.Size(215, 222)
+        Me.picfingerprintL.Size = New System.Drawing.Size(223, 222)
         Me.picfingerprintL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picfingerprintL.TabIndex = 0
         Me.picfingerprintL.TabStop = False
@@ -254,6 +280,7 @@ Partial Class frmNewAgent
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.GroupBox5.Controls.Add(Me.btnImporterSignature)
         Me.GroupBox5.Controls.Add(Me.Button5)
         Me.GroupBox5.Controls.Add(Me.Label31)
         Me.GroupBox5.Controls.Add(Me.Label22)
@@ -269,11 +296,20 @@ Partial Class frmNewAgent
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Photo et signature"
         '
+        'btnImporterSignature
+        '
+        Me.btnImporterSignature.Location = New System.Drawing.Point(428, 289)
+        Me.btnImporterSignature.Name = "btnImporterSignature"
+        Me.btnImporterSignature.Size = New System.Drawing.Size(112, 44)
+        Me.btnImporterSignature.TabIndex = 10
+        Me.btnImporterSignature.Text = "Importer"
+        Me.btnImporterSignature.UseVisualStyleBackColor = True
+        '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(359, 290)
+        Me.Button5.Location = New System.Drawing.Point(315, 290)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(109, 33)
+        Me.Button5.Size = New System.Drawing.Size(109, 43)
         Me.Button5.TabIndex = 9
         Me.Button5.Text = "capturer"
         Me.Button5.UseVisualStyleBackColor = True
@@ -282,21 +318,21 @@ Partial Class frmNewAgent
         '
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label31.Location = New System.Drawing.Point(381, 27)
+        Me.Label31.Location = New System.Drawing.Point(340, 29)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(94, 25)
+        Me.Label31.Size = New System.Drawing.Size(170, 25)
         Me.Label31.TabIndex = 7
-        Me.Label31.Text = "Signature"
+        Me.Label31.Text = "Signature Autorité"
         '
         'Label22
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label22.Location = New System.Drawing.Point(104, 25)
+        Me.Label22.Location = New System.Drawing.Point(87, 29)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(63, 25)
+        Me.Label22.Size = New System.Drawing.Size(120, 25)
         Me.Label22.TabIndex = 6
-        Me.Label22.Text = "Photo"
+        Me.Label22.Text = "Photo Agent"
         '
         'picSignature
         '
@@ -312,7 +348,7 @@ Partial Class frmNewAgent
         '
         Me.btnWebCam.Location = New System.Drawing.Point(154, 290)
         Me.btnWebCam.Name = "btnWebCam"
-        Me.btnWebCam.Size = New System.Drawing.Size(109, 33)
+        Me.btnWebCam.Size = New System.Drawing.Size(109, 43)
         Me.btnWebCam.TabIndex = 2
         Me.btnWebCam.Text = "&Webcam"
         Me.btnWebCam.UseVisualStyleBackColor = True
@@ -322,7 +358,7 @@ Partial Class frmNewAgent
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Button1.Location = New System.Drawing.Point(37, 290)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(111, 33)
+        Me.Button1.Size = New System.Drawing.Size(111, 43)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Importer"
         Me.Button1.UseVisualStyleBackColor = True
@@ -397,7 +433,7 @@ Partial Class frmNewAgent
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label20.Location = New System.Drawing.Point(18, 105)
+        Me.Label20.Location = New System.Drawing.Point(11, 105)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(149, 25)
         Me.Label20.TabIndex = 21
@@ -409,9 +445,9 @@ Partial Class frmNewAgent
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label19.Location = New System.Drawing.Point(11, 36)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(175, 25)
+        Me.Label19.Size = New System.Drawing.Size(167, 25)
         Me.Label19.TabIndex = 20
-        Me.Label19.Text = "Date recrutement*:"
+        Me.Label19.Text = "Date recrutement:"
         '
         'Label26
         '
@@ -419,9 +455,9 @@ Partial Class frmNewAgent
         Me.Label26.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label26.Location = New System.Drawing.Point(496, 41)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(267, 25)
+        Me.Label26.Size = New System.Drawing.Size(253, 25)
         Me.Label26.TabIndex = 24
-        Me.Label26.Text = "Commissariat de recrutement:"
+        Me.Label26.Text = "Commissariat d'enrolement*"
         '
         'dtDateExpiration
         '
@@ -436,9 +472,9 @@ Partial Class frmNewAgent
         Me.lblProvinceRecrutement.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblProvinceRecrutement.Location = New System.Drawing.Point(496, 105)
         Me.lblProvinceRecrutement.Name = "lblProvinceRecrutement"
-        Me.lblProvinceRecrutement.Size = New System.Drawing.Size(235, 25)
+        Me.lblProvinceRecrutement.Size = New System.Drawing.Size(227, 25)
         Me.lblProvinceRecrutement.TabIndex = 23
-        Me.lblProvinceRecrutement.Text = "Province de recrutement*:"
+        Me.lblProvinceRecrutement.Text = "Province de recrutement:"
         '
         'dtDateRecrutement
         '
@@ -604,7 +640,7 @@ Partial Class frmNewAgent
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label13.Location = New System.Drawing.Point(27, 202)
+        Me.Label13.Location = New System.Drawing.Point(27, 197)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(170, 25)
         Me.Label13.TabIndex = 33
@@ -624,9 +660,9 @@ Partial Class frmNewAgent
         Me.Label30.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label30.Location = New System.Drawing.Point(27, 32)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(98, 25)
+        Me.Label30.Size = New System.Drawing.Size(90, 25)
         Me.Label30.TabIndex = 35
-        Me.Label30.Text = "Etat civil*:"
+        Me.Label30.Text = "Etat civil:"
         '
         'cmbEtatCivil
         '
@@ -712,6 +748,7 @@ Partial Class frmNewAgent
         Me.txtAutorite.Name = "txtAutorite"
         Me.txtAutorite.Size = New System.Drawing.Size(390, 31)
         Me.txtAutorite.TabIndex = 62
+        Me.txtAutorite.Text = "Police Nationale"
         '
         'cmbStatut
         '
@@ -726,7 +763,7 @@ Partial Class frmNewAgent
         '
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label33.Location = New System.Drawing.Point(621, 478)
+        Me.Label33.Location = New System.Drawing.Point(621, 487)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(88, 25)
         Me.Label33.TabIndex = 60
@@ -830,7 +867,7 @@ Partial Class frmNewAgent
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label25.Location = New System.Drawing.Point(621, 428)
+        Me.Label25.Location = New System.Drawing.Point(621, 436)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(120, 25)
         Me.Label25.TabIndex = 49
@@ -840,7 +877,7 @@ Partial Class frmNewAgent
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.Location = New System.Drawing.Point(621, 378)
+        Me.Label23.Location = New System.Drawing.Point(621, 385)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(120, 25)
         Me.Label23.TabIndex = 45
@@ -850,11 +887,11 @@ Partial Class frmNewAgent
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label16.Location = New System.Drawing.Point(621, 328)
+        Me.Label16.Location = New System.Drawing.Point(621, 334)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(128, 25)
+        Me.Label16.Size = New System.Drawing.Size(120, 25)
         Me.Label16.TabIndex = 44
-        Me.Label16.Text = "Téléphone 1*:"
+        Me.Label16.Text = "Téléphone 1:"
         '
         'cmbFonction
         '
@@ -886,11 +923,11 @@ Partial Class frmNewAgent
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label27.Location = New System.Drawing.Point(621, 128)
+        Me.Label27.Location = New System.Drawing.Point(621, 130)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(164, 25)
+        Me.Label27.Size = New System.Drawing.Size(156, 25)
         Me.Label27.TabIndex = 40
-        Me.Label27.Text = "Village d'origine*:"
+        Me.Label27.Text = "Village d'origine:"
         '
         'cmbGrade
         '
@@ -914,9 +951,9 @@ Partial Class frmNewAgent
         Me.Label29.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label29.Location = New System.Drawing.Point(19, 282)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(71, 25)
+        Me.Label29.Size = New System.Drawing.Size(63, 25)
         Me.Label29.TabIndex = 37
-        Me.Label29.Text = "Unité*:"
+        Me.Label29.Text = "Unité:"
         '
         'Label6
         '
@@ -924,9 +961,9 @@ Partial Class frmNewAgent
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label6.Location = New System.Drawing.Point(19, 333)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(76, 25)
+        Me.Label6.Size = New System.Drawing.Size(68, 25)
         Me.Label6.TabIndex = 36
-        Me.Label6.Text = "Grade*:"
+        Me.Label6.Text = "Grade:"
         '
         'txtAdresse
         '
@@ -1044,49 +1081,49 @@ Partial Class frmNewAgent
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label12.Location = New System.Drawing.Point(19, 537)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(164, 25)
+        Me.Label12.Size = New System.Drawing.Size(156, 25)
         Me.Label12.TabIndex = 13
-        Me.Label12.Text = "Adresse actuelle*:"
+        Me.Label12.Text = "Adresse actuelle:"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label11.Location = New System.Drawing.Point(621, 278)
+        Me.Label11.Location = New System.Drawing.Point(621, 283)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(180, 25)
+        Me.Label11.Size = New System.Drawing.Size(172, 25)
         Me.Label11.TabIndex = 12
-        Me.Label11.Text = "Province d'origine*:"
+        Me.Label11.Text = "Province d'origine:"
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label10.Location = New System.Drawing.Point(621, 178)
+        Me.Label10.Location = New System.Drawing.Point(621, 181)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(170, 25)
+        Me.Label10.Size = New System.Drawing.Size(162, 25)
         Me.Label10.TabIndex = 11
-        Me.Label10.Text = "Secteur d'origine*:"
+        Me.Label10.Text = "Secteur d'origine:"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label9.Location = New System.Drawing.Point(621, 228)
+        Me.Label9.Location = New System.Drawing.Point(621, 232)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(184, 25)
+        Me.Label9.Size = New System.Drawing.Size(176, 25)
         Me.Label9.TabIndex = 10
-        Me.Label9.Text = "Territoire d'origine*:"
+        Me.Label9.Text = "Territoire d'origine:"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.Location = New System.Drawing.Point(621, 78)
+        Me.Label8.Location = New System.Drawing.Point(621, 79)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(173, 25)
+        Me.Label8.Size = New System.Drawing.Size(165, 25)
         Me.Label8.TabIndex = 9
-        Me.Label8.Text = "Lieu de naissance*:"
+        Me.Label8.Text = "Lieu de naissance:"
         '
         'Label5
         '
@@ -1104,9 +1141,9 @@ Partial Class frmNewAgent
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label4.Location = New System.Drawing.Point(19, 180)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(91, 25)
+        Me.Label4.Size = New System.Drawing.Size(83, 25)
         Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Prenom*:"
+        Me.Label4.Text = "Prenom:"
         '
         'Label3
         '
@@ -1161,7 +1198,7 @@ Partial Class frmNewAgent
         'cmdValider
         '
         Me.cmdValider.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.cmdValider.Location = New System.Drawing.Point(376, 646)
+        Me.cmdValider.Location = New System.Drawing.Point(376, 652)
         Me.cmdValider.Name = "cmdValider"
         Me.cmdValider.Size = New System.Drawing.Size(111, 43)
         Me.cmdValider.TabIndex = 1
@@ -1171,26 +1208,26 @@ Partial Class frmNewAgent
         'cmdAnnuler
         '
         Me.cmdAnnuler.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.cmdAnnuler.Location = New System.Drawing.Point(704, 646)
+        Me.cmdAnnuler.Location = New System.Drawing.Point(704, 652)
         Me.cmdAnnuler.Name = "cmdAnnuler"
         Me.cmdAnnuler.Size = New System.Drawing.Size(111, 43)
         Me.cmdAnnuler.TabIndex = 2
         Me.cmdAnnuler.Text = "&Annuler"
         Me.cmdAnnuler.UseVisualStyleBackColor = True
         '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
         'btnSuivant
         '
         Me.btnSuivant.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.btnSuivant.Location = New System.Drawing.Point(531, 646)
+        Me.btnSuivant.Location = New System.Drawing.Point(531, 652)
         Me.btnSuivant.Name = "btnSuivant"
         Me.btnSuivant.Size = New System.Drawing.Size(111, 43)
         Me.btnSuivant.TabIndex = 3
         Me.btnSuivant.Text = "&Suivant"
         Me.btnSuivant.UseVisualStyleBackColor = True
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
         '
         'frmNewAgent
         '
@@ -1239,6 +1276,7 @@ Partial Class frmNewAgent
         CType(Me.picAddGrade, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picAddUnite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1345,4 +1383,8 @@ Partial Class frmNewAgent
     Friend WithEvents cmbStatut As ComboBox
     Friend WithEvents Label33 As Label
     Friend WithEvents Label32 As Label
+    Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents btnImporterEmpD As Button
+    Friend WithEvents btnImporterEmpG As Button
+    Friend WithEvents btnImporterSignature As Button
 End Class

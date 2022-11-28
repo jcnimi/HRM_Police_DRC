@@ -5,6 +5,8 @@ Public Class frmMapageChamp
     Public importSourceFilePath As String = ""
     Public seperator As String = ""
     Public sourceFormat As String = ""
+    Public accessTableName As String = ""
+    Public mappingSuccess As Boolean = False
     Private Sub saveMappingMemory()
         Dim dbFieldName As String = ""
         Dim fileFieldName As String = ""
@@ -19,6 +21,7 @@ Public Class frmMapageChamp
                 End If
                 MappingList.Add(New Mapping(dbFieldName, fileFieldName))
             Next
+            mappingSuccess = True
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
@@ -55,7 +58,7 @@ Public Class frmMapageChamp
             Catch ex As Exception
                 MessageBox.Show("Erreur: " + ex.Message)
             End Try
-        Else  'CSV
+        ElseIf sourceFormat = "CSV" Then
             Try
                 Using fileReader As System.IO.StreamReader = New System.IO.StreamReader(importSourceFilePath)
                     Dim FileHeader As String = fileReader.ReadLine
@@ -67,6 +70,21 @@ Public Class frmMapageChamp
                 End Using
             Catch ex As Exception
                 MessageBox.Show("Erreur: " + ex.Message)
+            End Try
+        ElseIf sourceFormat = "Access" Then
+            Try
+                Try
+                    Dim fields = GetAccessTableFieldList(accessTableName)
+                    For Each item In fields
+                        fileCol.Items.Add(item.ToString())
+                        fileFieldList.Add(item.ToString())
+                    Next
+                    'fileFieldList = fields
+                Catch ex As Exception
+                    MessageBox.Show("Erreur: " + ex.Message)
+                End Try
+            Catch ex As Exception
+
             End Try
         End If
 
@@ -124,4 +142,26 @@ Public Class frmMapageChamp
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
     End Sub
+    Private Function GetAccessTableFieldList(ByVal tableName As String) As ArrayList
+        Dim odbcConnString As String = "DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=" + importSourceFilePath + "; Uid = Admin; Pwd =;"
+        Dim fieldList As ArrayList = New ArrayList()
+        'Recupère la description des champs (type, etc...)
+        Using connection As OdbcConnection = New OdbcConnection(odbcConnString)
+            connection.Open()
+            Dim adapter As OdbcDataAdapter = New OdbcDataAdapter()
+            adapter.SelectCommand = New OdbcCommand("select * from [" + tableName + "] where 1=2", connection)
+            Dim ds As DataSet = New DataSet()
+            adapter.Fill(ds, "export")
+            Dim item As DataTable = ds.Tables(0)
+            adapter.InsertCommand = New OdbcCommandBuilder(adapter).GetInsertCommand()
+            fieldList = New ArrayList()
+            For Each col As DataColumn In item.Columns
+                fieldList.Add(col)
+            Next
+            ds.Dispose()
+            adapter.Dispose()
+            connection.Dispose()
+        End Using
+        Return fieldList
+    End Function
 End Class

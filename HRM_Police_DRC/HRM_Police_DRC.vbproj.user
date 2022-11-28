@@ -7,6 +7,9 @@
     <Compile Update="frmCommissariat.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmDataPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmFonction.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -17,6 +20,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmLieu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmListTable.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmLoadingData.vb">

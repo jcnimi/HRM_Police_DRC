@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "215EywKB8Z0nzy0zv/jYel0wOTa/q5uRfjq25YfXqJDouzATAH2rtwLcKNvBa9yKN3b4+K8fpJZv4dZL90vqlg==",
+  "dgSpecHash": "fwjboUM5r98fTmJRU/bE0vHXlb5eOFQqEAF2ouBtUNZySi59WP6rZSd3ptPjX1YrSH0rcz/cxMdm9IrcFLZg5w==",
   "success": true,
   "projectFilePath": "C:\\Nimi\\Perso\\Development\\HRM_Police_DRC\\HRM_Police_DRC\\HRM_Police_DRC.vbproj",
   "expectedPackageFiles": [
@@ -12,10 +12,10 @@
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.arm64\\19.33.31630\\emgu.runtime.windows.msvc.rt.arm64.19.33.31630.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.x64\\19.33.31630\\emgu.runtime.windows.msvc.rt.x64.19.33.31630.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\emgu.runtime.windows.msvc.rt.x86\\19.33.31630\\emgu.runtime.windows.msvc.rt.x86.19.33.31630.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
@@ -24,8 +24,13 @@
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\sixlabors.imagesharp\\2.1.3\\sixlabors.imagesharp.2.1.3.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\sourceafis\\3.14.0\\sourceafis.3.14.0.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.data.sqlclient\\4.8.4\\system.data.sqlclient.4.8.4.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.data.odbc\\7.0.0\\system.data.odbc.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.data.oledb\\7.0.0\\system.data.oledb.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.diagnostics.performancecounter\\7.0.0\\system.diagnostics.performancecounter.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.drawing.primitives\\4.3.0\\system.drawing.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
@@ -41,11 +46,14 @@
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.runtime.interopservices.runtimeinformation\\4.3.0\\system.runtime.interopservices.runtimeinformation.4.3.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
     "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
-    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

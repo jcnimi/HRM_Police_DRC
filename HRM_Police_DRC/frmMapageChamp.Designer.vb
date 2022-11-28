@@ -96,7 +96,7 @@ Partial Class frmMapageChamp
         Me.btnAnnuler.Name = "btnAnnuler"
         Me.btnAnnuler.Size = New System.Drawing.Size(111, 45)
         Me.btnAnnuler.TabIndex = 1
-        Me.btnAnnuler.Text = "Annuler"
+        Me.btnAnnuler.Text = "Fermer"
         Me.btnAnnuler.UseVisualStyleBackColor = True
         '
         'btnValider
@@ -108,30 +108,30 @@ Partial Class frmMapageChamp
         Me.btnValider.Text = "Valider"
         Me.btnValider.UseVisualStyleBackColor = True
         '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
         'file
         '
-        Me.file.HeaderText = "Fichier"
+        Me.file.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.file.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.file.HeaderText = "Source"
         Me.file.MinimumWidth = 8
         Me.file.Name = "file"
         Me.file.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.file.Sorted = True
         Me.file.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.file.Width = 300
+        Me.file.Width = 102
         '
         'db
         '
-        Me.db.HeaderText = "Base de données"
+        Me.db.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.db.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox
+        Me.db.HeaderText = "Destination"
         Me.db.Items.AddRange(New Object() {"adresse", "autorite", "commissariat_recrutement", "date_expiration", "date_mariage_civil", "date_naissance", "date_recructement", "empreinte_droite", "empreinte_gauche", "entre_grade", "etat_civil", "fonction", "grade", "groupe_sanguin", "guid", "lieu_naissance", "matricule", "nom", "nom_conjoint", "photo", "photo_hash", "postnom", "prenom", "province_origine", "province_recrutement", "regroupement", "secteur_origine", "sexe", "sexe_conjoint", "signature", "status", "telephone1", "telephone2", "telephone3", "territoire_origine", "unite_agent"})
         Me.db.MinimumWidth = 8
         Me.db.Name = "db"
         Me.db.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.db.Sorted = True
         Me.db.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.db.Width = 200
+        Me.db.Width = 138
         '
         'frmMapageChamp
         '

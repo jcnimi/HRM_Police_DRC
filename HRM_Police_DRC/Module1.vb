@@ -45,6 +45,26 @@ Module Module1
         End Using
     End Sub
 
+    Public Function saveDataSPV(ByVal procName As String, dbParam As List(Of SqlParameter)) As Integer
+        Dim returnValue As Integer
+        Using cmd As New SqlCommand(procName, conn)
+            cmd.CommandType = CommandType.StoredProcedure
+            'if param not null, add
+            If dbParam IsNot Nothing AndAlso dbParam.Count > 0 Then
+                For Each e As SqlParameter In dbParam
+                    cmd.Parameters.Add(e)
+                Next
+            End If
+            Using reader As SqlDataReader = cmd.ExecuteReader()
+                If reader.HasRows Then
+                    reader.Read()
+                    returnValue = reader("return_value")
+                End If
+            End Using
+        End Using
+        Return returnValue
+    End Function
+
     Public Function getData(ByVal queryString As String) As SqlDataReader
         Using cmd As New SqlCommand(queryString, conn)
             Try
@@ -169,6 +189,19 @@ Module Module1
     Public Function getGuid() As String
         Dim myuuid As Guid = Guid.NewGuid()
         Return myuuid.ToString().ToUpper().Replace("-", "")
+    End Function
+
+    Public Function resizeImage(ByRef img As System.Drawing.Image, newHeight As Integer, newWidth As Integer)
+        'Dim newWidth As Integer = 640
+        'Dim newHeight As Integer = 480
+        Dim bmp As New Bitmap(img) ' original image, use AppropriateOverload here
+        Dim ResizedBMP As New Bitmap(bmp, newWidth, newHeight)
+
+        'Dim g As Graphics = Graphics.FromImage(bmp)
+        'g.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBicubic
+        'g.DrawImage(bmp, 0, 0, newWidth, newHeight)
+        Return ResizedBMP
+        'save the ResizedBMP back to database somewhere after this
     End Function
 End Module
 

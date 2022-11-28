@@ -1,0 +1,13 @@
+matricule,MATRICULE
+nom,NOM
+postnom,POSTNOM
+prenom,PRENOM
+sexe,SEXE
+photo,PHOTO
+empreinte_gauche,EMPREINTE_1
+empreinte_droite,EMPREINTE_2
+lieu_naissance,LIEUNAISSANCE
+fonction,PROFESSION
+commissariat_recrutement,COMMISSARIATENROLEMENT
+grade,RANK
+signature,SIGNATUREAUTORITE

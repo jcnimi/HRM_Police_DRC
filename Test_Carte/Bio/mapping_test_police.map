@@ -1,0 +1,14 @@
+commissariat_recrutement,COMMISSARIATENROLEMENT
+date_naissance,DATENAISSANCE
+empreinte_gauche,EMPREINTE_1
+empreinte_droite,EMPREINTE_2
+lieu_naissance,LIEUNAISSANCE
+matricule,MATRICULE
+nom,NOM
+photo,PHOTO
+postnom,POSTNOM
+prenom,PRENOM
+fonction,PROFESSION
+grade,RANK
+sexe,SEXE
+signature,SIGNATUREAUTORITE

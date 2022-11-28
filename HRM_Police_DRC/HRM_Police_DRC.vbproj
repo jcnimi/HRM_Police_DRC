@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <RootNamespace>HRM_Police_DRC</RootNamespace>
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
@@ -10,6 +10,7 @@
     <Platforms>AnyCPU;x86;x64</Platforms>
     <OptionInfer>On</OptionInfer>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,15 +41,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <COMReference Include="STPadCaptLib">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>24</VersionMinor>
-      <VersionMajor>2</VersionMajor>
-      <Guid>4943cd22-c6d6-4703-9a34-ee1c461f1291</Guid>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>true</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>9</VersionMinor>
@@ -67,6 +59,9 @@
     <Import Include="Newtonsoft" />
     <Import Include="System.Data" />
     <Import Include="System.Data.Common" />
+    <Import Include="System.Data.Odbc" />
+    <Import Include="System.Data.OleDb" />
+    <Import Include="System.Data.Sql" />
     <Import Include="System.Data.SqlClient" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
@@ -79,13 +74,9 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.6.0.5131" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SourceAFIS" Version="3.14.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="SecuGen.FDxSDKPro.Windows">
-      <HintPath>..\SecuGen.FDxSDKPro.Windows.dll</HintPath>
-    </Reference>
+    <PackageReference Include="System.Data.Odbc" Version="7.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>

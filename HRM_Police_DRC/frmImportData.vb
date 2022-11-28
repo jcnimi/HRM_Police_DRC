@@ -5,17 +5,26 @@ Imports Emgu.CV.Fuzzy.FuzzyInvoke
 Imports Microsoft.Office.Interop
 Imports Newtonsoft.Json.Linq
 Imports SourceAFIS
+Imports System.Threading
 
 Public Class frmImportData
     Dim sourceFileFormat As String = ""
     Dim sourceFilePath As String = ""
     Dim imgFolder As String = ""
     Dim fingerPrintFolder As String = ""
-    Dim separator As String
+    Dim separator As String = ""
+    Dim accessTableName As String = ""
     Private Sub btnDataFile_Click(sender As Object, e As EventArgs) Handles btnDataFilePath.Click
         With OpenFileDialog1
-            .Filter = "Excel (.xslx)|*.xlsx|CSV (.csv)|*.csv|Tous (*.*)|*.*"
+            If cboSourceFormat.Text = "Excel" Then
+                .Filter = "Excel (.xslx)|*.xlsx"
+            ElseIf cboSourceFormat.Text = "Access" Then
+                .Filter = "Access (*.accdb)|*.accdb"
+            ElseIf cboSourceFormat.Text.Contains("CSV") Then
+                .Filter = "CSV (*.csv)|*.csv"
+            End If
             .Title = "Ouvrir une fichier"
+
             If .ShowDialog = Windows.Forms.DialogResult.OK Then
                 txtSourceFilePath.Text = OpenFileDialog1.FileName
             End If
@@ -56,6 +65,8 @@ Public Class frmImportData
             End If
             If sourceFileFormat = "Excel" Then
                 importExcel()
+            ElseIf sourceFileFormat = "Access" Then
+                importAccess()
             Else
                 importCSV()
             End If
@@ -96,7 +107,11 @@ Public Class frmImportData
         frm.importSourceFilePath = txtSourceFilePath.Text
         frm.seperator = separator
         frm.sourceFormat = sourceFileFormat
+        frm.accessTableName = accessTableName
         frm.ShowDialog()
+        If frm.mappingSuccess Then
+            btnImporter.Enabled = True
+        End If
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -166,7 +181,7 @@ Public Class frmImportData
                     End If
 
                 Else
-                    param.Value = value
+                    param.Value = preProcessData(dbField, value)
                 End If
 
             Else
@@ -237,6 +252,27 @@ Public Class frmImportData
                 returnValue = queryResult("id").ToString()
             End If
         End Using
+        If returnValue = "" Then 'data not in the db, add it
+            Dim param As SqlParameter
+            Dim dbParam As New List(Of SqlParameter)
+            param = New SqlParameter("@description", SqlDbType.NVarChar)
+            param.Value = value
+            dbParam.Add(param)
+            param = New SqlParameter("@created_by", SqlDbType.BigInt)
+            param.Value = userId
+            dbParam.Add(param)
+            Select Case field
+                Case "commissariat_recrutement"
+                    returnValue = CStr(saveDataSPV("sp_insert_commissariat", dbParam))
+                Case "lieu_naissance"
+                    returnValue = CStr(saveDataSPV("sp_insert_lieu", dbParam))
+                Case "fonction"
+                    returnValue = CStr(saveDataSPV("sp_insert_fonction", dbParam))
+                Case "grade"
+                    returnValue = CStr(saveDataSPV("sp_insert_grade", dbParam))
+            End Select
+        End If
+
         Return returnValue
     End Function
 
@@ -255,10 +291,30 @@ Public Class frmImportData
 
     Private Function getImageFromFile(ByVal path As String) As Image
         Dim img As Image = Nothing
+        Dim pi As ProcessStartInfo = New ProcessStartInfo()
+        pi.WindowStyle = ProcessWindowStyle.Hidden
+        pi.CreateNoWindow = True
+        pi.UseShellExecute = False
         Try
             If path <> "" Then
                 If System.IO.File.Exists(path) Then
-                    img = Image.FromFile(path)
+                    'wsq particular case
+                    If System.IO.Path.GetExtension(path) = ".WSQ" Then
+                        If Not System.IO.File.Exists(path.Replace("WSQ", "jpg")) Then
+                            Dim scriptPath As String = Application.StartupPath + "Script\wsqTojpg.py"
+                            'convert it to jpg with a python script
+                            pi.Arguments = $"/C C:\ProgramData\Anaconda3\Scripts\activate.bat && pythonw {scriptPath} {path}"
+                            pi.FileName = "cmd.exe"
+                            Dim proc As Process = Process.Start(pi)
+                            proc.WaitForExit()
+                        End If
+                        Dim newPath As String = path.Replace("WSQ", "jpg")
+                        img = Image.FromFile(newPath)
+                        'IO.File.Delete(newPath)
+
+                    Else
+                            img = Image.FromFile(path)
+                    End If
                 Else
                     img = Nothing
                 End If
@@ -285,17 +341,17 @@ Public Class frmImportData
             For rCnt = 2 To Range.Rows.Count
                 paramList = New List(Of SqlParameter)()
                 For cCnt = 1 To Range.Columns.Count
-                    Dim Obj As Excel.Range = CType(Range.Cells(rCnt, cCnt), Excel.Range)
+                    Dim data As String = CType(Range.Cells(rCnt, cCnt), Excel.Range).Text
                     'check if matricule is blank
-                    If getDBFieldMappingByFileField(fileFieldList(cCnt)) = "matricule" And Obj.Text = "" Then
+                    If getDBFieldMappingByFileField(fileFieldList(cCnt)) = "matricule" And data = "" Then
                         'matricule vide, donc passe à l'iteration suivante
                         Continue For
                     End If
-                    Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt), Obj.Text)
+                    Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt), data)
                     If param IsNot Nothing Then
                         paramList.Add(param)
                         'add template in case of fingerprint
-                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt), Obj.Text)
+                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt), data)
                         If param2 IsNot Nothing Then
                             paramList.Add(param2)
                         End If
@@ -306,7 +362,15 @@ Public Class frmImportData
                 Me.Text = $"Importation des données - [{Math.Round((rCnt / Range.Rows.Count) * 100, 2)} %]"
                 Application.DoEvents()
             Next
+            Me.Text = "Importation des données - [100 %]"
             MessageBox.Show("Importation des données reussies")
+
+            xlWorkBook.Close()
+            xlApp.Quit()
+
+            xlWorkSheet = Nothing
+            xlWorkBook = Nothing
+            xlApp = Nothing
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
         End Try
@@ -324,7 +388,7 @@ Public Class frmImportData
         ProgressBar1.Minimum = 1
         ProgressBar1.Maximum = FileContent.Count
         Try
-            For rCnt As Integer = 1 To FileContent.Count
+            For rCnt As Integer = 1 To FileContent.Count - 1
                 paramList = New List(Of SqlParameter)()
                 Dim fileRow As String() = FileContent(rCnt).Split(separator)
                 For cCnt As Integer = 0 To fileRow.Count - 1
@@ -349,6 +413,76 @@ Public Class frmImportData
                 Me.Text = $"Importation des données - [{Math.Round((rCnt / FileContent.Count) * 100, 2)} %]"
                 Application.DoEvents()
             Next
+            Me.Text = "Importation des données - [100 %]"
+            MessageBox.Show("Importation des données reussies")
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub importAccess()
+        Dim paramList As List(Of SqlParameter)
+        Try
+            Dim odbcConnString = "DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=" + sourceFilePath + "; Uid = Admin; Pwd =;"
+            Dim connAccess As OdbcConnection = New OdbcConnection(odbcConnString)
+            connAccess.Open()
+
+            Dim table As DataTable = connAccess.GetSchema("tables")
+            connAccess.Close()
+
+            Dim listTable As List(Of String) = New List(Of String)()
+            For Each row As DataRow In table.Rows
+                Dim table_type As String = row("TABLE_TYPE").ToString()
+                Dim table_name As String = row("TABLE_NAME").ToString()
+                If table_type = "TABLE" Then
+                    listTable.Add(table_name)
+                End If
+            Next
+
+            'get the selection from the user
+            Dim frm As New frmListTable()
+            frm.listData = listTable
+            frm.ShowDialog()
+            Dim selectedTable As String = frm.selectedItem
+            Dim queryString As String = $"select * from [{selectedTable}]"
+            table = New DataTable()
+            Dim cmd As New OdbcCommand(queryString, connAccess)
+            Dim adapter As New OdbcDataAdapter(cmd)
+            adapter.Fill(table)
+            adapter.Dispose()
+            cmd.Dispose()
+            connAccess.Dispose()
+
+            ProgressBar1.Visible = True
+            ProgressBar1.Minimum = 1
+            ProgressBar1.Maximum = table.Rows.Count
+
+            For rCnt = 0 To table.Rows.Count - 1
+                paramList = New List(Of SqlParameter)()
+                Dim dr As DataRow = table.Rows.Item(rCnt)
+                For cCnt = 0 To dr.ItemArray.Count - 1
+                    Dim data As String = dr.ItemArray(cCnt).ToString
+                    'check if matricule is blank
+                    If getDBFieldMappingByFileField(fileFieldList(cCnt + 1)) = "matricule" And data = "" Then
+                        'matricule vide, donc passe à l'iteration suivante
+                        Continue For
+                    End If
+                    Dim param As SqlParameter = getSqltParameter(fileFieldList(cCnt + 1), data)
+                    If param IsNot Nothing Then
+                        paramList.Add(param)
+                        'add template in case of fingerprint
+                        Dim param2 As SqlParameter = getTemplateSqltParameter(fileFieldList(cCnt + 1), data)
+                        If param2 IsNot Nothing Then
+                            paramList.Add(param2)
+                        End If
+                    End If
+                Next
+                saveDataSP("[sp_InsertAgent]", paramList)
+                ProgressBar1.Value = rCnt + 1
+                Me.Text = $"Importation des données - [{Math.Round((rCnt / table.Rows.Count) * 100, 2)} %]"
+                Application.DoEvents()
+            Next
+            Me.Text = "Importation des données - [100 %]"
             MessageBox.Show("Importation des données reussies")
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
@@ -359,16 +493,53 @@ Public Class frmImportData
     Private Sub txtLeftFingerPrintFolder_TextChanged(sender As Object, e As EventArgs) Handles txtLeftFingerPrintFolder.TextChanged
         If cboSourceFormat.Text <> "" AndAlso txtSourceFilePath.Text <> "" AndAlso
                 txtImageFolder.Text <> "" AndAlso txtLeftFingerPrintFolder.Text <> "" Then
-            btnImporter.Enabled = True
-            btnMapping.Enabled = True
+            'btnImporter.Enabled = True
+            'btnMapping.Enabled = True
+            btnDataPreview.Enabled = True
         End If
     End Sub
 
     Private Sub txtSourceFilePath_TextChanged(sender As Object, e As EventArgs) Handles txtSourceFilePath.TextChanged
         If cboSourceFormat.Text <> "" AndAlso txtSourceFilePath.Text <> "" AndAlso
                 txtImageFolder.Text <> "" AndAlso txtLeftFingerPrintFolder.Text <> "" Then
-            btnImporter.Enabled = True
-            btnMapping.Enabled = True
+            'btnImporter.Enabled = True
+            'btnMapping.Enabled = True
+            btnDataPreview.Enabled = True
         End If
     End Sub
+
+    Private Sub btnDataPreview_Click(sender As Object, e As EventArgs) Handles btnDataPreview.Click
+        'get input
+        sourceFileFormat = cboSourceFormat.Text
+        sourceFilePath = txtSourceFilePath.Text
+        Me.Cursor = Cursors.WaitCursor
+        Dim frm As New frmDataPreview()
+        frm.srcFileFormat = sourceFileFormat
+        frm.srcFileName = sourceFilePath
+        frm.ShowDialog()
+        accessTableName = frm.selectedTable
+        If frm.previewSuccess Then
+            btnMapping.Enabled = True
+        End If
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Function preProcessData(ByVal fieldName As String, ByVal fieldValue As String) As String
+        Dim returnValue As String = ""
+        Dim query As String = ""
+        Select Case fieldName
+            Case "sexe"
+                If fieldValue.ToLower() = "f" OrElse fieldValue.ToLower() = "feminin" Then
+                    returnValue = "Femme"
+                ElseIf fieldValue.ToLower() = "m" OrElse fieldValue.ToLower = "masculin" Then
+                    returnValue = "Homme"
+                Else
+                    returnValue = ""
+                End If
+            Case Else
+                returnValue = fieldValue
+        End Select
+
+        Return returnValue
+    End Function
 End Class

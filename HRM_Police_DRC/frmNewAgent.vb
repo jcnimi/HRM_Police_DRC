@@ -2,7 +2,6 @@
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
-Imports STPadCaptLib
 Imports SourceAFIS
 Imports SourceAFIS.Engine
 Imports System.Security.Principal
@@ -118,18 +117,18 @@ Public Class frmNewAgent
                         'lists
                         cmbSexe.Text = reader("sexe").ToString
                         cmbUnite.SelectedValue = reader("unite_agent")
-                        cmbCommissariatRecrutement.SelectedValue = reader("commissariat_recrutement").ToString
+                        cmbCommissariatRecrutement.SelectedValue = If(reader("commissariat_recrutement").ToString = "", 0, reader("commissariat_recrutement").ToString)
                         cmbEtatCivil.Text = reader("etat_civil").ToString
-                        cmbFonction.SelectedValue = reader("fonction").ToString
-                        cmbGrade.SelectedValue = reader("grade").ToString
+                        cmbFonction.SelectedValue = If(reader("fonction").ToString = "", 0, reader("fonction").ToString)
+                        cmbGrade.SelectedValue = If(reader("grade").ToString = "", 0, reader("grade").ToString)
                         cmbGroupeSanguin.Text = reader("groupe_sanguin").ToString
-                        cmbLieuNaissance.SelectedValue = reader("lieu_naissance").ToString
-                        cmbProvinceRecrutement.SelectedValue = reader("province_recrutement").ToString
-                        cmbProvOrigine.SelectedValue = reader("province_origine").ToString
-                        cmbSecteurOrigine.SelectedValue = reader("secteur_origine").ToString
+                        cmbLieuNaissance.SelectedValue = If(reader("lieu_naissance").ToString = "", 0, reader("lieu_naissance").ToString)
+                        cmbProvinceRecrutement.SelectedValue = If(reader("province_recrutement").ToString = "", 0, reader("province_recrutement").ToString)
+                        cmbProvOrigine.SelectedValue = If(reader("province_origine").ToString = "", 0, reader("province_origine").ToString)
+                        cmbSecteurOrigine.SelectedValue = If(reader("secteur_origine").ToString = "", 0, reader("secteur_origine").ToString)
                         cmbSexeConjoint.Text = reader("sexe_conjoint").ToString
-                        cmbTerritoireOrigine.SelectedValue = reader("territoire_origine").ToString
-                        cmbVillage.SelectedValue = reader("regroupement").ToString
+                        cmbTerritoireOrigine.SelectedValue = if(reader("territoire_origine").ToString="", 0, reader("territoire_origine").ToString)
+                        cmbVillage.SelectedValue = If(reader("regroupement").ToString = "", 0, reader("regroupement").ToString)
                         cmbStatut.Text = reader("status").ToString
                         txtAutorite.Text = reader("autorite").ToString
 
@@ -163,44 +162,25 @@ Public Class frmNewAgent
                         If IsDate(dateGrade) Then
                             dtDateEntreGrade.Value = dateGrade
                         End If
-                        'Dim myComputer = New Microsoft.VisualBasic.Devices.Computer()
-                        'photo, signature, fingerprints
                         'photo
                         If Not reader.IsDBNull("photo") Then
                             imageLoad(CType(reader("photo"), Byte()), picPhoto)
-                            '    Using ms As New IO.MemoryStream(CType(reader("photo"), Byte()))
-                            '        Using img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                            '            picPhoto.Image = img
-                            '        End Using
-                            '    End Using
                         End If
 
                         'signature
                         If Not reader.IsDBNull("signature") Then
                             imageLoad(CType(reader("signature"), Byte()), picSignature)
-                            '    Using ms As New IO.MemoryStream(CType(reader("signature"), Byte()))
-                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                            '        picSignature.Image = img
-                            '    End Using
                         End If
 
 
                         'fingerprint left
                         If Not reader.IsDBNull("empreinte_gauche") Then
                             imageLoad(CType(reader("empreinte_gauche"), Byte()), picfingerprintL)
-                            '    Using ms As New IO.MemoryStream(CType(reader("empreinte_gauche"), Byte()))
-                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                            '        picfingerprintL.Image = img
-                            '    End Using
                         End If
 
                         'fingerprint right
                         If Not reader.IsDBNull("empreinte_droite") Then
                             imageLoad(CType(reader("empreinte_droite"), Byte()), picFingerprintR)
-                            '    Using ms As New IO.MemoryStream(CType(reader("empreinte_droite"), Byte()))
-                            '        Dim img As System.Drawing.Image = System.Drawing.Image.FromStream(ms)
-                            '        picFingerprintR.Image = img
-                            '    End Using
                         End If
 
                         'maskedit
@@ -261,93 +241,119 @@ Public Class frmNewAgent
             Dim autorite As String = excapeSpecialChar(txtAutorite.Text)
 
             'Make sure that all the mandatory fields are filled
-            If nom = "" Then
-                MessageBox.Show("Le nom est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            If matricule = "" Then
+                maskMatric.Select()
+                ErrorProvider1.SetError(maskMatric, "Le matricule est obligatoire")
                 Exit Sub
+            Else
+                ErrorProvider1.SetError(maskMatric, "")
+            End If
+
+            If nom = "" Then
+                txtNom.Select()
+                ErrorProvider1.SetError(txtNom, "Le nom est obligatoire")
+                Exit Sub
+            Else
+                ErrorProvider1.SetError(txtNom, "")
             End If
 
             If postnom = "" Then
-                MessageBox.Show("Le postnom est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                ErrorProvider1.SetError(txtPostnom, "Le postnom est obligatoire")
+                txtPostnom.Select()
                 Exit Sub
+            Else
+                ErrorProvider1.SetError(txtPostnom, "")
             End If
 
             If prenom = "" Then
                 MessageBox.Show("Le prenom est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Exit Sub
-            End If
-
-            If matricule = "" Then
-                MessageBox.Show("Le matricule est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                txtPrenom.Select()
                 Exit Sub
             End If
 
             If sexe = "Select" Then
                 MessageBox.Show("Le choix du sexe est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbSexe.Select()
                 Exit Sub
             End If
 
             If unite_agent = 0 Then
                 MessageBox.Show("Le choix de l'unité est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbUnite.Select()
                 Exit Sub
             End If
 
             If grade = 0 Then
                 MessageBox.Show("Le choix du grade est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbGrade.Select()
                 Exit Sub
             End If
 
             If adresse = "" Then
                 MessageBox.Show("L'adresse est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                txtAdresse.Select()
                 Exit Sub
             End If
 
             If dateNaissanceAgent = "" Then
                 MessageBox.Show("La date de naissance est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                dtDateNaissance.Select()
                 Exit Sub
             End If
 
             If lieu_naissance = 0 Then
                 MessageBox.Show("Le  choix du lieu de naissance est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbLieuNaissance.Select()
                 Exit Sub
             End If
 
             If regroupement = 0 Then
                 MessageBox.Show("Le choix du village d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbVillage.Select()
                 Exit Sub
             End If
 
             If secteur_origine = 0 Then
                 MessageBox.Show("Le choix du secteur d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbSecteurOrigine.Select()
                 Exit Sub
             End If
 
             If territoire_origine = 0 Then
                 MessageBox.Show("Le choix du territoire d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbTerritoireOrigine.Select()
                 Exit Sub
             End If
 
             If province_origine = 0 Then
                 MessageBox.Show("Le choix de la province d'origine est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmbProvOrigine.Select()
                 Exit Sub
             End If
 
             If telephone1 = "" Then
                 MessageBox.Show("Au moins un numero de téléphone est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                maskTel1.Select()
                 Exit Sub
             End If
 
             If etat_civil = "Select" Then
                 MessageBox.Show("Le choix de l'etat civil est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                TabControl1.SelectedTab = TabPage3
+                cmbEtatCivil.Select()
                 Exit Sub
             End If
 
             If dateRecructementAgent = "" Then
                 MessageBox.Show("La date de recrutement est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                TabControl1.SelectedTab = TabPage4
+                dtDateRecrutement.Select()
                 Exit Sub
             End If
 
             If province_recrutement = 0 Then
                 MessageBox.Show("La choix de la province de recutement est obligatoire", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                TabControl1.SelectedTab = TabPage4
                 cmbProvinceRecrutement.Select()
                 Exit Sub
             End If
@@ -361,8 +367,6 @@ Public Class frmNewAgent
                 dtDateNaissance.Select()
                 Exit Sub
             End If
-
-
 
             Dim queryInsert As String = $"
             INSERT INTO [dbo].[agent]
@@ -931,19 +935,23 @@ Public Class frmNewAgent
     End Sub
 
     Private Sub btnWebCam_Click(sender As Object, e As EventArgs) Handles btnWebCam.Click
+        Me.Cursor = Cursors.WaitCursor
         Dim frm As New frmWebcam()
         frm.ShowDialog()
         picPhoto.Image = frm.PictureBox1.Image
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Cursor = Cursors.WaitCursor
         With OpenFileDialog1
-            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|Png Image (.png)|*.png|JPG Image (.jpg)|*.jpg|All(*.*)|*.*"
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image|*.jpeg;*.jpg|Png Image (.png)|*.png|All(*.*)|*.*"
             .Title = "Ouvrir une image"
             If .ShowDialog = Windows.Forms.DialogResult.OK Then
                 picPhoto.Image = New Bitmap(OpenFileDialog1.FileName)
             End If
         End With
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub picAddUnite_MouseHover(sender As Object, e As EventArgs) Handles picAddUnite.MouseHover,
@@ -961,10 +969,12 @@ Public Class frmNewAgent
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Me.Cursor = Cursors.WaitCursor
         Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
         Dim grabpicture As System.Drawing.Image
         grabpicture = MyComputer.Clipboard.GetImage()
         picSignature.Image = grabpicture
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub btnSuivant_Click(sender As Object, e As EventArgs) Handles btnSuivant.Click
@@ -1080,5 +1090,73 @@ Public Class frmNewAgent
 
     End Sub
 
+    Private Sub btnImporterSignature_Click(sender As Object, e As EventArgs) Handles btnImporterSignature.Click
+        Me.Cursor = Cursors.WaitCursor
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image|*.jpeg;*.jpg|Png Image (.png)|*.png|All(*.*)|*.*"
+            .Title = "Ouvrir une image"
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                picSignature.Image = New Bitmap(OpenFileDialog1.FileName)
+            End If
+        End With
+        Me.Cursor = Cursors.Default
+    End Sub
 
+    Private Sub btnImporterEmpG_Click(sender As Object, e As EventArgs) Handles btnImporterEmpG.Click
+        Me.Cursor = Cursors.WaitCursor
+        Dim pi As ProcessStartInfo = New ProcessStartInfo()
+        pi.WindowStyle = ProcessWindowStyle.Hidden
+        pi.CreateNoWindow = True
+        pi.UseShellExecute = False
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image|*.jpeg;*.jpg|Png Image (.png)|*.png|WSQ (*.wsq)|*.wsq|All(*.*)|*.*"
+            .Title = "Ouvrir une image"
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim path As String = OpenFileDialog1.FileName
+                If System.IO.Path.GetExtension(path) = ".WSQ" Then
+                    If Not System.IO.File.Exists(path.Replace("WSQ", "jpg")) Then
+                        Dim scriptPath As String = Application.StartupPath + "Script\wsqTojpg.py"
+                        'convert it to jpg with a python script
+                        pi.Arguments = $"/C C:\ProgramData\Anaconda3\Scripts\activate.bat && pythonw {scriptPath} {path}"
+                        pi.FileName = "cmd.exe"
+                        Dim proc As Process = Process.Start(pi)
+                        proc.WaitForExit()
+                    End If
+                    path = path.Replace("WSQ", "jpg")
+                    'picfingerprintL.Image = New Bitmap(newPath)
+                End If
+                picfingerprintL.Image = New Bitmap(path)
+            End If
+        End With
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnImporterEmpD_Click(sender As Object, e As EventArgs) Handles btnImporterEmpD.Click
+        Me.Cursor = Cursors.WaitCursor
+        Dim pi As ProcessStartInfo = New ProcessStartInfo()
+        pi.WindowStyle = ProcessWindowStyle.Hidden
+        pi.CreateNoWindow = True
+        pi.UseShellExecute = False
+        With OpenFileDialog1
+            .Filter = "Bitmap Image (.bmp)|*.bmp|Gif Image (.gif)|*.gif|JPEG Image|*.jpeg;*.jpg|Png Image (.png)|*.png|WSQ (*.wsq)|*.wsq|All(*.*)|*.*"
+            .Title = "Ouvrir une image"
+            If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                Dim path As String = OpenFileDialog1.FileName
+                If System.IO.Path.GetExtension(path) = ".WSQ" Then
+                    If Not System.IO.File.Exists(path.Replace("WSQ", "jpg")) Then
+                        Dim scriptPath As String = Application.StartupPath + "Script\wsqTojpg.py"
+                        'convert it to jpg with a python script
+                        pi.Arguments = $"/C C:\ProgramData\Anaconda3\Scripts\activate.bat && pythonw {scriptPath} {path}"
+                        pi.FileName = "cmd.exe"
+                        Dim proc As Process = Process.Start(pi)
+                        proc.WaitForExit()
+                    End If
+                    path = path.Replace("WSQ", "jpg")
+                    'picfingerprintL.Image = New Bitmap(newPath)
+                End If
+                picFingerprintR.Image = New Bitmap(path)
+            End If
+        End With
+        Me.Cursor = Cursors.Default
+    End Sub
 End Class

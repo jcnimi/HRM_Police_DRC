@@ -3,6 +3,10 @@ Imports SourceAFIS.Engine
 Imports System.Drawing
 Public Class ImageMatcher
     Public Function loadCandidates() As List(Of Subject)
+        Dim serialFingerPrintTempl As Byte()
+        Dim templ As FingerprintTemplate
+        Dim serialFingerPrintTemplR As Byte()
+        Dim templR As FingerprintTemplate
         Dim _Candidates As List(Of Subject) = New List(Of Subject)()
         Dim query As String = "
           SELECT [id_agent]
@@ -13,24 +17,34 @@ Public Class ImageMatcher
           FROM [hrm_police].[dbo].[agent]
           where empreinte_gauche_template is not null
         "
-        Using queryresults As SqlDataReader = getData(query)
-            While queryresults.Read()
-                Dim id As String = queryresults("id_agent")
-                Dim name As String = queryresults("nom")
-                Dim matric As String = queryresults("matricule")
-                Dim serialFingerPrintTempl As Byte() = queryresults("empreinte_gauche_template")
-                Dim templ As FingerprintTemplate = New FingerprintTemplate(serialFingerPrintTempl)
+        Try
+            Using queryresults As SqlDataReader = getData(query)
 
-                Dim serialFingerPrintTemplR As Byte() = queryresults("empreinte_droite_template")
-                Dim templR As FingerprintTemplate = New FingerprintTemplate(serialFingerPrintTemplR)
+                While queryresults.Read()
+                    Dim id As String = queryresults("id_agent").ToString
+                    Dim name As String = queryresults("nom").ToString
+                    Dim matric As String = queryresults("matricule").ToString
 
+                    If Not IsDBNull(queryresults("empreinte_gauche_template")) Then
+                        serialFingerPrintTempl = queryresults("empreinte_gauche_template")
+                        templ = New FingerprintTemplate(serialFingerPrintTempl)
+                    End If
+                    If Not IsDBNull(queryresults("empreinte_droite_template")) Then
+                        serialFingerPrintTemplR = queryresults("empreinte_droite_template")
+                        templR = New FingerprintTemplate(serialFingerPrintTemplR)
 
-                Dim candidate As Subject
-                candidate = New Subject(id, name, matric, templ, templR)
-                _Candidates.Add(candidate)
-            End While
-        End Using
-        Return _Candidates
+                    End If
+
+                    Dim candidate As Subject
+                    candidate = New Subject(id, name, matric, templ, templR)
+                    _Candidates.Add(candidate)
+                End While
+            End Using
+
+            Return _Candidates
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
     End Function
 
     Public Function encodeFingerPrintImage(ByRef img As Image) As SourceAFIS.FingerprintImage

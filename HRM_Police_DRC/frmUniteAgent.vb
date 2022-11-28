@@ -19,4 +19,8 @@
             MessageBox.Show("Error: " + ex.Message)
         End Try
     End Sub
+
+    Private Sub frmUniteAgent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

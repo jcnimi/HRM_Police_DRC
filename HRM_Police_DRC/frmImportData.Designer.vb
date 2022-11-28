@@ -40,6 +40,7 @@ Partial Class frmImportData
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.btnMapping = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.btnDataPreview = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -64,7 +65,7 @@ Partial Class frmImportData
         '
         'btnLeftFingerPrintFolder
         '
-        Me.btnLeftFingerPrintFolder.Location = New System.Drawing.Point(870, 167)
+        Me.btnLeftFingerPrintFolder.Location = New System.Drawing.Point(870, 163)
         Me.btnLeftFingerPrintFolder.Name = "btnLeftFingerPrintFolder"
         Me.btnLeftFingerPrintFolder.Size = New System.Drawing.Size(44, 38)
         Me.btnLeftFingerPrintFolder.TabIndex = 16
@@ -89,7 +90,7 @@ Partial Class frmImportData
         '
         'btnImageFolder
         '
-        Me.btnImageFolder.Location = New System.Drawing.Point(870, 118)
+        Me.btnImageFolder.Location = New System.Drawing.Point(870, 114)
         Me.btnImageFolder.Name = "btnImageFolder"
         Me.btnImageFolder.Size = New System.Drawing.Size(44, 38)
         Me.btnImageFolder.TabIndex = 10
@@ -114,7 +115,7 @@ Partial Class frmImportData
         '
         'btnDataFilePath
         '
-        Me.btnDataFilePath.Location = New System.Drawing.Point(871, 72)
+        Me.btnDataFilePath.Location = New System.Drawing.Point(871, 68)
         Me.btnDataFilePath.Name = "btnDataFilePath"
         Me.btnDataFilePath.Size = New System.Drawing.Size(44, 38)
         Me.btnDataFilePath.TabIndex = 4
@@ -140,7 +141,7 @@ Partial Class frmImportData
         'cboSourceFormat
         '
         Me.cboSourceFormat.FormattingEnabled = True
-        Me.cboSourceFormat.Items.AddRange(New Object() {"Excel", "CSV(Separateur Virgule)", "CSV(Separateur Point Virgule)", "CSV(Separateur Tabulation)", "CSV(Separateur Espace)"})
+        Me.cboSourceFormat.Items.AddRange(New Object() {"Access", "Excel", "CSV(Separateur Virgule)", "CSV(Separateur Point Virgule)", "CSV(Separateur Tabulation)", "CSV(Separateur Espace)"})
         Me.cboSourceFormat.Location = New System.Drawing.Point(246, 25)
         Me.cboSourceFormat.Name = "cboSourceFormat"
         Me.cboSourceFormat.Size = New System.Drawing.Size(265, 33)
@@ -154,10 +155,6 @@ Partial Class frmImportData
         Me.Label1.Size = New System.Drawing.Size(135, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Format source :"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'btnImporter
         '
@@ -175,7 +172,7 @@ Partial Class frmImportData
         Me.btnAnnuler.Name = "btnAnnuler"
         Me.btnAnnuler.Size = New System.Drawing.Size(111, 47)
         Me.btnAnnuler.TabIndex = 2
-        Me.btnAnnuler.Text = "Annuler"
+        Me.btnAnnuler.Text = "Fermer"
         Me.btnAnnuler.UseVisualStyleBackColor = True
         '
         'btnMapping
@@ -197,12 +194,23 @@ Partial Class frmImportData
         Me.ProgressBar1.TabIndex = 4
         Me.ProgressBar1.Visible = False
         '
+        'btnDataPreview
+        '
+        Me.btnDataPreview.Enabled = False
+        Me.btnDataPreview.Location = New System.Drawing.Point(359, 234)
+        Me.btnDataPreview.Name = "btnDataPreview"
+        Me.btnDataPreview.Size = New System.Drawing.Size(112, 46)
+        Me.btnDataPreview.TabIndex = 5
+        Me.btnDataPreview.Text = "Aperçu"
+        Me.btnDataPreview.UseVisualStyleBackColor = True
+        '
         'frmImportData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(967, 328)
+        Me.Controls.Add(Me.btnDataPreview)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnMapping)
         Me.Controls.Add(Me.btnAnnuler)
@@ -240,4 +248,5 @@ Partial Class frmImportData
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents btnMapping As Button
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents btnDataPreview As Button
 End Class

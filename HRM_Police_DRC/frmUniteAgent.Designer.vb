@@ -34,51 +34,45 @@ Partial Class frmUniteAgent
         Me.GroupBox1.Controls.Add(Me.cmdValider)
         Me.GroupBox1.Controls.Add(Me.txtDesc)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 7)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(342, 73)
+        Me.GroupBox1.Size = New System.Drawing.Size(489, 122)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'cmdValider
         '
-        Me.cmdValider.Location = New System.Drawing.Point(236, 34)
-        Me.cmdValider.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cmdValider.Location = New System.Drawing.Point(337, 57)
         Me.cmdValider.Name = "cmdValider"
-        Me.cmdValider.Size = New System.Drawing.Size(78, 20)
+        Me.cmdValider.Size = New System.Drawing.Size(111, 33)
         Me.cmdValider.TabIndex = 2
         Me.cmdValider.Text = "&Valider"
         Me.cmdValider.UseVisualStyleBackColor = True
         '
         'txtDesc
         '
-        Me.txtDesc.Location = New System.Drawing.Point(27, 35)
-        Me.txtDesc.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtDesc.Location = New System.Drawing.Point(39, 58)
         Me.txtDesc.Name = "txtDesc"
-        Me.txtDesc.Size = New System.Drawing.Size(182, 23)
+        Me.txtDesc.Size = New System.Drawing.Size(258, 31)
         Me.txtDesc.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(24, 16)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(34, 27)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 15)
+        Me.Label1.Size = New System.Drawing.Size(106, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Description:"
         '
         'frmUniteAgent
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(372, 87)
+        Me.ClientSize = New System.Drawing.Size(531, 145)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUniteAgent"

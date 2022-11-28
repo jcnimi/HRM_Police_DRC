@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -51,6 +51,7 @@ Partial Class frmMain
         Me.ActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangerDeMotDePasseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuRechercher = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExportSelection = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuExportCardPresso = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAjouterAgent = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuModifierAgent = New System.Windows.Forms.ToolStripMenuItem()
@@ -328,7 +329,7 @@ Partial Class frmMain
         '
         'ActionToolStripMenuItem
         '
-        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangerDeMotDePasseToolStripMenuItem, Me.mnuRechercher, Me.mnuExportCardPresso, Me.mnuAjouterAgent, Me.mnuModifierAgent, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.mnuParametres, Me.QuitterToolStripMenuItem})
+        Me.ActionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangerDeMotDePasseToolStripMenuItem, Me.mnuRechercher, Me.mnuExportSelection, Me.mnuExportCardPresso, Me.mnuAjouterAgent, Me.mnuModifierAgent, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.mnuParametres, Me.QuitterToolStripMenuItem})
         Me.ActionToolStripMenuItem.Name = "ActionToolStripMenuItem"
         Me.ActionToolStripMenuItem.Size = New System.Drawing.Size(79, 29)
         Me.ActionToolStripMenuItem.Text = "Action"
@@ -336,57 +337,64 @@ Partial Class frmMain
         'ChangerDeMotDePasseToolStripMenuItem
         '
         Me.ChangerDeMotDePasseToolStripMenuItem.Name = "ChangerDeMotDePasseToolStripMenuItem"
-        Me.ChangerDeMotDePasseToolStripMenuItem.Size = New System.Drawing.Size(318, 34)
+        Me.ChangerDeMotDePasseToolStripMenuItem.Size = New System.Drawing.Size(400, 34)
         Me.ChangerDeMotDePasseToolStripMenuItem.Text = "&Changer de mot de passe"
         '
         'mnuRechercher
         '
         Me.mnuRechercher.Name = "mnuRechercher"
-        Me.mnuRechercher.Size = New System.Drawing.Size(318, 34)
+        Me.mnuRechercher.Size = New System.Drawing.Size(400, 34)
         Me.mnuRechercher.Text = "&Rechercher"
+        '
+        'mnuExportSelection
+        '
+        Me.mnuExportSelection.Enabled = False
+        Me.mnuExportSelection.Name = "mnuExportSelection"
+        Me.mnuExportSelection.Size = New System.Drawing.Size(400, 34)
+        Me.mnuExportSelection.Text = "Exporter la séléction vers cardPresso"
         '
         'mnuExportCardPresso
         '
         Me.mnuExportCardPresso.Enabled = False
         Me.mnuExportCardPresso.Name = "mnuExportCardPresso"
-        Me.mnuExportCardPresso.Size = New System.Drawing.Size(318, 34)
+        Me.mnuExportCardPresso.Size = New System.Drawing.Size(400, 34)
         Me.mnuExportCardPresso.Text = "&Exporter vers cardPresso"
         '
         'mnuAjouterAgent
         '
         Me.mnuAjouterAgent.Name = "mnuAjouterAgent"
-        Me.mnuAjouterAgent.Size = New System.Drawing.Size(318, 34)
+        Me.mnuAjouterAgent.Size = New System.Drawing.Size(400, 34)
         Me.mnuAjouterAgent.Text = "&Ajouter un agent"
         '
         'mnuModifierAgent
         '
         Me.mnuModifierAgent.Enabled = False
         Me.mnuModifierAgent.Name = "mnuModifierAgent"
-        Me.mnuModifierAgent.Size = New System.Drawing.Size(318, 34)
+        Me.mnuModifierAgent.Size = New System.Drawing.Size(400, 34)
         Me.mnuModifierAgent.Text = "&Modifier un agent"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(318, 34)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(400, 34)
         Me.ToolStripMenuItem2.Text = "Importation"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(318, 34)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(400, 34)
         Me.ToolStripMenuItem1.Text = "Rapports"
         '
         'mnuParametres
         '
         Me.mnuParametres.Name = "mnuParametres"
-        Me.mnuParametres.Size = New System.Drawing.Size(318, 34)
+        Me.mnuParametres.Size = New System.Drawing.Size(400, 34)
         Me.mnuParametres.Text = "&Parametres"
         '
         'QuitterToolStripMenuItem
         '
         Me.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem"
-        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(318, 34)
+        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(400, 34)
         Me.QuitterToolStripMenuItem.Text = "&Quitter"
         '
         'frmMain
@@ -459,4 +467,5 @@ Partial Class frmMain
     Friend WithEvents QuitterToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents mnuExportSelection As ToolStripMenuItem
 End Class

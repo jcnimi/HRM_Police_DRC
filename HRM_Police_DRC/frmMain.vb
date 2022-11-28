@@ -4,6 +4,7 @@ Imports System.Drawing
 Imports Emgu.CV.Fuzzy.FuzzyInvoke
 Imports System.Security.Cryptography.Xml
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+Imports Newtonsoft.Json.Linq
 
 Public Class frmMain
     Dim dtFrom As String = ""
@@ -24,7 +25,7 @@ Public Class frmMain
         tt.SetToolTip(picExportAgent, "Exporter les données")
         tt.SetToolTip(picSettings, "Administration du système")
 
-        Dim queryString = "SELECT top 20 [matricule] Matricule
+        Dim queryString = "SELECT top 20 'False' ""Select"", [matricule] Matricule
         ,a.[nom] Nom
         ,[postnom] Postnom
         ,[prenom] Prenom 
@@ -35,9 +36,9 @@ Public Class frmMain
         ,[date_expiration] ""Date expiration""
         ,autorite
         FROM [dbo].[agent] a
-        join [dbo].[fonction] b on a.fonction = b.id_fonction
-        join [dbo].[grade] c on a.grade = c.id_grade
-		join [dbo].[lieu] d on a.[lieu_naissance] = d.id_lieu
+        left join [dbo].[fonction] b on a.fonction = b.id_fonction
+        left join [dbo].[grade] c on a.grade = c.id_grade
+		left join [dbo].[lieu] d on a.[lieu_naissance] = d.id_lieu
         order by a.date_creation desc
         "
 
@@ -145,7 +146,7 @@ Public Class frmMain
     End Sub
 
     Private Sub DataGridView1_CellMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDoubleClick
-        If e.RowIndex >= 0 Then
+        If e.RowIndex >= 0 And selectedRow IsNot Nothing Then
             Dim frm As New frmNewAgent
             frm.matriculeAgent = selectedRow.Cells("matricule").Value
             frm.isUpdating = True
@@ -214,6 +215,52 @@ Public Class frmMain
             Dim pi As ProcessStartInfo = New ProcessStartInfo()
             Dim proc As Process
             Try
+                pi.FileName = cardPressoPath
+                proc = Process.Start(pi)
+            Catch ex As Exception
+                MessageBox.Show("Erreur: " + ex.Message)
+            End Try
+        Catch ex As Exception
+            MessageBox.Show("Erreur: " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ExportAgentSelection()
+        Try
+            'truncate db_cardpresso
+            saveData("delete from db_cardpresso")
+
+            'geberate an id to be used as reference
+            Dim idCardPresso As String = getGuid()
+
+            'get the selected data
+            Dim selectedRowCount As Integer = DataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)
+            If selectedRowCount > 0 Then
+                Dim i As Integer
+                For i = 0 To selectedRowCount - 1
+                    Dim value As String = DataGridView1.SelectedRows(i).Cells("matricule").Value.ToString
+                    'insert data
+                    Dim param As SqlParameter
+                    Dim dbParam As New List(Of SqlParameter)
+                    param = New SqlParameter("@matricule", SqlDbType.NVarChar)
+                    param.Value = value
+                    dbParam.Add(param)
+                    param = New SqlParameter("@reference", SqlDbType.NVarChar)
+                    param.Value = idCardPresso
+                    dbParam.Add(param)
+                    saveDataSP("sp_ExportAgent_1", dbParam)
+
+                Next i
+            Else
+                MessageBox.Show("Veuillez séléctionner au moins une ligne")
+            End If
+            MessageBox.Show("Exportation reussie")
+
+            'open cardpresso
+
+            Dim pi As ProcessStartInfo = New ProcessStartInfo()
+            Dim proc As Process
+            Try
                 'pi.Arguments = " /C " + """" + cardPressoPath + """"
                 pi.FileName = cardPressoPath
                 proc = Process.Start(pi)
@@ -253,7 +300,7 @@ Public Class frmMain
             DataGridView1.DataSource = table
             picExportAgent.Enabled = True
             mnuExportCardPresso.Enabled = True
-
+            mnuExportSelection.Enabled = True
             'CType(DataGridView1.Columns(DataGridView1.Columns.Count - 1), DataGridViewImageColumn).ImageLayout = DataGridViewImageCellLayout.Stretch
         Catch ex As Exception
             MessageBox.Show("Erreur: " + ex.Message)
@@ -282,8 +329,10 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuAjouterAgent_Click(sender As Object, e As EventArgs) Handles mnuAjouterAgent.Click
+        Me.Cursor = Cursors.WaitCursor
         Dim frm As New frmNewAgent
         frm.ShowDialog()
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub mnuParametres_Click(sender As Object, e As EventArgs) Handles mnuParametres.Click
@@ -305,4 +354,7 @@ Public Class frmMain
         frm.ShowDialog()
     End Sub
 
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles mnuExportSelection.Click
+        ExportAgentSelection()
+    End Sub
 End Class
