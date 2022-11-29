@@ -320,9 +320,9 @@ Partial Class frmNewAgent
         Me.Label31.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label31.Location = New System.Drawing.Point(340, 29)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(170, 25)
+        Me.Label31.Size = New System.Drawing.Size(151, 25)
         Me.Label31.TabIndex = 7
-        Me.Label31.Text = "Signature Autorité"
+        Me.Label31.Text = "Signature Agent"
         '
         'Label22
         '

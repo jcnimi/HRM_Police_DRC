@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "0GDXoy7Xj2P39YK6Vm21g+paa6uWR4oCIuzbbukRlAN4FWhYRrphauV0nDPeV3/4+zJppayd/T2w+kuNEoI2tQ==",
+  "success": true,
+  "projectFilePath": "C:\\Nimi\\Perso\\Development\\HRM_Police_DRC\\SmartIdentification\\SmartIdentificationWS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.0\\microsoft.aspnetcore.openapi.7.0.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\jean-claude.NIMI\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -24,44 +24,54 @@ Partial Class frmAdministration
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdministration))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.picAuthorite = New System.Windows.Forms.PictureBox()
         Me.picUsers = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.picAuthorite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picUsers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.picAuthorite)
         Me.GroupBox1.Controls.Add(Me.picUsers)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 7)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(526, 161)
+        Me.GroupBox1.Size = New System.Drawing.Size(751, 268)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Administration du système"
+        '
+        'picAuthorite
+        '
+        Me.picAuthorite.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.picAuthorite.Image = Global.HRM_Police_DRC.My.Resources.Resources.authorite1
+        Me.picAuthorite.Location = New System.Drawing.Point(222, 44)
+        Me.picAuthorite.Name = "picAuthorite"
+        Me.picAuthorite.Size = New System.Drawing.Size(180, 184)
+        Me.picAuthorite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAuthorite.TabIndex = 1
+        Me.picAuthorite.TabStop = False
         '
         'picUsers
         '
         Me.picUsers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.picUsers.Image = CType(resources.GetObject("picUsers.Image"), System.Drawing.Image)
-        Me.picUsers.Location = New System.Drawing.Point(13, 28)
-        Me.picUsers.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.picUsers.Location = New System.Drawing.Point(19, 47)
         Me.picUsers.Name = "picUsers"
-        Me.picUsers.Size = New System.Drawing.Size(126, 110)
+        Me.picUsers.Size = New System.Drawing.Size(178, 181)
         Me.picUsers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picUsers.TabIndex = 0
         Me.picUsers.TabStop = False
         '
         'frmAdministration
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(544, 177)
+        Me.ClientSize = New System.Drawing.Size(777, 295)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAdministration"
@@ -70,6 +80,7 @@ Partial Class frmAdministration
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Parametres"
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.picAuthorite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picUsers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -77,4 +88,5 @@ Partial Class frmAdministration
 
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents picUsers As PictureBox
+    Friend WithEvents picAuthorite As PictureBox
 End Class

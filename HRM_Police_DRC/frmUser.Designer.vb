@@ -89,7 +89,7 @@ Partial Class frmUser
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(10, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(959, 312)
+        Me.GroupBox1.Size = New System.Drawing.Size(949, 312)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
